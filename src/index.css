@@ -1,0 +1,97 @@
+/* google fonts */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root,
+.app {
+  height: 100%;
+  width: 100%;
+  font-family: "Montserrat", sans-serif;
+  @apply text-gray-500;
+}
+
+p {
+  color: var(--small-text-color);
+  font-size: 1rem;
+}
+
+h1,
+h2 {
+  font-size: var(--heading-fontSize);
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+section {
+  @apply flex justify-center items-center;
+}
+
+.btn {
+  @apply py-2 px-5;
+  @apply rounded;
+  @apply transition-colors duration-[0.5s];
+  @apply w-full;
+}
+
+.btn-banner {
+  @apply bg-primary-color hover:bg-slate-600 text-white font-bold;
+}
+
+.btn-timer {
+  @apply bg-white hover:bg-slate-300 text-primary-color font-bold;
+}
+
+.flexBetween {
+  @apply flex justify-between items-center;
+}
+
+.flexCenter {
+  @apply flex justify-center items-center;
+}
+
+.input_style {
+  @apply w-full outline-none border-primary-color border-[1px] rounded-md px-5 py-2 text-primary-color;
+}
+
+.input_checkout {
+  @apply w-full outline-none border-card-bg-01 border-[1px] rounded-md px-5 py-2 text-primary-color;
+}
+
+.flexEvenly {
+  @apply flex items-center justify-evenly;
+}
+
+.active-stop-icon {
+  @apply bg-red-400 w-4 h-4;
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Style the scrollbar thumb */
+*::-webkit-scrollbar-thumb {
+  background-color: #0a1d37;
+  border-radius: 0.375rem;
+}
+
+/* Style the scrollbar track */
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+/* Hide the scrollbar corner */
+*::-webkit-scrollbar-corner {
+  display: none;
+}
