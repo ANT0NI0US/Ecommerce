@@ -1,13 +1,12 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import routes from "./routes";
-import Shop from "@/features/shop/Shop";
-import ProductDetails from "@/features/productDetails/ProductDetails";
-import Cart from "@/features/cart/Cart";
-import Favourites from "@/features/favourites/Favourites";
-import CheckOut from "@/features/checkOut/CheckOut";
-import Login from "@/features/login/Login";
-import SignUp from "@/features/signUp/SignUp";
+import Shop from "@/features/shop/pages/Shop";
+import ProductDetails from "@/features/productDetails/pages/ProductDetails";
+import Cart from "@/features/cart/pages/Cart";
+import Favourites from "@/features/favourites/pages/Favourites";
+import CheckOut from "@/features/checkOut/pages/CheckOut";
+import SignUp from "@/features/auth/signUp/SignUp";
 import ProtectedRoute from "./ProtectedRoute";
 import Loader from "@/components/UI/loader/Loader";
 import PageNotFound from "./PageNotFound";
@@ -21,6 +20,7 @@ import AllProducts from "@/features/admin/allProducts/pages/AllProducts";
 const Layout = lazy(() => import("../layout/Layout"));
 const AppLayout = lazy(() => import("../layout/admin/AdminLayout"));
 const Home = lazy(() => import("../features/home/pages/Home"));
+const Login = lazy(() => import("../features/auth/login/Login"));
 
 const Navigations = () => {
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
@@ -64,9 +64,9 @@ const Navigations = () => {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path="*" element={<PageNotFound />} />
         <Route path={routes.login} element={<Login />} />
         <Route path={routes.signup} element={<SignUp />} />
+        <Route path="*" element={<PageNotFound />} />
         {userData && (
           <>
             {userData.type === "user" && (
