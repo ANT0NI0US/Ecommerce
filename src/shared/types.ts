@@ -13,7 +13,7 @@ export interface selectedProps extends setSelectedPageProps {
   selectedPage: selectedPageNum;
 }
 
-interface Review {
+export interface Review {
   rating: number;
   text: string;
 }
@@ -41,7 +41,7 @@ export interface newProductProps {
   avgRating?: number;
 }
 
-interface Item {
+export interface Item {
   id: string;
   productName: string;
   imgUrl: string;
@@ -62,11 +62,7 @@ export interface CartState {
 }
 
 export interface cartSliceState {
-  cart: {
-    cartItems: CartItem[];
-    totalAmount: number;
-    totalQuantity: number;
-  };
+  cart: CartState;
 }
 
 export interface clockProps {
@@ -74,6 +70,12 @@ export interface clockProps {
 }
 
 // admin
+
+// dashboard
+export interface serviceProps {
+  title: string;
+  bg: string;
+}
 
 // all users
 export interface userProps {
@@ -92,10 +94,12 @@ export interface userState {
 }
 
 // all products
+export interface productServiceState {
+  isLoading: boolean;
+  product: productCardProps | object;
+  errors: null | string;
+  allProducts: productCardProps[];
+}
 export interface productState {
-  product: {
-    isLoading: boolean;
-    errors: null | string;
-    allProducts: productCardProps[];
-  };
+  product: productServiceState;
 }

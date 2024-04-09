@@ -1,16 +1,18 @@
 import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
-import { productCardProps } from "@/shared/types";
 import { useDispatch, useSelector } from "react-redux";
-import { cartActions } from "@/store/slice/cartSlice";
+import { motion } from "framer-motion";
 import { toast } from "react-toastify";
-import { IoMdAdd, IoMdHeartEmpty, IoMdHeart } from "react-icons/io"; // Import the icons
+
+import { IoMdAdd, IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
+
+import { newProductProps, productCardProps } from "@/shared/types";
+import { cartActions } from "@/store/slice/cartSlice";
 import { AppDispatch } from "@/store";
 
 const ProductCard = ({ item }: { item: productCardProps }) => {
   const perfectItems = useSelector((state) => state.cart.perfectItems);
   const checkProductExistInPerfectProducts = (id: string) => {
-    return perfectItems?.find((item) => item.id === id);
+    return perfectItems?.find((item: newProductProps) => item.id === id);
   };
   const dispatch = useDispatch<AppDispatch>();
 
@@ -23,7 +25,7 @@ const ProductCard = ({ item }: { item: productCardProps }) => {
         imgUrl: item.imgUrl,
       })
     );
-    toast.success("Product added successfully");
+    toast.success("Product added to the cart successfully");
   };
 
   const addToFavourite = () => {
@@ -35,6 +37,7 @@ const ProductCard = ({ item }: { item: productCardProps }) => {
         imgUrl: item.imgUrl,
       })
     );
+    toast.success("Product added to the favourites successfully");
   };
 
   const { id, imgUrl, productName, category, price } = item;

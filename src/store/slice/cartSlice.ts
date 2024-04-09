@@ -100,7 +100,7 @@ const cartSlice = createSlice({
         });
         state.totalFavouriteItemsQuantity =
           state.totalFavouriteItemsQuantity + 1;
-        toast.success("Product added to favorites");
+        toast.success("Product added to favorites successfully!");
       }
     },
     returnToInitialState() {
