@@ -12,6 +12,7 @@ const routes = {
   dashboard: "Dashboard",
   allusers: "AllUsers",
   allProducts: "AllProducts",
+  orders: "Orders",
 };
 
 export default routes;

@@ -74,7 +74,7 @@ const TabForm = () => {
           rows={3}
         />
         <motion.button
-          aria-label="Go-To-Shop"
+          aria-label="submit"
           className="btn btn-banner mt-7 md:mt-11"
           whileTap={{ scale: 1.1 }}
           type="submit"

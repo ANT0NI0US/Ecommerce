@@ -38,6 +38,10 @@ const allLink: Array<arrLinks> = [
     path: "allusers",
     display: "Users",
   },
+  {
+    path: "orders",
+    display: "Orders",
+  }
 ];
 
 const AdminNavbar = ({ isTopOfPage }: navbarProps) => {

@@ -17,7 +17,7 @@ const cartSlice = createSlice({
     addItem: (state, action: PayloadAction<CartItem>) => {
       const newItem = action.payload;
       const existingItem = state.cartItems.find(
-        (item) => item.id === newItem.id
+        (item) => item.id === newItem.id,
       );
       state.totalQuantity++;
       if (!existingItem) {
@@ -35,7 +35,7 @@ const cartSlice = createSlice({
       }
       state.totalAmount = state.cartItems.reduce(
         (total, item) => total + item.totalPrice,
-        0
+        0,
       );
     },
     MaximizeQuantityItem: (state, action: PayloadAction<string>) => {
@@ -49,7 +49,7 @@ const cartSlice = createSlice({
       }
       state.totalAmount = state.cartItems.reduce(
         (total, item) => total + item.totalPrice,
-        0
+        0,
       );
     },
     MinimizeQuantityItem: (state, action: PayloadAction<string>) => {
@@ -63,7 +63,7 @@ const cartSlice = createSlice({
       }
       state.totalAmount = state.cartItems.reduce(
         (total, item) => total + item.totalPrice,
-        0
+        0,
       );
     },
     deleteItem: (state, action: PayloadAction<string>) => {
@@ -76,17 +76,17 @@ const cartSlice = createSlice({
       }
       state.totalAmount = state.cartItems.reduce(
         (total, item) => total + item.totalPrice,
-        0
+        0,
       );
     },
     addPerfectItem: (state, action: PayloadAction<Item>) => {
       const newFavouriteItem = action.payload;
       const existingItem = state.perfectItems.find(
-        (item) => item.id === newFavouriteItem.id
+        (item) => item.id === newFavouriteItem.id,
       );
       if (existingItem) {
         state.perfectItems = state.perfectItems.filter(
-          (item) => item.id !== newFavouriteItem.id
+          (item) => item.id !== newFavouriteItem.id,
         );
         state.totalFavouriteItemsQuantity =
           state.totalFavouriteItemsQuantity - 1;
@@ -102,6 +102,11 @@ const cartSlice = createSlice({
           state.totalFavouriteItemsQuantity + 1;
         toast.success("Product added to favorites successfully!");
       }
+    },
+    resetCartItemsAndTotal(state) {
+      state.cartItems = [];
+      state.totalAmount = 0;
+      state.totalQuantity = 0;
     },
     returnToInitialState() {
       return initialState;
