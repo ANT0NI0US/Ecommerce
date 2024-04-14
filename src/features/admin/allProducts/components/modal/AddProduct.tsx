@@ -54,7 +54,7 @@ const AddProduct = ({ showModal, closeModal }: Props) => {
           },
         ],
         avgRating: 4.7,
-      })
+      }),
     );
     toast.success("Product added successfully");
     handleCloseModal();
@@ -63,32 +63,32 @@ const AddProduct = ({ showModal, closeModal }: Props) => {
     <Fragment>
       <div
         onClick={handleCloseModal}
-        className={`fixed top-0 left-0 right-0 bottom-0 bg-black z-[90000] transition-all ease-out duration-[0.3s] ${
-          showModal ? "visible opacity-55" : "opacity-0 invisible"
+        className={`fixed bottom-0 left-0 right-0 top-0 z-[90000] bg-black transition-all duration-[0.3s] ease-out ${
+          showModal ? "visible opacity-55" : "invisible opacity-0"
         }`}
       ></div>
       <div
-        className={`absolute top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2 z-[900000] bg-white w-[85%] sm:w-[60%] md:w-[50%] h-[500px] max-h-[500px] overflow-x-hidden overflow-y-auto rounded-md transition-all ease-out duration-[0.1s]  ${
+        className={`absolute left-1/2 top-1/2 z-[900000] h-[500px] max-h-[500px] w-[85%] -translate-x-1/2 -translate-y-1/2 transform overflow-y-auto overflow-x-hidden rounded-md bg-white transition-all duration-[0.1s] ease-out sm:w-[60%] md:w-[50%]  ${
           showModal ? "visible" : "invisible"
         }`}
       >
         <div
           onClick={handleCloseModal}
-          className="absolute right-2 top-1 bg-red-500 rounded-full w-8 h-8 flexCenter cursor-pointer font-semibold text-white hover:bg-red-600 hover:font-bold duration-[0.1s] "
+          className="flexCenter absolute right-2 top-1 h-8 w-8 cursor-pointer rounded-full bg-red-500 font-semibold text-white duration-[0.1s] hover:bg-red-600 hover:font-bold "
         >
           <span>x</span>
         </div>
-        <h1 className="font-bold text-primary-color text-xl text-center mt-5">
+        <h1 className="mt-5 text-center text-xl font-bold text-primary-color">
           Add Product
         </h1>
         <form
-          className="w-full flexCenter flex-col my-5"
+          className="flexCenter my-5 w-full flex-col"
           action=""
           onSubmit={handleAddProduct}
         >
-          <div className="w-[90%] flexCenter gap-3 flex-col">
-            <div className="w-full text-primary-color font-semibold">
-              <label htmlFor="title" className="pl-[2px] mb-[2px] block">
+          <div className="flexCenter w-[90%] flex-col gap-3">
+            <div className="w-full font-semibold text-primary-color">
+              <label htmlFor="title" className="mb-[2px] block pl-[2px]">
                 Product Title
               </label>
               <input
@@ -103,8 +103,8 @@ const AddProduct = ({ showModal, closeModal }: Props) => {
                 placeholder="Enter product title"
               />
             </div>
-            <div className="w-full text-primary-color font-semibold">
-              <label htmlFor="shortDesc" className="pl-[2px] mb-[2px] block">
+            <div className="w-full font-semibold text-primary-color">
+              <label htmlFor="shortDesc" className="mb-[2px] block pl-[2px]">
                 Short Description
               </label>
               <input
@@ -119,8 +119,8 @@ const AddProduct = ({ showModal, closeModal }: Props) => {
                 placeholder="Enter Short Description "
               />
             </div>
-            <div className="w-full text-primary-color font-semibold">
-              <label htmlFor="desc" className="pl-[2px] mb-[2px] block">
+            <div className="w-full font-semibold text-primary-color">
+              <label htmlFor="desc" className="mb-[2px] block pl-[2px]">
                 Description
               </label>
               <textarea
@@ -135,8 +135,8 @@ const AddProduct = ({ showModal, closeModal }: Props) => {
                 rows={3}
               />
             </div>
-            <div className="w-full text-primary-color font-semibold">
-              <label htmlFor="price" className="pl-[2px] mb-[2px] block">
+            <div className="w-full font-semibold text-primary-color">
+              <label htmlFor="price" className="mb-[2px] block pl-[2px]">
                 Price
               </label>
               <input
@@ -154,7 +154,7 @@ const AddProduct = ({ showModal, closeModal }: Props) => {
             <div className="w-full">
               <label
                 htmlFor="category"
-                className="pl-[2px] mb-[2px] block text-primary-color font-semibold"
+                className="mb-[2px] block pl-[2px] font-semibold text-primary-color"
               >
                 Category
               </label>
@@ -175,9 +175,9 @@ const AddProduct = ({ showModal, closeModal }: Props) => {
                 <option value="wireless">Wireless</option>
               </select>
             </div>
-            <div className="w-full text-primary-color font-semibold mt-3">
+            <div className="mt-3 w-full font-semibold text-primary-color">
               <input
-                className="text-primary-color cursor-pointer hidden"
+                className="hidden cursor-pointer text-primary-color"
                 required
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
                   setImgUrl(e.target.files ? e.target.files[0] : null)
@@ -186,26 +186,31 @@ const AddProduct = ({ showModal, closeModal }: Props) => {
                 id="productImage"
               />
               <input
-                className="input_style cursor-pointer hover:bg-primary-color hover:text-white duration-300"
+                className="input_style cursor-pointer duration-300 hover:bg-primary-color hover:text-white"
                 type="button"
                 value="Add Product Image..."
                 onClick={() => document.getElementById("productImage")?.click()}
               />
-              <span className="text-center text-small-text-color mt-1 block">
+              <span className="mt-1 block text-center text-small-text-color">
                 {imgUrl ? imgUrl.name : "No file selected"}
               </span>
             </div>
           </div>
-          <div className="w-full flexCenter gap-3 my-10 border-t pt-5">
-            <div className="w-[90%] flexCenter gap-3">
+          <div className="flexCenter my-10 w-full gap-3 border-t pt-5">
+            <div className="flexCenter w-[90%] gap-3">
               <button
+                aria-label="reset"
                 type="reset"
                 onClick={handleCloseModal}
                 className="btn btn-timer border"
               >
                 Close
               </button>
-              <button type="submit" className="btn btn-banner">
+              <button
+                aria-label="submit"
+                type="submit"
+                className="btn btn-banner"
+              >
                 Add
               </button>
             </div>
@@ -213,7 +218,7 @@ const AddProduct = ({ showModal, closeModal }: Props) => {
         </form>
       </div>
     </Fragment>,
-    document.getElementById("modal") as HTMLElement
+    document.getElementById("modal") as HTMLElement,
   );
 };
 

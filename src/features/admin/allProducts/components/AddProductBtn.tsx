@@ -4,9 +4,10 @@ interface Props {
 
 const AddProductBtn = ({ toggleModal }: Props) => {
   return (
-    <div className="w-full flexCenter mt-5">
+    <div className="flexCenter mt-5 w-full">
       <button
-        className="transition-colors duration-[0.5s] rounded py-2 px-5 w-5/6 btn-banner"
+        aria-label="Add New Product"
+        className="btn-banner w-5/6 rounded px-5 py-2 transition-colors duration-[0.5s]"
         onClick={() => toggleModal()}
       >
         Add Product

@@ -85,12 +85,16 @@ export interface userProps {
   photoURL: string;
   type: "admin" | "user";
 }
+
+export interface userServiceState {
+  isLoading: boolean;
+  user: userProps | object;
+  errors: string | null;
+  allUsers: userProps[];
+}
+
 export interface userState {
-  user: {
-    isLoading: boolean;
-    errors: string | null;
-    allUsers: userProps[];
-  };
+  user: userServiceState;
 }
 
 // all products
@@ -102,4 +106,48 @@ export interface productServiceState {
 }
 export interface productState {
   product: productServiceState;
+}
+
+// all orders
+export interface ordersFireBase {
+  id?: string;
+  name: string;
+  phone: string;
+  address: string;
+  city: string;
+  code: string;
+  country: string;
+  items: CartItem[];
+  itemsAmount: number;
+  itemsQuantity: number;
+  email: string;
+  userId: string;
+  userPhoto: string;
+}
+export interface order {
+  Name: string;
+  Phone: string;
+  Address: string;
+  City: string;
+  Code: string;
+  Country: string;
+}
+export interface newOrderProps extends order {
+  id?: string;
+  cartItems: CartItem[];
+  totalAmount: number;
+  totalQuantity: number;
+  email: string;
+  uid: string;
+  photoURL: string;
+}
+
+export interface orderServiceState {
+  isLoading: boolean;
+  errors: null | string;
+  order: ordersFireBase | object;
+  allOrders: ordersFireBase[];
+}
+export interface orderState {
+  order: orderServiceState;
 }

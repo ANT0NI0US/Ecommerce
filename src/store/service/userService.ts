@@ -1,6 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { db } from "@/firebase.config";
-import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  deleteDoc,
+  doc,
+  getDoc,
+} from "firebase/firestore";
 import { userProps } from "@/shared/types";
 
 export const getUsers = createAsyncThunk<userProps[], void>(
@@ -16,7 +22,7 @@ export const getUsers = createAsyncThunk<userProps[], void>(
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
-  }
+  },
 );
 
 export const deleteUser = createAsyncThunk<string, string>(
@@ -28,5 +34,27 @@ export const deleteUser = createAsyncThunk<string, string>(
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
-  }
+  },
+);
+
+export const getUserById = createAsyncThunk(
+  "user/getUserById",
+  async (userId: string, thunkAPI) => {
+    try {
+      const userRef = doc(db, "users", userId);
+      const userSnapShot = await getDoc(userRef);
+
+      if (userSnapShot.exists()) {
+        const userData = userSnapShot.data() as userProps;
+        return thunkAPI.fulfillWithValue({
+          id: userSnapShot.id,
+          ...userData,
+        });
+      } else {
+        return thunkAPI.rejectWithValue("User not found");
+      }
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  },
 );

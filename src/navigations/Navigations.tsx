@@ -1,26 +1,37 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import routes from "./routes";
-import Shop from "@/features/shop/pages/Shop";
-import ProductDetails from "@/features/productDetails/pages/ProductDetails";
-import Cart from "@/features/cart/pages/Cart";
-import Favourites from "@/features/favourites/pages/Favourites";
-import CheckOut from "@/features/checkOut/pages/CheckOut";
-import SignUp from "@/features/auth/signUp/SignUp";
 import ProtectedRoute from "./ProtectedRoute";
 import Loader from "@/components/UI/loader/Loader";
 import PageNotFound from "./PageNotFound";
 import useAuth from "@/hooks/useAuth";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase.config";
-import Dashboard from "@/features/admin/dashboard/pages/Dashboard";
-import AllUsers from "@/features/admin/allUsers/AllUsers";
-import AllProducts from "@/features/admin/allProducts/pages/AllProducts";
 
 const Layout = lazy(() => import("../layout/Layout"));
 const AppLayout = lazy(() => import("../layout/admin/AdminLayout"));
-const Home = lazy(() => import("../features/home/pages/Home"));
 const Login = lazy(() => import("../features/auth/login/Login"));
+const SignUp = lazy(() => import("@/features/auth/signUp/SignUp"));
+
+//user
+const Home = lazy(() => import("../features/home/pages/Home"));
+const Shop = lazy(() => import("@/features/shop/pages/Shop"));
+const Favourites = lazy(() => import("@/features/favourites/pages/Favourites"));
+const Cart = lazy(() => import("@/features/cart/pages/Cart"));
+const CheckOut = lazy(() => import("@/features/checkOut/pages/CheckOut"));
+const ProductDetails = lazy(
+  () => import("@/features/productDetails/pages/ProductDetails"),
+);
+
+// admin
+const Dashboard = lazy(
+  () => import("@/features/admin/dashboard/pages/Dashboard"),
+);
+const AllProducts = lazy(
+  () => import("@/features/admin/allProducts/pages/AllProducts"),
+);
+const AllUsers = lazy(() => import("@/features/admin/allUsers/pages/AllUsers"));
+const Orders = lazy(() => import("@/features/admin/orders/pages/Orders"));
 
 const Navigations = () => {
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
@@ -102,6 +113,7 @@ const Navigations = () => {
                 <Route path={routes.dashboard} element={<Dashboard />} />
                 <Route path={routes.allusers} element={<AllUsers />} />
                 <Route path={routes.allProducts} element={<AllProducts />} />
+                <Route path={routes.orders} element={<Orders />} />
               </Route>
             )}
           </>

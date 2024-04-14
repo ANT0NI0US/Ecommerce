@@ -22,7 +22,7 @@ const SignUp = () => {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
-        password
+        password,
       );
       const user = userCredential.user;
       const storageRef = ref(storage, `images/${Date.now() + name}`);
@@ -54,7 +54,7 @@ const SignUp = () => {
               setLoading(false);
             });
           });
-        }
+        },
       );
     } catch (error) {
       setLoading(false);
@@ -64,20 +64,20 @@ const SignUp = () => {
 
   if (loading) {
     return (
-      <div className="w-5/6 m-auto py-[125px]">
-        <h6 className="text-center font-extrabold text-2xl">Loading ....</h6>
+      <div className="m-auto w-5/6 py-[125px]">
+        <h6 className="text-center text-2xl font-extrabold">Loading ....</h6>
       </div>
     );
   }
   return (
     <Helmet title="Sign up">
-      <div className="w-5/6 sm:w-3/4 md:w-1/2 m-auto py-[125px]">
-        <h3 className="text-primary-color text-[1.2rem] font-bold text-center mb-5">
+      <div className="m-auto w-5/6 py-[125px] sm:w-3/4 md:w-1/2">
+        <h3 className="mb-5 text-center text-[1.2rem] font-bold text-primary-color">
           Sign Up
         </h3>
         <form
           action=""
-          className="flex flex-col gap-5 bg-primary-color rounded-md p-5 sm:p-10"
+          className="flex flex-col gap-5 rounded-md bg-primary-color p-5 sm:p-10"
           onSubmit={signUp}
         >
           <input
@@ -102,18 +102,22 @@ const SignUp = () => {
             placeholder="Enter your password"
           />
           <input
-            className="text-white cursor-pointer"
+            className="cursor-pointer text-white"
             onChange={(e) =>
               setFiles(e.target.files ? e.target.files[0] : null)
             }
             type="file"
           />
-          <button className="btn btn-timer w-fit mx-auto mt-5" type="submit">
+          <button
+            aria-label="New Account"
+            className="btn btn-timer mx-auto mt-5 w-fit"
+            type="submit"
+          >
             Create An Account
           </button>
           <p className="mx-auto text-center">
             Already have an account?
-            <Link className="text-white hover:underline pl-1" to="/login">
+            <Link className="pl-1 text-white hover:underline" to="/login">
               Login
             </Link>
           </p>

@@ -50,6 +50,7 @@ const SelectedProducts = ({ allCartItems }: selectedProductsProps) => {
               </span>
               <div className="flexBetween gap-5 rounded-xl bg-card-bg-01 px-4 py-2 font-bold text-primary-color">
                 <button
+                  aria-label="minus Product"
                   disabled={item.quantity === 1}
                   onClick={() =>
                     dispatch(cartActions.MinimizeQuantityItem(item.id))
@@ -60,6 +61,7 @@ const SelectedProducts = ({ allCartItems }: selectedProductsProps) => {
                 </button>
                 <span>{item.quantity}</span>
                 <button
+                  aria-label="Plus Product"
                   onClick={() =>
                     dispatch(cartActions.MaximizeQuantityItem(item.id))
                   }

@@ -28,7 +28,7 @@ const Dashboard = () => {
     <Helmet title="Dashboard">
       <CommonSection title="Dashboard" />
       <section className="w-full py-[60px]">
-        <div className="w-5/6 mx-auto flexCenter flex-col md:flex-row gap-[10px]">
+        <div className="flexCenter mx-auto w-5/6 flex-col gap-[10px] md:flex-row">
           {servicesData.map((service, index) => (
             <ServiceData key={index} service={service} index={index} />
           ))}

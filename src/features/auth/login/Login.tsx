@@ -61,20 +61,20 @@ const Login = () => {
 
   if (loading) {
     return (
-      <div className="w-5/6 m-auto py-[125px]">
+      <div className="m-auto w-5/6 py-[125px]">
         <Loader />
       </div>
     );
   }
   return (
     <Helmet title="Login">
-      <div className="w-5/6 sm:w-3/4 md:w-1/2 m-auto py-[125px]">
-        <h3 className="text-primary-color text-[1.2rem] font-bold text-center mb-5">
+      <div className="m-auto w-5/6 py-[125px] sm:w-3/4 md:w-1/2">
+        <h3 className="mb-5 text-center text-[1.2rem] font-bold text-primary-color">
           Login
         </h3>
         <form
           action=""
-          className="flex flex-col gap-5 bg-primary-color rounded-md p-5 sm:p-10"
+          className="flex flex-col gap-5 rounded-md bg-primary-color p-5 sm:p-10"
           onSubmit={signIn}
         >
           <input
@@ -91,12 +91,16 @@ const Login = () => {
             type="password"
             placeholder="Enter your password"
           />
-          <button className="btn btn-timer w-fit mx-auto mt-5" type="submit">
+          <button
+            aria-label="Login"
+            className="btn btn-timer mx-auto mt-5 w-fit"
+            type="submit"
+          >
             Login
           </button>
           <p className="mx-auto text-center">
             Don't have an account?
-            <Link className="text-white hover:underline pl-1" to="/signup">
+            <Link className="pl-1 text-white hover:underline" to="/signup">
               Create an account
             </Link>
           </p>
