@@ -41,6 +41,7 @@ export interface newProductProps {
   avgRating?: number;
 }
 
+
 export interface Item {
   id: string | undefined;
   productName: string;
