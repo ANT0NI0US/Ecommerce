@@ -4,12 +4,12 @@ import { getFirestore } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_REACT_APP_API_KEY,
-  authDomain: import.meta.env.VITE_REACT_APP_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_REACT_APP_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_REACT_APP_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_REACT_APP_APP_ID,
+  apiKey: "AIzaSyB7E3ED8IOStwJEIRHuZHEeuidUzmWawIw",
+  authDomain: "furniture-ecommerce-841f4.firebaseapp.com",
+  projectId: "furniture-ecommerce-841f4",
+  storageBucket: "furniture-ecommerce-841f4.appspot.com",
+  messagingSenderId: "396811360015",
+  appId: "1:396811360015:web:cf56546089a5ff306cd07a",
 };
 
 const app = initializeApp(firebaseConfig);
