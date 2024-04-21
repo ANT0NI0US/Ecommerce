@@ -1,9 +1,9 @@
 import ProductCard from "./ProductCard";
-import { productCardProps } from "@/shared/types";
+import { newProductProps } from "@/shared/types";
 import { motion } from "framer-motion";
 
-const ProductList = ({ items }: { items: productCardProps[] }) => {
-  return items?.map((item: productCardProps) => (
+const ProductList = ({ items }: { items: newProductProps[] }) => {
+  return items?.map((item: newProductProps) => (
     <motion.div
       key={item.id}
       initial="hidden"

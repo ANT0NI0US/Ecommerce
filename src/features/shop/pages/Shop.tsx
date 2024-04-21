@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import CommonSection from "@/components/UI/commonSection/CommonSection";
 import Helmet from "@/components/UI/helmet/Helmet";
-import { productCardProps, productState } from "@/shared/types";
+import { newProductProps, productState } from "@/shared/types";
 import { getProducts } from "@/store/service/productService";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "@/store";
@@ -10,14 +10,14 @@ import Allproducts from "../components/Allproducts";
 
 const Shop = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const [productsData, setProductData] = useState<productCardProps[]>([]);
+  const [productsData, setProductData] = useState<newProductProps[]>([]);
 
-  const handleChangingProduct = (newProductData: productCardProps[]) => {
+  const handleChangingProduct = (newProductData: newProductProps[]) => {
     setProductData(newProductData);
   };
 
   const { isLoading, allProducts } = useSelector(
-    (state: productState) => state.product
+    (state: productState) => state.product,
   );
 
   useEffect(() => {
