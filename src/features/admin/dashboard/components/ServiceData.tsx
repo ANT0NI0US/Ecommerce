@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { motion } from "framer-motion";
 import {
   orderState,
-  productCardProps,
   productState,
   serviceProps,
   userProps,
@@ -21,9 +20,7 @@ type Props = {
 
 const ServiceData = ({ service, index }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
-  const { allProducts }: { allProducts: productCardProps[] } = useSelector(
-    (state: productState) => state.product,
-  );
+  const { allProducts } = useSelector((state: productState) => state.product);
   const { allUsers }: { allUsers: userProps[] } = useSelector(
     (state: userState) => state.user,
   );
