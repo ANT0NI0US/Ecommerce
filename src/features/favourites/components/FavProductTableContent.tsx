@@ -25,7 +25,7 @@ const FavProductTableContent = ({
         productName: product.productName,
         price: product.price,
         imgUrl: product.imgUrl,
-      })
+      }),
     );
     toast.success("Product added successfully");
   };
@@ -35,12 +35,14 @@ const FavProductTableContent = ({
       key={index}
     >
       <td
-        className={`min-w-[125px] min-h-[125px]  flexCenter ${tableDateStyle}`}
+        className={`flexCenter min-h-[125px]  min-w-[125px] ${tableDateStyle}`}
       >
         <img
-          src={product.imgUrl}
+          src={
+            typeof product?.imgUrl === "string" ? product?.imgUrl : undefined
+          }
           alt={product.productName}
-          className="w-[80px] h-[80px] bg-cover"
+          className="h-[80px] w-[80px] bg-cover"
         />
       </td>
       <td className={`${tableDateStyle}`}>{product.productName}</td>
@@ -49,7 +51,7 @@ const FavProductTableContent = ({
         <motion.div
           onClick={() => addToCart(product)}
           whileTap={{ scale: 1.2 }}
-          className=" bg-primary-color py-2 px-4 rounded-full flexCenter cursor-pointer text-white"
+          className=" flexCenter cursor-pointer rounded-full bg-primary-color px-4 py-2 text-white"
         >
           <IoMdAdd className="text-[1.2rem]" />
           Add To Cart

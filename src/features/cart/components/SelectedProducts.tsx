@@ -28,16 +28,16 @@ const SelectedProducts = ({ allCartItems }: selectedProductsProps) => {
         >
           <div className="flexCenter mr-0 max-w-[200px] sm:mr-5">
             <img
-              src={item.imgUrl}
-              alt={item.productName}
+              src={typeof item?.imgUrl === "string" ? item?.imgUrl : undefined}
+              alt={item?.productName}
               className="max-w-full bg-cover"
             />
           </div>
           <div className="flex w-full flex-1 flex-col gap-4">
             <div className="flexBetween flex-col-reverse gap-3 text-center sm:flex-row">
-              <h6 className="font-medium">{item.productName}</h6>
+              <h6 className="font-medium">{item?.productName}</h6>
               <motion.div
-                onClick={() => handleDeleteItem(item.id)}
+                onClick={() => item.id && handleDeleteItem(item?.id)}
                 whileTap={{ scale: 1.1 }}
                 className="absolute right-0 top-1 cursor-pointer whitespace-nowrap p-5 text-center text-primary-color sm:relative  sm:top-0"
               >
@@ -53,7 +53,8 @@ const SelectedProducts = ({ allCartItems }: selectedProductsProps) => {
                   aria-label="minus Product"
                   disabled={item.quantity === 1}
                   onClick={() =>
-                    dispatch(cartActions.MinimizeQuantityItem(item.id))
+                    item.id &&
+                    dispatch(cartActions.MinimizeQuantityItem(item?.id))
                   }
                   className="disabled:text-gray-400"
                 >
@@ -63,7 +64,8 @@ const SelectedProducts = ({ allCartItems }: selectedProductsProps) => {
                 <button
                   aria-label="Plus Product"
                   onClick={() =>
-                    dispatch(cartActions.MaximizeQuantityItem(item.id))
+                    item.id &&
+                    dispatch(cartActions.MaximizeQuantityItem(item?.id))
                   }
                 >
                   <FaPlus className="h-3 w-3" />
