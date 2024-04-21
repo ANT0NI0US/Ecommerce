@@ -25,9 +25,16 @@ const SignUp = () => {
         password,
       );
       const user = userCredential.user;
+
+      if (!file) {
+        throw new Error("Please select a file.");
+      }
       const storageRef = ref(storage, `images/${Date.now() + name}`);
+
       const uploadTask = uploadBytesResumable(storageRef, file);
       uploadTask.on(
+        "state_changed",
+        () => {},
         (error) => {
           toast.error(error.message);
         },
@@ -45,8 +52,8 @@ const SignUp = () => {
               photoURL: downloadURL,
             }).then(() => {
               setLoading(false);
-              navigate("/login");
               toast.success("Account created successfully");
+              navigate("/login");
               setName("");
               setEmail("");
               setPassword("");

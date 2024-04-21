@@ -4,12 +4,12 @@ import { motion } from "framer-motion";
 
 import { AiFillDelete } from "react-icons/ai";
 
-import { productCardProps } from "@/shared/types";
+import { newProductProps } from "@/shared/types";
 import { AppDispatch } from "@/store";
 import { deleteProduct } from "@/store/service/productService";
 
 interface Props {
-  allProducts: productCardProps[];
+  allProducts: newProductProps[] | undefined;
 }
 
 const tableDateStyle = "whitespace-nowrap px-6 py-4 text-center text-base";
@@ -28,36 +28,40 @@ const ProductTableContent = ({ allProducts }: Props) => {
       });
   };
 
-  return allProducts?.map((product: productCardProps, index: number) => (
+  return allProducts?.map((product: newProductProps, index: number) => (
     <tr
       className={`${allProducts?.length - 1 === index ? "" : "border-b"}`}
-      key={product.id}
+      key={product?.id}
     >
       <td
-        className={`min-w-[125px] min-h-[125px] flexCenter text-primary-color ${tableDateStyle}`}
+        className={`flexCenter min-h-[125px] min-w-[125px] text-primary-color ${tableDateStyle}`}
       >
         <img
-          src={product.imgUrl}
-          alt={product.productName}
-          className="w-[80px] h-[80px] bg-cover"
+          src={
+            typeof product?.imgUrl === "string" ? product?.imgUrl : undefined
+          }
+          alt={product?.productName}
+          className="h-[80px] w-[80px] bg-cover"
         />
       </td>
       <td className={`text-primary-color ${tableDateStyle}`}>
-        {product.productName}
+        {product?.productName}
       </td>
       <td className={`text-primary-color ${tableDateStyle}`}>
-        {product.category}
+        {product?.category}
       </td>
       <td className={`text-primary-color ${tableDateStyle}`}>
-        ${product.price}
+        ${product?.price}
       </td>
       <td className={`${tableDateStyle}`}>
         <motion.div
           onClick={() => {
-            deleteSpecificProduct(product.id);
+            if (product.id) {
+              deleteSpecificProduct(product?.id);
+            }
           }}
           whileTap={{ scale: 1.2 }}
-          className=" bg-red-700 py-2 px-4 rounded-full flexCenter gap-1 cursor-pointer text-white"
+          className=" flexCenter cursor-pointer gap-1 rounded-full bg-red-700 px-4 py-2 text-white"
         >
           <AiFillDelete className="text-[1.2rem]" />
           <span>Delete</span>

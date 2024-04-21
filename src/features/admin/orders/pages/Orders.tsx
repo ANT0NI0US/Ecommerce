@@ -18,10 +18,6 @@ const Orders = () => {
     setSelectedOrderId(orderId);
   };
 
-  useEffect(() => {
-    console.log("Render");
-  });
-
   const { allOrders } = useSelector((state: orderState) => state.order);
 
   useEffect(() => {
@@ -43,10 +39,12 @@ const Orders = () => {
           <div className="grid w-full grid-cols-[repeat(auto-fill,minmax(200px,1fr))] gap-[20px] sm:grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
             {allOrders.map((order) => (
               <div
-                onClick={() => {
-                  toggleModal(order.id);
-                }}
                 key={order.id}
+                onClick={() => {
+                  if (order.id) {
+                    toggleModal(order.id);
+                  }
+                }}
                 className="flexBetween cursor-pointer flex-col rounded-md p-3 shadow shadow-primary-color/30 hover:shadow-primary-color/40 "
               >
                 <div className="w-full">

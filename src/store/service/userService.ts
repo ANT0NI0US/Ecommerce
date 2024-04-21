@@ -45,11 +45,11 @@ export const getUserById = createAsyncThunk(
       const userSnapShot = await getDoc(userRef);
 
       if (userSnapShot.exists()) {
-        const userData = userSnapShot.data() as userProps;
+        const userData = userSnapShot.data();
         return thunkAPI.fulfillWithValue({
           id: userSnapShot.id,
           ...userData,
-        });
+        }) as userProps;
       } else {
         return thunkAPI.rejectWithValue("User not found");
       }

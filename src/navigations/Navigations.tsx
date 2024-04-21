@@ -7,6 +7,7 @@ import PageNotFound from "./PageNotFound";
 import useAuth from "@/hooks/useAuth";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "@/firebase.config";
+import { userProps } from "@/shared/types";
 
 const Layout = lazy(() => import("../layout/Layout"));
 const AppLayout = lazy(() => import("../layout/admin/AdminLayout"));
@@ -33,11 +34,15 @@ const AllProducts = lazy(
 const AllUsers = lazy(() => import("@/features/admin/allUsers/pages/AllUsers"));
 const Orders = lazy(() => import("@/features/admin/orders/pages/Orders"));
 
+interface CurrentUser {
+  uid: string;
+}
+
 const Navigations = () => {
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
-  const currentUser = useAuth();
-  const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const currentUser = useAuth() as CurrentUser;
+  const [userData, setUserData] = useState<userProps | null | undefined>(null);
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -57,12 +62,16 @@ const Navigations = () => {
         const fetchedUsers = querySnapshot.docs.map((doc) => ({
           ...doc.data(),
           id: doc.id,
-        }));
-        const result = fetchedUsers.find((user) => user.id === currentUser.uid);
+        })) as userProps[];
+        const result = fetchedUsers.find(
+          (user) => user.id === currentUser?.uid,
+        );
         setUserData(result);
         setLoading(false);
       } catch (error) {
-        throw new Error(error.message);
+        if (error instanceof Error) {
+          throw new Error(error.message);
+        }
       }
     };
     fetchUsers();
@@ -80,7 +89,7 @@ const Navigations = () => {
         <Route path="*" element={<PageNotFound />} />
         {userData && (
           <>
-            {userData.type === "user" && (
+            {userData?.type === "user" && (
               <Route
                 element={
                   <ProtectedRoute>

@@ -30,11 +30,13 @@ const cartSlice = createSlice({
           totalPrice: newItem.price,
         });
       } else {
-        existingItem.quantity++;
-        existingItem.totalPrice += newItem.price;
+        if (existingItem.quantity && existingItem.totalPrice) {
+          existingItem.quantity++;
+          existingItem.totalPrice += newItem.price;
+        }
       }
       state.totalAmount = state.cartItems.reduce(
-        (total, item) => total + item.totalPrice,
+        (total, item) => total + (item.totalPrice || 0),
         0,
       );
     },
@@ -42,13 +44,13 @@ const cartSlice = createSlice({
       const id = action.payload;
       const existingItem = state.cartItems.find((item) => item.id === id);
 
-      if (existingItem) {
+      if (existingItem && existingItem.quantity && existingItem.totalPrice) {
         existingItem.quantity++;
         existingItem.totalPrice += existingItem.price;
         state.totalQuantity = state.totalQuantity + 1;
       }
       state.totalAmount = state.cartItems.reduce(
-        (total, item) => total + item.totalPrice,
+        (total, item) => total + (item.totalPrice || 0),
         0,
       );
     },
@@ -56,13 +58,13 @@ const cartSlice = createSlice({
       const id = action.payload;
       const existingItem = state.cartItems.find((item) => item.id === id);
 
-      if (existingItem) {
+      if (existingItem && existingItem.quantity && existingItem.totalPrice) {
         existingItem.quantity--;
         existingItem.totalPrice -= existingItem.price;
         state.totalQuantity = state.totalQuantity - 1;
       }
       state.totalAmount = state.cartItems.reduce(
-        (total, item) => total + item.totalPrice,
+        (total, item) => total + (item.totalPrice || 0),
         0,
       );
     },
@@ -72,10 +74,12 @@ const cartSlice = createSlice({
 
       if (existingItem) {
         state.cartItems = state.cartItems.filter((item) => item.id !== id);
-        state.totalQuantity = state.totalQuantity - existingItem.quantity;
+        if (existingItem.quantity) {
+          state.totalQuantity = state.totalQuantity - existingItem.quantity;
+        }
       }
       state.totalAmount = state.cartItems.reduce(
-        (total, item) => total + item.totalPrice,
+        (total, item) => total + (item.totalPrice || 0),
         0,
       );
     },

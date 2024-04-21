@@ -2,17 +2,19 @@ import { useState, useEffect } from "react";
 import Header from "@/shared/Header";
 import ProductList from "@/components/UI/product/ProductList";
 import { getProducts } from "@/store/service/productService";
-import { productCardProps } from "@/shared/types";
+import { productCardProps, productState } from "@/shared/types";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "@/store";
 import { FadeLoader } from "react-spinners";
 
 const NewArrivals = () => {
-  const [mobileWirlessProducts, setMobileWirlessProducts] = useState([]);
+  const [mobileWirlessProducts, setMobileWirlessProducts] = useState<
+    productCardProps[]
+  >([]);
 
   const dispatch = useDispatch<AppDispatch>();
 
-  const { isLoading } = useSelector((state) => state.product);
+  const { isLoading } = useSelector((state: productState) => state.product);
 
   useEffect(() => {
     dispatch(getProducts())
@@ -20,7 +22,7 @@ const NewArrivals = () => {
       .then((allProducts) => {
         const fileredChair = allProducts.filter(
           (item: productCardProps) =>
-            item.category === "mobile" || item.category === "wireless"
+            item.category === "mobile" || item.category === "wireless",
         );
         setMobileWirlessProducts(fileredChair);
       })
@@ -30,7 +32,7 @@ const NewArrivals = () => {
   }, [dispatch]);
   return (
     <section className="w-full py-[125px]">
-      <div className="w-5/6 mx-auto">
+      <div className="mx-auto w-5/6">
         <Header textHead="New Arrivals" />
         {isLoading ? (
           <div className="flexCenter">

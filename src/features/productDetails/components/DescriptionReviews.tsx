@@ -5,7 +5,7 @@ import ReviewsTab from "./ReviewsTab";
 
 interface CertainProductDetailProps {
   description: string;
-  reviews: Review[];
+  reviews: Review[] | undefined;
 }
 
 const DescriptionReviews = ({

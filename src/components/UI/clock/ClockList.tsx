@@ -17,7 +17,7 @@ const ClockList = ({ clock, index, allClockLength }: clockListProps) => {
   const [hours, setHours] = useState<number>();
   const [minutes, setMinutes] = useState<number>();
   const [seconds, setSeconds] = useState<number>();
-  let interval: ReturnType<typeof setTimeout>;
+  let interval: NodeJS.Timeout;
 
   const countDown = () => {
     const destination = new Date("jun 10 , 2024").getTime();
@@ -26,13 +26,13 @@ const ClockList = ({ clock, index, allClockLength }: clockListProps) => {
       const distance = destination - now;
       const days = Math.floor(distance / (1000 * 60 * 60 * 24));
       const hours = Math.floor(
-        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+        (distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
       );
       const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
       if (distance < 0) {
-        clearInterval(interval.current);
+        clearInterval(interval);
       } else {
         setDays(days);
         setHours(hours);
@@ -48,7 +48,15 @@ const ClockList = ({ clock, index, allClockLength }: clockListProps) => {
   return (
     <div className={clockContainer}>
       <div>
-        <h1 className={clockLabel}>{eval(clock.label)}</h1>
+        <h1 className={clockLabel}>
+          {clock.label === "days"
+            ? days
+            : clock.label === "hours"
+              ? hours
+              : clock.label === "minutes"
+                ? minutes
+                : seconds}
+        </h1>
         <h5 className={clockValue}>
           {clock.label.charAt(0).toUpperCase() + clock.label.slice(1)}
         </h5>

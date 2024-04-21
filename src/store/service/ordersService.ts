@@ -23,7 +23,7 @@ export const addOrder = createAsyncThunk(
   "order/addOrder",
   async (newOrder: newOrderProps, thunkAPI) => {
     try {
-      await addDoc(collection(db, "orders"), {
+      const theNewOrder = {
         name: newOrder.Name,
         phone: newOrder.Phone,
         address: newOrder.Address,
@@ -36,9 +36,10 @@ export const addOrder = createAsyncThunk(
         email: newOrder.email,
         userId: newOrder.uid,
         userPhoto: newOrder.photoURL,
-      });
+      };
+      await addDoc(collection(db, "orders"), theNewOrder);
 
-      return thunkAPI.fulfillWithValue(newOrder);
+      return thunkAPI.fulfillWithValue(theNewOrder);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -48,7 +49,6 @@ export const addOrder = createAsyncThunk(
 export const getOrderById = createAsyncThunk(
   "order/getOrderById",
   async (orderId: string, thunkAPI) => {
-    console.log("totos",orderId);
     try {
       const orderRef = doc(db, "orders", orderId);
       const orderSnapShot = await getDoc(orderRef);

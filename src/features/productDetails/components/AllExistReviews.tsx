@@ -1,13 +1,13 @@
 import { Review } from "@/shared/types";
 
 type Props = {
-  reviews: Review[];
+  reviews: Review[] | undefined;
 };
 
 const AllExistReviews = ({ reviews }: Props) => {
   return (
     <ul className="mt-5">
-      {reviews.map((review, index) => (
+      {reviews?.map((review, index) => (
         <li
           key={index}
           className="mb-3 border-b-[1px] border-small-text-color pb-3"

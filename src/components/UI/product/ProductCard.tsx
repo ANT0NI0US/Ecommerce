@@ -5,14 +5,14 @@ import { toast } from "react-toastify";
 
 import { IoMdAdd, IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 
-import { newProductProps, productCardProps } from "@/shared/types";
+import { cartSliceState, productCardProps } from "@/shared/types";
 import { cartActions } from "@/store/slice/cartSlice";
 import { AppDispatch } from "@/store";
 
 const ProductCard = ({ item }: { item: productCardProps }) => {
-  const perfectItems = useSelector((state) => state.cart.perfectItems);
+  const { perfectItems } = useSelector((state: cartSliceState) => state.cart);
   const checkProductExistInPerfectProducts = (id: string) => {
-    return perfectItems?.find((item: newProductProps) => item.id === id);
+    return perfectItems?.find((item) => item.id === id);
   };
   const dispatch = useDispatch<AppDispatch>();
 
@@ -23,7 +23,7 @@ const ProductCard = ({ item }: { item: productCardProps }) => {
         productName: item.productName,
         price: item.price,
         imgUrl: item.imgUrl,
-      })
+      }),
     );
     toast.success("Product added to the cart successfully");
   };
@@ -35,14 +35,14 @@ const ProductCard = ({ item }: { item: productCardProps }) => {
         productName: item.productName,
         price: item.price,
         imgUrl: item.imgUrl,
-      })
+      }),
     );
     toast.success("Product added to the favourites successfully");
   };
 
   const { id, imgUrl, productName, category, price } = item;
   return (
-    <div className="relative rounded-md shadow shadow-primary-color/30 hover:shadow-primary-color/40 cursor-pointer flexBetween flex-col">
+    <div className="flexBetween relative cursor-pointer flex-col rounded-md shadow shadow-primary-color/30 hover:shadow-primary-color/40">
       <motion.div
         title={
           checkProductExistInPerfectProducts(id)
@@ -51,39 +51,39 @@ const ProductCard = ({ item }: { item: productCardProps }) => {
         }
         onClick={addToFavourite}
         whileTap={{ scale: 1.2 }}
-        className="absolute left-0 top-0 flexCenter cursor-pointer z-10  p-2 rounded-full"
+        className="flexCenter absolute left-0 top-0 z-10 cursor-pointer  rounded-full p-2"
       >
         {checkProductExistInPerfectProducts(id) ? (
-          <IoMdHeart className=" text-red-600 w-7 h-7" />
+          <IoMdHeart className=" h-7 w-7 text-red-600" />
         ) : (
-          <IoMdHeartEmpty className=" text-primary-color w-7 h-7" />
+          <IoMdHeartEmpty className=" h-7 w-7 text-primary-color" />
         )}
       </motion.div>
       <div className="h-[252px] max-h-[252px]">
         <motion.img
           whileHover={{ scale: 0.9 }}
-          className="rounded-tr-md rounded-tl-md max-w-full max-h-full"
+          className="max-h-full max-w-full rounded-tl-md rounded-tr-md"
           src={imgUrl}
           alt={productName}
         />
       </div>
 
       <div className="w-full">
-        <div className="p-3 text-center gridScreen:text-left h-[130px]">
-          <h3 className="text-[1.3rem] gridScreen:text-[1.2rem] text-primary-color font-[600] mt-[15px]">
+        <div className="h-[130px] p-3 text-center gridScreen:text-left">
+          <h3 className="mt-[15px] text-[1.3rem] font-[600] text-primary-color gridScreen:text-[1.2rem]">
             <Link to={`/shop/${id}`}>{productName}</Link>
           </h3>
           <p className="text-[0.9rem]">{category}</p>
         </div>
-        <div className="flexBetween p-3 border-t-2">
-          <span className="text-primary-color font-[500] text-[1.1rem]">
+        <div className="flexBetween border-t-2 p-3">
+          <span className="text-[1.1rem] font-[500] text-primary-color">
             ${price}
           </span>
           <div className="cursor-pointer text-white">
             <motion.div
               onClick={addToCart}
               whileTap={{ scale: 1.2 }}
-              className=" bg-primary-color p-2 rounded-full flexCenter cursor-pointer"
+              className=" flexCenter cursor-pointer rounded-full bg-primary-color p-2"
             >
               <IoMdAdd className="text-[1.2rem]" />
             </motion.div>

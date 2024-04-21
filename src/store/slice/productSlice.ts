@@ -6,7 +6,7 @@ import {
   addReviewToProduct,
   getProductById,
 } from "../service/productService";
-import { productServiceState } from "@/shared/types";
+import { productCardProps, productServiceState } from "@/shared/types";
 
 const initialState: productServiceState = {
   isLoading: false,
@@ -58,7 +58,7 @@ const productSlice = createSlice({
     builder.addCase(deleteProduct.fulfilled, (state, action) => {
       state.isLoading = false;
       state.allProducts = state.allProducts.filter(
-        (product) => product.id !== action.payload
+        (product) => product.id !== action.payload,
       );
       state.errors = null;
     });
@@ -75,10 +75,17 @@ const productSlice = createSlice({
     builder.addCase(addReviewToProduct.fulfilled, (state, action) => {
       state.isLoading = false;
       const { productId, review } = action.payload;
-      if (state.product && state.product.id === productId) {
-        state.product.reviews.push(review);
+      if (
+        state.product &&
+        (state.product as productCardProps).id === productId
+      ) {
+        const product = state.product as productCardProps;
+        if (!product.reviews) {
+          product.reviews = [];
+        }
+        product.reviews.push(review);
+        state.errors = null;
       }
-      state.errors = null;
     });
     builder.addCase(addReviewToProduct.rejected, (state, action) => {
       state.isLoading = false;
@@ -93,7 +100,7 @@ const productSlice = createSlice({
     builder.addCase(getProductById.fulfilled, (state, action) => {
       state.isLoading = false;
       const existingProductIndex = state.allProducts.findIndex(
-        (product) => product.id === action.payload.id
+        (product) => product.id === action.payload.id,
       );
       if (existingProductIndex !== -1) {
         state.product = action.payload;
