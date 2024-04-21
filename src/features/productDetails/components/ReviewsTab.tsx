@@ -4,7 +4,7 @@ import AllExistReviews from "./AllExistReviews";
 import { Review } from "@/shared/types";
 
 type Props = {
-  reviews: Review[];
+  reviews: Review[] | undefined;
 };
 
 const ReviewsTab = ({ reviews }: Props) => {

@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import Helmet from "@/components/UI/helmet/Helmet";
 import Loader from "@/components/UI/loader/Loader";
 import { collection, getDocs } from "firebase/firestore";
+import { userProps } from "@/shared/types";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -15,6 +16,30 @@ const Login = () => {
   const [loading, setLoading] = useState<boolean>(false);
 
   useEffect(() => {
+    const getUserTypeAndNavigate = async (uid: string) => {
+      setLoading(true);
+      try {
+        const querySnapshot = await getDocs(collection(db, "users"));
+        const fetchedUsers = querySnapshot.docs.map((doc) => ({
+          ...doc.data(),
+          id: doc.id,
+        })) as userProps[];
+        const result = fetchedUsers.find((user) => user.id === uid);
+        setLoading(false);
+        if (result && result.type === "admin") {
+          navigate("/dashboard");
+        } else {
+          navigate("/home");
+        }
+        setPassword("");
+        setEmail("");
+        toast.success("Successfully Logged in");
+      } catch (error) {
+        setLoading(false);
+        toast.error("Something went wrong!");
+      }
+    };
+
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         const uid = user.uid;
@@ -23,7 +48,7 @@ const Login = () => {
     });
 
     return () => unsubscribe();
-  }, []);
+  }, [navigate]);
 
   const signIn = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -34,28 +59,6 @@ const Login = () => {
       setLoading(false);
       toast.error("Invalid email or password.");
       return;
-    }
-  };
-
-  const getUserTypeAndNavigate = async (uid: string) => {
-    setLoading(true);
-    try {
-      const querySnapshot = await getDocs(collection(db, "users"));
-      const fetchedUsers = querySnapshot.docs.map((doc) => ({
-        ...doc.data(),
-        id: doc.id,
-      }));
-      const result = fetchedUsers.find((user) => user.id === uid);
-      setLoading(false);
-      if (result && result.type === "admin") {
-        navigate("/dashboard");
-      } else {
-        navigate("/home");
-      }
-      toast.success("Successfully Logged in");
-    } catch (error) {
-      setLoading(false);
-      toast.error("Something went wrong!");
     }
   };
 

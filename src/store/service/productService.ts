@@ -25,42 +25,55 @@ export const getProducts = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
-  }
+  },
 );
 
 export const addProduct = createAsyncThunk(
   "product/addProduct",
   async (newProduct: newProductProps, thunkAPI) => {
     try {
-      const storageRef = ref(
-        storage,
-        `productImage/${Date.now() + newProduct.productName}`
-      );
+      let downloadURL: string | null = null;
 
-      const uploadTaskSnapshot = await uploadBytesResumable(
-        storageRef,
-        newProduct.imgUrl
-      );
-      const downloadURL = await getDownloadURL(uploadTaskSnapshot.ref);
+      // Check if imgUrl is a File
+      if (newProduct.imgUrl instanceof File) {
+        const storageRef = ref(
+          storage,
+          `productImage/${Date.now() + newProduct.productName}`,
+        );
 
-      newProduct.imgUrl = downloadURL;
+        const uploadTaskSnapshot = await uploadBytesResumable(
+          storageRef,
+          newProduct.imgUrl,
+        );
+        downloadURL = await getDownloadURL(uploadTaskSnapshot.ref);
+      } else if (typeof newProduct.imgUrl === "string") {
+        // If imgUrl is already a string, use it directly
+        downloadURL = newProduct.imgUrl;
+      }
 
-      await addDoc(collection(db, "products"), {
-        category: newProduct.category,
-        description: newProduct.description,
-        imgUrl: downloadURL,
-        price: newProduct.price,
-        productName: newProduct.productName,
-        shortDesc: newProduct.shortDesc,
-        reviews: newProduct.reviews,
-        avgRating: newProduct.avgRating,
-      });
+      if (downloadURL) {
+        await addDoc(collection(db, "products"), {
+          category: newProduct.category,
+          description: newProduct.description,
+          imgUrl: downloadURL,
+          price: newProduct.price,
+          productName: newProduct.productName,
+          shortDesc: newProduct.shortDesc,
+          reviews: newProduct.reviews,
+          avgRating: newProduct.avgRating,
+        });
 
-      return thunkAPI.fulfillWithValue(newProduct);
+        // Modify newProduct to store the download URL
+        newProduct.imgUrl = downloadURL;
+
+        return thunkAPI.fulfillWithValue(newProduct);
+      } else {
+        throw new Error("Invalid imgUrl");
+      }
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
-  }
+  },
 );
 
 export const deleteProduct = createAsyncThunk<string, string>(
@@ -72,7 +85,7 @@ export const deleteProduct = createAsyncThunk<string, string>(
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
-  }
+  },
 );
 
 export const addReviewToProduct = createAsyncThunk(
@@ -85,7 +98,7 @@ export const addReviewToProduct = createAsyncThunk(
       productId: string;
       review: { name: string; text: string; rating: number | null };
     },
-    thunkAPI
+    thunkAPI,
   ) => {
     try {
       const productRef = doc(db, "products", productId);
@@ -104,7 +117,7 @@ export const addReviewToProduct = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
-  }
+  },
 );
 
 export const getProductById = createAsyncThunk(
@@ -115,16 +128,16 @@ export const getProductById = createAsyncThunk(
       const productSnapshot = await getDoc(productRef);
 
       if (productSnapshot.exists()) {
-        const productData = productSnapshot.data() as productCardProps;
+        const productData = productSnapshot.data();
         return thunkAPI.fulfillWithValue({
           id: productSnapshot.id,
           ...productData,
-        });
+        }) as productCardProps;
       } else {
         return thunkAPI.rejectWithValue("Product not found");
       }
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
-  }
+  },
 );

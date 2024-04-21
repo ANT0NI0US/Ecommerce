@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FadeLoader } from "react-spinners";
 
 import ProductTableContent from "./ProductTableContent";
-import { productCardProps, productState } from "@/shared/types";
+import { productState } from "@/shared/types";
 import { AppDispatch } from "@/store";
 import { getProducts } from "@/store/service/productService";
 
@@ -13,11 +13,8 @@ const columnHeadStyle =
 
 const ProductTable = () => {
   const dispatch = useDispatch<AppDispatch>();
-  const {
-    isLoading,
-    allProducts,
-  }: { isLoading: boolean; allProducts: productCardProps[] } = useSelector(
-    (state: productState) => state.product
+  const { isLoading, allProducts } = useSelector(
+    (state: productState) => state.product,
   );
 
   useEffect(() => {
@@ -27,7 +24,7 @@ const ProductTable = () => {
   return allProducts.length === 0 ? (
     <h2 className="mt-2">No Products to be displayed</h2>
   ) : (
-    <div className="w-5/6 mx-auto overflow-x-auto">
+    <div className="mx-auto w-5/6 overflow-x-auto">
       <table className="w-full max-w-full space-y-6">
         <thead>
           <tr className="border-b">

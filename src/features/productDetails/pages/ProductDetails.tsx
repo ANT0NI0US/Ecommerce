@@ -18,7 +18,7 @@ const ProductDetails = () => {
   const { id } = useParams<{ id: string }>();
 
   const { isLoading, allProducts, product } = useSelector(
-    (state: productState) => state.product
+    (state: productState) => state.product,
   ) as {
     isLoading: boolean;
     allProducts: productCardProps[];
@@ -35,7 +35,8 @@ const ProductDetails = () => {
     }
   }, [dispatch, id]);
 
-  const { productName, reviews, description, category } = product;
+  const { productName, reviews, description, category } =
+    product as productCardProps;
 
   useEffect(() => {
     const element = document.getElementById("my-product");
@@ -47,12 +48,12 @@ const ProductDetails = () => {
 
   const sameCategories = allProducts.filter(
     (product: productCardProps) =>
-      product.category === category && product.id !== id
+      product.category === category && product.id !== id,
   );
 
   if (!product) {
     return (
-      <div className="mt-[69px] py-[60px] flexCenter text-primary-color text-3xl text-center">
+      <div className="flexCenter mt-[69px] py-[60px] text-center text-3xl text-primary-color">
         Product not found!
       </div>
     );

@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "@/store";
 import { getOrderById } from "@/store/service/ordersService";
-import { orderState } from "@/shared/types";
+import { CartItem, orderState, ordersFireBase } from "@/shared/types";
 import Loader from "@/components/UI/loader/Loader";
 
 interface Props {
@@ -16,37 +16,6 @@ interface orderDetailsProp {
   text: string;
   value: string;
 }
-
-const orderDetails: orderDetailsProp[] = [
-  {
-    text: "Name",
-    value: "name",
-  },
-  {
-    text: "Phone",
-    value: "phone",
-  },
-  {
-    text: "Email",
-    value: "email",
-  },
-  {
-    text: "Address",
-    value: "address",
-  },
-  {
-    text: "City",
-    value: "city",
-  },
-  {
-    text: "Code",
-    value: "code",
-  },
-  {
-    text: "Country",
-    value: "country",
-  },
-];
 
 const ShowOrder = ({ showModal, closeModal, selectedOrderId }: Props) => {
   const dispatch = useDispatch<AppDispatch>();
@@ -62,9 +31,39 @@ const ShowOrder = ({ showModal, closeModal, selectedOrderId }: Props) => {
     closeModal();
   };
 
-  useEffect(() => {
-    console.log("Render");
-  });
+  const { userPhoto, items, name, phone, email, address, city, code, country } =
+    order as ordersFireBase;
+
+  const orderDetails: orderDetailsProp[] = [
+    {
+      text: "Name",
+      value: name,
+    },
+    {
+      text: "Phone",
+      value: phone,
+    },
+    {
+      text: "Email",
+      value: email,
+    },
+    {
+      text: "Address",
+      value: address,
+    },
+    {
+      text: "City",
+      value: city,
+    },
+    {
+      text: "Code",
+      value: code,
+    },
+    {
+      text: "Country",
+      value: country,
+    },
+  ];
 
   return ReactDOM.createPortal(
     <Fragment>
@@ -91,13 +90,13 @@ const ShowOrder = ({ showModal, closeModal, selectedOrderId }: Props) => {
               <span>x</span>
             </div>
             <div className="m-auto mt-4 h-20 w-20">
-              <img src={order?.userPhoto} alt="user-image" />
+              <img src={userPhoto} alt="user-image" />
             </div>
             <div className="m-auto my-5 w-[90%]">
               <div>
                 <h4 className="my-[10px] text-sm">Items</h4>
                 <div className="flex flex-col gap-2">
-                  {order?.items?.map((item) => (
+                  {items?.map((item: CartItem) => (
                     <div
                       key={item.id}
                       className="text-lightB rounded-sm bg-[#EAF2F2] p-[10px]"
@@ -113,7 +112,7 @@ const ShowOrder = ({ showModal, closeModal, selectedOrderId }: Props) => {
                 <div key={index}>
                   <h4 className="my-[10px] text-sm">{detail.text}</h4>
                   <div className="text-lightB rounded-sm bg-[#EAF2F2] p-[10px]">
-                    {order?.[detail.value]}
+                    {detail.value}
                   </div>
                 </div>
               ))}

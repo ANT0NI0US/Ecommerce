@@ -1,16 +1,23 @@
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
+import { toast } from "react-toastify";
+
 import CommonSection from "@/components/UI/commonSection/CommonSection";
 import Helmet from "@/components/UI/helmet/Helmet";
-import { cartSliceState, order, userState } from "@/shared/types";
-import { motion } from "framer-motion";
-import { useDispatch, useSelector } from "react-redux";
+import {
+  cartSliceState,
+  newOrderProps,
+  order,
+  userProps,
+  userState,
+} from "@/shared/types";
 import useAuth from "@/hooks/useAuth";
-import { useEffect, useState } from "react";
 import { AppDispatch } from "@/store";
 import { getUserById, getUsers } from "@/store/service/userService";
 import { addOrder } from "@/store/service/ordersService";
-import { toast } from "react-toastify";
 import { cartActions } from "@/store/slice/cartSlice";
-import { useNavigate } from "react-router-dom";
 
 const initialState: order = {
   Name: "",
@@ -21,11 +28,17 @@ const initialState: order = {
   Country: "",
 };
 
+interface CurrentUser {
+  uid: string;
+}
+
 const CheckOut = () => {
   const [state, setState] = useState(initialState);
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const currentUser = useAuth();
+
+  const { uid } = currentUser as CurrentUser;
 
   const { totalQuantity, totalAmount, cartItems } = useSelector(
     (state: cartSliceState) => state.cart,
@@ -43,13 +56,13 @@ const CheckOut = () => {
     dispatch(getUsers())
       .unwrap()
       .then(() => {
-        dispatch(getUserById(currentUser?.uid));
+        dispatch(getUserById(uid));
       });
-  }, [currentUser.uid, dispatch]);
+  }, [dispatch, uid]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { uid, email, photoURL } = user;
+    const { uid, email, photoURL } = user as userProps;
     const orderObj = {
       ...state,
       uid,
@@ -58,7 +71,7 @@ const CheckOut = () => {
       cartItems,
       totalQuantity: totalQuantity,
       totalAmount: totalAmount,
-    };
+    } as newOrderProps;
     dispatch(addOrder(orderObj))
       .unwrap()
       .then(() => {

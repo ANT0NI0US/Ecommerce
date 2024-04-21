@@ -14,7 +14,7 @@ export interface selectedProps extends setSelectedPageProps {
 }
 
 export interface Review {
-  rating: number;
+  rating: number | null;
   text: string;
 }
 
@@ -84,6 +84,7 @@ export interface userProps {
   email: string;
   photoURL: string;
   type: "admin" | "user";
+  uid?: string;
 }
 
 export interface userServiceState {
@@ -100,9 +101,9 @@ export interface userState {
 // all products
 export interface productServiceState {
   isLoading: boolean;
-  product: productCardProps | object;
+  product: newProductProps | object;
   errors: null | string;
-  allProducts: productCardProps[];
+  allProducts: newProductProps[];
 }
 export interface productState {
   product: productServiceState;
