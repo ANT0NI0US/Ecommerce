@@ -42,9 +42,9 @@ export interface newProductProps {
 }
 
 export interface Item {
-  id: string;
+  id: string | undefined;
   productName: string;
-  imgUrl: string;
+  imgUrl: string | File | null;
   price: number;
 }
 

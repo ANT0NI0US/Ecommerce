@@ -5,11 +5,11 @@ import { toast } from "react-toastify";
 
 import { IoMdAdd, IoMdHeartEmpty, IoMdHeart } from "react-icons/io";
 
-import { cartSliceState, productCardProps } from "@/shared/types";
+import { cartSliceState, newProductProps } from "@/shared/types";
 import { cartActions } from "@/store/slice/cartSlice";
 import { AppDispatch } from "@/store";
 
-const ProductCard = ({ item }: { item: productCardProps }) => {
+const ProductCard = ({ item }: { item: newProductProps }) => {
   const { perfectItems } = useSelector((state: cartSliceState) => state.cart);
   const checkProductExistInPerfectProducts = (id: string) => {
     return perfectItems?.find((item) => item.id === id);
@@ -45,7 +45,7 @@ const ProductCard = ({ item }: { item: productCardProps }) => {
     <div className="flexBetween relative cursor-pointer flex-col rounded-md shadow shadow-primary-color/30 hover:shadow-primary-color/40">
       <motion.div
         title={
-          checkProductExistInPerfectProducts(id)
+          id && checkProductExistInPerfectProducts(id)
             ? "Remove from Favourites"
             : "Add To Favourites"
         }
@@ -53,7 +53,7 @@ const ProductCard = ({ item }: { item: productCardProps }) => {
         whileTap={{ scale: 1.2 }}
         className="flexCenter absolute left-0 top-0 z-10 cursor-pointer  rounded-full p-2"
       >
-        {checkProductExistInPerfectProducts(id) ? (
+        {id && checkProductExistInPerfectProducts(id) ? (
           <IoMdHeart className=" h-7 w-7 text-red-600" />
         ) : (
           <IoMdHeartEmpty className=" h-7 w-7 text-primary-color" />
@@ -63,7 +63,7 @@ const ProductCard = ({ item }: { item: productCardProps }) => {
         <motion.img
           whileHover={{ scale: 0.9 }}
           className="max-h-full max-w-full rounded-tl-md rounded-tr-md"
-          src={imgUrl}
+          src={typeof imgUrl === "string" ? imgUrl : undefined}
           alt={productName}
         />
       </div>

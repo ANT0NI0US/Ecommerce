@@ -1,10 +1,10 @@
 import ProductList from "@/components/UI/product/ProductList";
-import { productCardProps } from "@/shared/types";
+import { newProductProps } from "@/shared/types";
 import { FadeLoader } from "react-spinners";
 
 interface allProductsProps {
   isLoading: boolean;
-  productsData: productCardProps[];
+  productsData: newProductProps[];
 }
 
 const Allproducts = ({ productsData, isLoading }: allProductsProps) => {

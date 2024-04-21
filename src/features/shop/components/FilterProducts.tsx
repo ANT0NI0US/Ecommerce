@@ -1,10 +1,10 @@
-import { productCardProps } from "@/shared/types";
+import { newProductProps } from "@/shared/types";
 import { IoIosSearch } from "react-icons/io";
 
 interface filteredProductsProps {
-  handleChangingProduct: (newProductData: productCardProps[]) => void;
-  allProducts: productCardProps[];
-  productsData: productCardProps[];
+  handleChangingProduct: (newProductData: newProductProps[]) => void;
+  allProducts: newProductProps[];
+  productsData: newProductProps[];
 }
 
 const FilterProducts = ({
@@ -16,27 +16,27 @@ const FilterProducts = ({
     const selectedFilter = e.target.value;
     if (selectedFilter === "sofa") {
       const fileredData = allProducts.filter(
-        (product: productCardProps) => product.category === "sofa"
+        (product: newProductProps) => product.category === "sofa",
       );
       handleChangingProduct(fileredData);
     } else if (selectedFilter === "mobile") {
       const fileredData = allProducts.filter(
-        (product: productCardProps) => product.category === "mobile"
+        (product: newProductProps) => product.category === "mobile",
       );
       handleChangingProduct(fileredData);
     } else if (selectedFilter === "chair") {
       const fileredData = allProducts.filter(
-        (product: productCardProps) => product.category === "chair"
+        (product: newProductProps) => product.category === "chair",
       );
       handleChangingProduct(fileredData);
     } else if (selectedFilter === "watch") {
       const fileredData = allProducts.filter(
-        (product: productCardProps) => product.category === "watch"
+        (product: newProductProps) => product.category === "watch",
       );
       handleChangingProduct(fileredData);
     } else if (selectedFilter === "wireless") {
       const fileredData = allProducts.filter(
-        (product: productCardProps) => product.category === "wireless"
+        (product: newProductProps) => product.category === "wireless",
       );
       handleChangingProduct(fileredData);
     } else {
@@ -57,18 +57,18 @@ const FilterProducts = ({
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = e.target.value;
-    const filteredData = allProducts.filter((product: productCardProps) =>
-      product.productName.toLowerCase().includes(searchTerm.toLowerCase())
+    const filteredData = allProducts.filter((product: newProductProps) =>
+      product.productName.toLowerCase().includes(searchTerm.toLowerCase()),
     );
     handleChangingProduct(filteredData);
   };
   return (
-    <section className="py-[60px] w-5/6 mx-auto">
-      <div className="w-full grid grid-cols-12 gap-4 sm:gap-8">
+    <section className="mx-auto w-5/6 py-[60px]">
+      <div className="grid w-full grid-cols-12 gap-4 sm:gap-8">
         <div className="col-span-12 sm:col-span-4 md:col-span-3">
           <select
             onChange={handleFilter}
-            className="border border-primary-color px-5 py-2 cursor-pointer bg-primary-color text-white rounded-[8px] text-[0.9rem]"
+            className="cursor-pointer rounded-[8px] border border-primary-color bg-primary-color px-5 py-2 text-[0.9rem] text-white"
           >
             <option>Filter by Category</option>
             <option value="sofa">Sofa</option>
@@ -81,21 +81,21 @@ const FilterProducts = ({
         <div className="col-span-12 sm:col-span-4 md:col-span-3">
           <select
             onChange={handleSortBy}
-            className="border border-primary-color px-5 py-2 cursor-pointer bg-primary-color text-white rounded-[8px] text-[0.9rem]"
+            className="cursor-pointer rounded-[8px] border border-primary-color bg-primary-color px-5 py-2 text-[0.9rem] text-white"
           >
             <option>Sort By</option>
             <option value="ascending">Ascending</option>
             <option value="descending">Descending</option>
           </select>
         </div>
-        <div className="col-span-12 sm:col-span-4 md:col-span-6 flexBetween border border-primary-color rounded-[8px] cursor-pointer pr-3">
+        <div className="flexBetween col-span-12 cursor-pointer rounded-[8px] border border-primary-color pr-3 sm:col-span-4 md:col-span-6">
           <input
             onChange={handleSearch}
-            className="w-full outline-0 py-1 ml-2"
+            className="ml-2 w-full py-1 outline-0"
             type="text"
             placeholder="Search...."
           />
-          <IoIosSearch className="text-primary-color w-[10%]" />
+          <IoIosSearch className="w-[10%] text-primary-color" />
         </div>
       </div>
     </section>
