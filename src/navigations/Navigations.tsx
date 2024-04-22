@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
 import routes from "./routes";
 import ProtectedRoute from "./ProtectedRoute";
 import Loader from "@/components/UI/loader/Loader";
@@ -39,6 +39,7 @@ interface CurrentUser {
 }
 
 const Navigations = () => {
+  const navigate = useNavigate();
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
   const currentUser = useAuth() as CurrentUser;
   const [userData, setUserData] = useState<userProps | null | undefined>(null);
@@ -76,6 +77,13 @@ const Navigations = () => {
     };
     fetchUsers();
   }, [currentUser]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      navigate("/login");
+    }
+  }, [navigate]);
 
   if (loading) {
     return <Loader />;

@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import useAuth from "@/hooks/useAuth";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 interface Props {
@@ -7,20 +6,17 @@ interface Props {
 }
 
 const ProtectedRoute = ({ children }: Props) => {
+  console.log("totos")
   const navigate = useNavigate();
-  const currentUser = useAuth();
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    if (!currentUser) {
+    if (!token) {
       navigate("/login");
     }
-  }, [currentUser, navigate]);
+  }, [navigate, token]);
 
-  if (currentUser === null || currentUser === undefined) {
-    return <div>Loading...</div>;
-  }
-
-  return children;
+  return token ? children : null;
 };
 
 export default ProtectedRoute;
