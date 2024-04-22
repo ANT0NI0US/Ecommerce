@@ -80,7 +80,8 @@ const Navigations = () => {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    if (!token) {
+    const currentPath = window.location.hash;
+    if (!token && currentPath !== "#/signup") {
       navigate("/login");
     }
   }, [navigate]);
