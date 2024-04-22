@@ -85,6 +85,7 @@ const Navbar = ({ isTopOfPage }: navbarProps) => {
     signOut(auth)
       .then(() => {
         toast.success("Logout successfully");
+        localStorage.removeItem("token");
         navigate("/login");
         setToggleImageMenu(false);
         dispatch(cartActions.returnToInitialState());

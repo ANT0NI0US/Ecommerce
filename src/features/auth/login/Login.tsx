@@ -8,6 +8,10 @@ import Loader from "@/components/UI/loader/Loader";
 import { collection, getDocs } from "firebase/firestore";
 import { userProps } from "@/shared/types";
 
+interface UserProp {
+  accessToken?: string;
+}
+
 const Login = () => {
   const navigate = useNavigate();
 
@@ -25,12 +29,19 @@ const Login = () => {
           id: doc.id,
         })) as userProps[];
         const result = fetchedUsers.find((user) => user.id === uid);
-        setLoading(false);
-        if (result && result.type === "admin") {
-          navigate("/dashboard");
-        } else {
-          navigate("/home");
+        console.log(result);
+        if (result?.type) {
+          localStorage.setItem("userType", result.type);
         }
+        setLoading(false);
+        if (result) {
+          if (result.type === "admin") {
+            navigate("/dashboard");
+          } else {
+            navigate("/home");
+          }
+        }
+
         setPassword("");
         setEmail("");
         toast.success("Successfully Logged in");
@@ -55,6 +66,11 @@ const Login = () => {
     setLoading(true);
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      const user = auth.currentUser as UserProp;
+      if (user && user?.accessToken) {
+        console.log(user);
+        localStorage.setItem("token", user?.accessToken);
+      }
     } catch (error) {
       setLoading(false);
       toast.error("Invalid email or password.");
