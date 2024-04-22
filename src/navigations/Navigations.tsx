@@ -81,6 +81,7 @@ const Navigations = () => {
   useEffect(() => {
     const token = localStorage.getItem("token");
     const currentPath = window.location.hash;
+    console.log(currentPath);
     if (!token && currentPath !== "#/signup") {
       navigate("/login");
     }
