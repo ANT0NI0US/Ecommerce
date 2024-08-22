@@ -3,20 +3,18 @@ import Banner from "../components/Banner";
 import Services from "../components/Services";
 import NewArrivals from "../components/NewArrivals";
 import Experiences from "../components/Experiences";
-import TimerCount from "../components/TimerCount";
+import Offers from "../components/offers/Offers";
 import Materials from "../components/Materials";
 
-const Home = () => {
+export default function Home() {
   return (
     <Helmet title="Home">
       <Banner />
       <Services />
       <NewArrivals />
       <Experiences />
-      <TimerCount />
+      <Offers />
       <Materials />
     </Helmet>
   );
-};
-
-export default Home;
+}

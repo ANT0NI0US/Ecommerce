@@ -1,22 +1,14 @@
-import useMediaQuery from "@/hooks/UseMediaQuery";
-import Experience from "../../../assets/images/experience.png";
 import { motion } from "framer-motion";
+import Experience from "../../../assets/images/experience.png";
 
-const Experiences = () => {
-  const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
+export default function Experiences() {
   return (
-    <section className="w-full bg-hero-bg py-[125px]">
+    <section className="w-full bg-hero-bg pb-0 pt-[125px] md:h-[calc(100vh-80px)] md:pb-[125px]">
       <div
-        className={`${
-          isAboveMediumScreens ? "flex-row" : "flex-col-reverse"
-        }  w-full mx-auto flexBetween gap-12 overflow-hidden`}
+        className={`flexBetween mx-auto w-full flex-col-reverse gap-12 overflow-hidden md:flex-row`}
       >
         <img
-          className={`${
-            isAboveMediumScreens
-              ? "rounded-tr-lg rounded-br-lg"
-              : "rounded-none"
-          } basis-3/5 w-full`}
+          className={`max-h-full w-full basis-3/5 rounded-none object-cover object-center md:rounded-br-lg md:rounded-tr-lg`}
           src={Experience}
           alt="experience-image"
         />
@@ -29,15 +21,13 @@ const Experiences = () => {
             hidden: { opacity: 0, x: 50 },
             visible: { opacity: 1, x: 0 },
           }}
-          className={`${
-            isAboveMediumScreens ? "" : "w-5/6"
-          } text-center md:text-left md:basis-3/5`}
+          className={`w-5/6 text-center md:w-fit md:basis-3/5 md:text-left`}
         >
-          <p className="text-[#E58411] font-[500]">EXPERIENCES</p>
-          <h2 className="text-primary-color text-3xl md:text-[2.3rem] font-[600] my-2 leading-[48px]">
+          <p className="font-medium text-[#E58411]">EXPERIENCES</p>
+          <h2 className="my-2 text-2xl font-semibold text-primary-color md:text-4xl">
             We Provide You The Best Experience
           </h2>
-          <p className="text-primary-color leading-[28px]">
+          <p className="leading-[28px] text-primary-color">
             You don't have worry about the result because all of these interios
             are made by people who are professionals in their fields with an
             elegant and lucurious style and with premimum quality materilas.
@@ -46,6 +36,4 @@ const Experiences = () => {
       </div>
     </section>
   );
-};
-
-export default Experiences;
+}

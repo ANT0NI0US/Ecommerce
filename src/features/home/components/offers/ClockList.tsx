@@ -1,26 +1,24 @@
 import { useState, useEffect } from "react";
 
-const clockLabel = "text-white text-sm sm:text-lg";
-const clockValue = "text-white text-base sm:text-xl";
-const clockContainer = "flex items-center gap-5";
-
 interface clockListProps {
   clock: {
     label: string;
   };
-  index: number;
-  allClockLength: number;
 }
 
-const ClockList = ({ clock, index, allClockLength }: clockListProps) => {
+export default function ClockList({ clock }: clockListProps) {
   const [days, setDays] = useState<number>();
   const [hours, setHours] = useState<number>();
   const [minutes, setMinutes] = useState<number>();
   const [seconds, setSeconds] = useState<number>();
   let interval: NodeJS.Timeout;
 
+  const padWithZero = (time: number) => {
+    return time < 10 ? `0${time}` : time;
+  };
+
   const countDown = () => {
-    const destination = new Date("jun 10 , 2024").getTime();
+    const destination = new Date("jun 10 , 2025").getTime();
     interval = setInterval(() => {
       const now = new Date().getTime();
       const distance = destination - now;
@@ -45,25 +43,23 @@ const ClockList = ({ clock, index, allClockLength }: clockListProps) => {
   useEffect(() => {
     countDown();
   });
+
   return (
-    <div className={clockContainer}>
-      <div>
-        <h1 className={clockLabel}>
+    <div className="flex w-[60px] flex-col gap-1">
+      <div className="flexCenter h-[60px] bg-[#f2f4f6] text-primary-color shadow-xl drop-shadow-sm">
+        <h1 className="text-sm sm:text-lg">
           {clock.label === "days"
-            ? days
+            ? padWithZero(days ?? 0)
             : clock.label === "hours"
-              ? hours
+              ? padWithZero(hours ?? 0)
               : clock.label === "minutes"
-                ? minutes
-                : seconds}
+                ? padWithZero(minutes ?? 0)
+                : padWithZero(seconds ?? 0)}
         </h1>
-        <h5 className={clockValue}>
-          {clock.label.charAt(0).toUpperCase() + clock.label.slice(1)}
-        </h5>
       </div>
-      {index !== allClockLength - 1 && <span className={clockLabel}>:</span>}
+      <h5 className="text-center text-xs">
+        {clock.label.charAt(0).toUpperCase() + clock.label.slice(1)}
+      </h5>
     </div>
   );
-};
-
-export default ClockList;
+}

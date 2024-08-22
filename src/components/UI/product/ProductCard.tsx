@@ -37,12 +37,11 @@ const ProductCard = ({ item }: { item: newProductProps }) => {
         imgUrl: item.imgUrl,
       }),
     );
-    toast.success("Product added to the favourites successfully");
   };
 
   const { id, imgUrl, productName, category, price } = item;
   return (
-    <div className="flexBetween relative cursor-pointer flex-col rounded-md shadow shadow-primary-color/30 hover:shadow-primary-color/40">
+    <div className="flexBetween relative cursor-pointer flex-col rounded-md shadow shadow-primary-color/30 transition-all hover:shadow-primary-color/40">
       <motion.div
         title={
           id && checkProductExistInPerfectProducts(id)
@@ -51,7 +50,7 @@ const ProductCard = ({ item }: { item: newProductProps }) => {
         }
         onClick={addToFavourite}
         whileTap={{ scale: 1.2 }}
-        className="flexCenter absolute left-0 top-0 z-10 cursor-pointer  rounded-full p-2"
+        className="flexCenter absolute left-0 top-0 z-10 cursor-pointer rounded-full p-2"
       >
         {id && checkProductExistInPerfectProducts(id) ? (
           <IoMdHeart className=" h-7 w-7 text-red-600" />
@@ -62,7 +61,7 @@ const ProductCard = ({ item }: { item: newProductProps }) => {
       <div className="h-[252px] max-h-[252px]">
         <motion.img
           whileHover={{ scale: 0.9 }}
-          className="max-h-full max-w-full rounded-tl-md rounded-tr-md"
+          className="max-h-full max-w-full object-cover object-center"
           src={typeof imgUrl === "string" ? imgUrl : undefined}
           alt={productName}
         />
@@ -79,15 +78,15 @@ const ProductCard = ({ item }: { item: newProductProps }) => {
           <span className="text-[1.1rem] font-[500] text-primary-color">
             ${price}
           </span>
-          <div className="cursor-pointer text-white">
-            <motion.div
-              onClick={addToCart}
-              whileTap={{ scale: 1.2 }}
-              className=" flexCenter cursor-pointer rounded-full bg-primary-color p-2"
-            >
-              <IoMdAdd className="text-[1.2rem]" />
-            </motion.div>
-          </div>
+
+          <motion.div
+            onClick={addToCart}
+            whileTap={{ scale: 1.2 }}
+            className=" flexCenter cursor-pointer rounded-full bg-primary-color p-2"
+            title="add to cart"
+          >
+            <IoMdAdd className="text-[1.2rem] text-white" />
+          </motion.div>
         </div>
       </div>
     </div>
