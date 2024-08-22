@@ -1,21 +1,18 @@
 import { lazy, Suspense, useEffect, useState } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import routes from "./routes";
 import ProtectedRoute from "./ProtectedRoute";
 import Loader from "@/components/UI/loader/Loader";
 import PageNotFound from "./PageNotFound";
-import useAuth from "@/hooks/useAuth";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "@/firebase.config";
-import { userProps } from "@/shared/types";
+import { useSelector } from "react-redux";
+import { loginState } from "@/shared/types";
+import AuthLayout from "@/layout/AuthLayout";
 
-const Layout = lazy(() => import("../layout/Layout"));
-const AppLayout = lazy(() => import("../layout/admin/AdminLayout"));
-const Login = lazy(() => import("../features/auth/login/Login"));
-const SignUp = lazy(() => import("@/features/auth/signUp/SignUp"));
+const Login = lazy(() => import("@/features/auth/Login"));
+const SignUp = lazy(() => import("@/features/auth/SignUp"));
 
 //user
-const Home = lazy(() => import("../features/home/pages/Home"));
+const Home = lazy(() => import("@/features/home/pages/Home"));
 const Shop = lazy(() => import("@/features/shop/pages/Shop"));
 const Favourites = lazy(() => import("@/features/favourites/pages/Favourites"));
 const Cart = lazy(() => import("@/features/cart/pages/Cart"));
@@ -24,6 +21,8 @@ const ProductDetails = lazy(
   () => import("@/features/productDetails/pages/ProductDetails"),
 );
 
+const Layout = lazy(() => import("@/layout/Layout"));
+const AppLayout = lazy(() => import("@/layout/admin/AdminLayout"));
 // admin
 const Dashboard = lazy(
   () => import("@/features/admin/dashboard/pages/Dashboard"),
@@ -34,16 +33,10 @@ const AllProducts = lazy(
 const AllUsers = lazy(() => import("@/features/admin/allUsers/pages/AllUsers"));
 const Orders = lazy(() => import("@/features/admin/orders/pages/Orders"));
 
-interface CurrentUser {
-  uid: string;
-}
-
 const Navigations = () => {
-  const navigate = useNavigate();
   const [isTopOfPage, setIsTopOfPage] = useState<boolean>(true);
-  const currentUser = useAuth() as CurrentUser;
-  const [userData, setUserData] = useState<userProps | null | undefined>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const { isAdmin } = useSelector((state: loginState) => state.login);
+  console.log(isAdmin);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -56,85 +49,47 @@ const Navigations = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const querySnapshot = await getDocs(collection(db, "users"));
-        const fetchedUsers = querySnapshot.docs.map((doc) => ({
-          ...doc.data(),
-          id: doc.id,
-        })) as userProps[];
-        const result = fetchedUsers.find(
-          (user) => user.id === currentUser?.uid,
-        );
-        setUserData(result);
-        setLoading(false);
-      } catch (error) {
-        if (error instanceof Error) {
-          throw new Error(error.message);
-        }
-      }
-    };
-    fetchUsers();
-  }, [currentUser]);
-
-  useEffect(() => {
-    const token = localStorage.getItem("token");
-    const currentPath = window.location.hash;
-    if (!token && currentPath !== "#/signup") {
-      navigate("/login");
-    }
-  }, [navigate]);
-
-  if (loading) {
-    return <Loader />;
-  }
-
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        <Route path={routes.login} element={<Login />} />
-        <Route path={routes.signup} element={<SignUp />} />
+        <Route element={<AuthLayout />}>
+          <Route path={routes.login} element={<Login />} />
+          <Route path={routes.signup} element={<SignUp />} />
+        </Route>
         <Route path="*" element={<PageNotFound />} />
-        {userData && (
-          <>
-            {userData?.type === "user" && (
-              <Route
-                element={
-                  <ProtectedRoute>
-                    <Layout isTopOfPage={isTopOfPage} />
-                  </ProtectedRoute>
-                }
-              >
-                <Route index element={<Navigate replace to="home" />} />
-                <Route path={routes.home} element={<Home />} />
-                <Route path={routes.shop} element={<Shop />} />
-                <Route
-                  path={routes.productdetails}
-                  element={<ProductDetails />}
-                />
-                <Route path={routes.cart} element={<Cart />} />
-                <Route path={routes.favourites} element={<Favourites />} />
-                <Route path={routes.checkout} element={<CheckOut />} />
-              </Route>
-            )}
 
-            {userData.type === "admin" && (
-              <Route
-                element={
-                  <ProtectedRoute>
-                    <AppLayout isTopOfPage={isTopOfPage} />
-                  </ProtectedRoute>
-                }
-              >
-                <Route index element={<Navigate replace to="dashboard" />} />
-                <Route path={routes.dashboard} element={<Dashboard />} />
-                <Route path={routes.allusers} element={<AllUsers />} />
-                <Route path={routes.allProducts} element={<AllProducts />} />
-                <Route path={routes.orders} element={<Orders />} />
-              </Route>
-            )}
-          </>
+        {!isAdmin && (
+          <Route
+            element={
+              <ProtectedRoute>
+                <Layout isTopOfPage={isTopOfPage} />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Navigate replace to="home" />} />
+            <Route path={routes.home} element={<Home />} />
+            <Route path={routes.shop} element={<Shop />} />
+            <Route path={routes.productdetails} element={<ProductDetails />} />
+            <Route path={routes.cart} element={<Cart />} />
+            <Route path={routes.favourites} element={<Favourites />} />
+            <Route path={routes.checkout} element={<CheckOut />} />
+          </Route>
+        )}
+
+        {isAdmin && (
+          <Route
+            element={
+              <ProtectedRoute>
+                <AppLayout isTopOfPage={isTopOfPage} />
+              </ProtectedRoute>
+            }
+          >
+            <Route index element={<Navigate replace to="dashboard" />} />
+            <Route path={routes.dashboard} element={<Dashboard />} />
+            <Route path={routes.allusers} element={<AllUsers />} />
+            <Route path={routes.allProducts} element={<AllProducts />} />
+            <Route path={routes.orders} element={<Orders />} />
+          </Route>
         )}
       </Routes>
     </Suspense>

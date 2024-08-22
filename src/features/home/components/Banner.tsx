@@ -1,18 +1,14 @@
-import useMediaQuery from "@/hooks/UseMediaQuery";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import Button from "@/ui/Button";
 
 const Year = new Date().getFullYear();
 
-const Banner = () => {
-  const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
+export default function Banner() {
+  const navigate = useNavigate();
   return (
-    <section className="w-full bg-hero-bg py-[125px]">
-      <div
-        className={`${
-          isAboveMediumScreens ? "flex-row" : "flex-col"
-        }  w-5/6 mx-auto flexBetween gap-12`}
-      >
+    <section className="w-full bg-hero-bg pb-10 pt-[80px] md:h-screen md:pb-0">
+      <div className={`flexBetween mx-auto w-5/6 flex-col gap-12 md:flex-row`}>
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -21,28 +17,22 @@ const Banner = () => {
             hidden: { opacity: 0, x: -50 },
             visible: { opacity: 1, x: 0 },
           }}
-          className={`text-center md:text-left md:basis-3/5`}
+          className={`mt-10 space-y-2 text-center text-primary-color md:mt-0 md:basis-3/5 md:text-left`}
         >
-          <p className="text-primary-color font-[500]">
-            Trending Product in {Year}
-          </p>
-          <h2 className="text-primary-color text-3xl md:text-[2.3rem] font-[600] my-2 leading-[48px]">
+          <p className="font-medium ">Trending Product in {Year}</p>
+          <h2 className="text-2xl font-semibold md:text-4xl">
             Make your Interior More Minimalistic & Modern
           </h2>
-          <p className="text-primary-color leading-[28px]">
+          <p className="leading-[28px]">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Sint
             perspiciatis natus totam eaque distinctio esse a. Beatae repudiandae
             dolorum accusantium.
           </p>
-          <motion.button
-            aria-label="Go-To-Shop"
-            className="mt-7"
-            whileTap={{ scale: 1.1 }}
-          >
-            <Link className="btn btn-banner mt-7 md:mt-11" to="/shop">
+          <motion.div whileTap={{ scale: 1.1 }} className="w-full md:w-[150px]">
+            <Button ArialLabel="Go-To-Shop" onClick={() => navigate("/shop")}>
               SHOP NOW
-            </Link>
-          </motion.button>
+            </Button>
+          </motion.div>
         </motion.div>
 
         <img
@@ -53,6 +43,4 @@ const Banner = () => {
       </div>
     </section>
   );
-};
-
-export default Banner;
+}

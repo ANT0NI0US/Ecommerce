@@ -5,6 +5,12 @@ export enum selectedPageNum {
   ContactUs = "contactus",
 }
 
+// nav bar
+export interface arrLinks {
+  path: string;
+  text: string;
+}
+
 export interface setSelectedPageProps {
   setSelectedPage: (page: selectedPageNum) => void;
 }
@@ -69,6 +75,20 @@ export interface clockProps {
   label: string;
 }
 
+// login user
+export interface loginServiceState {
+  isLoading: boolean;
+  user: userProps | object;
+  errors: string | null;
+  isAdmin: boolean;
+  isAuthenticated: boolean | undefined;
+  token: string | null;
+}
+
+export interface loginState {
+  login: loginServiceState;
+}
+
 // admin
 
 // dashboard
@@ -79,7 +99,7 @@ export interface serviceProps {
 
 // all users
 export interface userProps {
-  id: string;
+  id?: string;
   displayName: string;
   email: string;
   photoURL: string;

@@ -60,6 +60,10 @@ section {
   @apply flex items-center justify-center;
 }
 
+.input {
+  @apply w-full rounded-md border border-gray-200 p-[10px] outline-none transition-all placeholder:text-sm;
+}
+
 .input_style {
   @apply w-full rounded-md border-[1px] border-primary-color px-5 py-2 text-primary-color outline-none;
 }

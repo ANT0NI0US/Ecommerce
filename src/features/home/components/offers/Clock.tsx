@@ -16,19 +16,12 @@ const allClocks: Array<clockProps> = [
   },
 ];
 
-const Clock = () => {
+export default function Clock() {
   return (
-    <div className="flexCenter flex-wrap gap-2 sm:gap-5 my-[16px] mx-[10px]">
+    <div className="flexCenter my-[16px] flex flex-wrap gap-2 sm:gap-5 md:justify-start">
       {allClocks.map((clock, index) => (
-        <ClockList
-          key={index}
-          clock={clock}
-          index={index}
-          allClockLength={allClocks.length}
-        />
+        <ClockList key={index} clock={clock} />
       ))}
     </div>
   );
-};
-
-export default Clock;
+}
