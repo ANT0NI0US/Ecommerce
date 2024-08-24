@@ -1,10 +1,10 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, MutableRefObject } from "react";
 
-export function useOutsideClick(
+export function useOutsideClick<T extends HTMLElement>(
   handler: () => void,
-  listenCapturing: boolean = true
-) {
-  const ref = useRef<HTMLElement | null>(null);
+  listenCapturing: boolean = true,
+): MutableRefObject<T | null> {
+  const ref = useRef<T | null>(null);
 
   useEffect(() => {
     function handleClick(e: MouseEvent) {

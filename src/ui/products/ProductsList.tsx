@@ -2,9 +2,9 @@ import { motion } from "framer-motion";
 import ProductCard from "./ProductCard";
 import { newProductProps } from "@/shared/types";
 
-const ProductList = ({ items }: { items: newProductProps[] }) => {
+export default function ProductsList({ items }: { items: newProductProps[] }) {
   return (
-    <div className="flex flex-col gap-4 xs:grid xs:grid-cols-[repeat(auto-fill,minmax(350px,1fr))]">
+    <div className="flex flex-col gap-8 xs:grid xs:grid-cols-[repeat(auto-fill,minmax(350px,1fr))]">
       {items?.map((item: newProductProps) => (
         <motion.div
           key={item.id}
@@ -21,6 +21,4 @@ const ProductList = ({ items }: { items: newProductProps[] }) => {
       ))}
     </div>
   );
-};
-
-export default ProductList;
+}

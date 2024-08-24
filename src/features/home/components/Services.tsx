@@ -15,29 +15,29 @@ const serviceData: serviceProps[] = [
   {
     icon: <FaTruck className={`${iconStyle}`} />,
     title: "Free Shipping",
-    bg: "bg-[#fdefe6]",
+    bg: "bg-card-bg-01",
   },
   {
     icon: <FaRepeat className={`${iconStyle}`} />,
     title: "Easy Returns",
-    bg: "bg-[#ceebe9]",
+    bg: "bg-card-bg-02",
   },
   {
     icon: <MdOutlinePayment className={`${iconStyle}`} />,
     title: "Secure Payment",
-    bg: "bg-[#e2f2b2]",
+    bg: "bg-card-bg-03",
   },
   {
     icon: <RiExchangeDollarLine className={`${iconStyle}`} />,
     title: "Back Guarantee",
-    bg: "bg-[#d6e5fb]",
+    bg: "bg-card-bg-04",
   },
 ];
 
-const Services = () => {
+export default function Services() {
   return (
-    <section className="w-full pb-[60px] pt-[35px]">
-      <div className="flexCenter mx-auto w-5/6 flex-col gap-[10px] md:flex-row">
+    <section className="w-full py-[80px]">
+      <div className="flexCenter mx-auto w-[90%] flex-col gap-[10px] sm:w-5/6 md:flex-row">
         {serviceData.map((item, index) => (
           <div
             key={index}
@@ -47,10 +47,10 @@ const Services = () => {
               {item.icon}
             </div>
             <div>
-              <h3 className="text-xl font-bold  text-primary-color md:text-[0.9rem]">
+              <h3 className="text-xl font-bold md:text-[0.9rem]">
                 {item.title}
               </h3>
-              <p className="text-base text-[#474747] md:text-sm">
+              <p className="text-base text-light-color md:text-sm">
                 Lorem ipsum dolor sit amet.
               </p>
             </div>
@@ -59,6 +59,4 @@ const Services = () => {
       </div>
     </section>
   );
-};
-
-export default Services;
+}

@@ -10,12 +10,12 @@ export default function BigScreenLinks() {
           key={item.text}
           className={`flexCenter h-full w-full ${
             index === 0 ? "border-l-2" : ""
-          } border-r-2 border-dark-gray text-lg font-semibold text-primary-color transition-all hover:bg-white/45 hover:font-extrabold`}
+          } hover:bg-main-color/15 border-main-color border-r-2 text-lg font-semibold transition-all hover:font-extrabold`}
         >
           <NavLink
             className={(navClass) =>
               navClass.isActive
-                ? "flexCenter block h-full w-full border-t-8 border-dark-gray bg-light-gray px-7 py-3 text-xl font-extrabold text-white"
+                ? "flexCenter bg-main-color text-light-color h-full w-full border-t-8 border-secondary-color px-7 py-3 text-xl font-extrabold"
                 : "flexCenter h-full w-full px-7 py-3"
             }
             to={item?.path}

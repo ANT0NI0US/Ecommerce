@@ -12,6 +12,8 @@ interface allActionsProps {
   href: string;
   value: number;
 }
+const iconStyle: string =
+  "cursor-pointer transition-all hover:text-primary-color/[0.8]";
 
 export default function NavbarActions() {
   const navigate = useNavigate();
@@ -22,13 +24,13 @@ export default function NavbarActions() {
 
   const allActions: Array<allActionsProps> = [
     {
-      icon: <FaHeart className="cursor-pointer" size={20} />,
+      icon: <FaHeart className={iconStyle} size={20} />,
       text: "Favourites",
       href: "/favourites",
       value: totalFavouriteItemsQuantity,
     },
     {
-      icon: <FaShoppingBag className="cursor-pointer" size={20} />,
+      icon: <FaShoppingBag className={iconStyle} size={20} />,
       text: "Cart",
       href: "/cart",
       value: totalQuantity,
@@ -36,20 +38,24 @@ export default function NavbarActions() {
   ];
 
   return (
-    <div className="flexCenter gap-2 sm:gap-5">
-      {allActions.map((action: allActionsProps) => (
-        <div
-          key={action.text}
-          title={action.text}
-          className="relative"
-          onClick={() => navigate(`${action.href}`)}
-        >
-          {action.icon}
-          <span className="flexCenter absolute right-[-7px] top-[-15px] z-10 h-[20px] w-[20px] rounded-full bg-primary-color p-1 text-xs font-medium text-white">
-            {action.value}
-          </span>
-        </div>
-      ))}
+    <div className="flexBetween gap-3 sm:gap-5">
+      <div className="flexBetween gap-3 ">
+        {allActions.map((action: allActionsProps) => (
+          <div
+            key={action.text}
+            title={action.text}
+            className="relative "
+            onClick={() => navigate(`${action.href}`)}
+          >
+            {action.icon}
+            {action.value > 0 && (
+              <span className="flexCenter absolute left-[11px] top-[-11px] z-10 h-[20px] w-[20px] rounded-full bg-[#2e7d32] p-1 text-xs text-white">
+                {action.value}
+              </span>
+            )}
+          </div>
+        ))}
+      </div>
       <ProfilePhoto />
     </div>
   );

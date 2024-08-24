@@ -1,4 +1,4 @@
-import ProductList from "@/components/UI/product/ProductList";
+import ProductsList from "@/ui/products/ProductsList";
 import Header from "@/shared/Header";
 import { productCardProps } from "@/shared/types";
 
@@ -9,11 +9,10 @@ interface sameCategoryProps {
 const ProductsInTheSameCategory = ({ sameCategories }: sameCategoryProps) => {
   return (
     <section className="w-full py-[60px]">
-      <div className="w-5/6 mx-auto">
+      <div className="mx-auto w-5/6">
         <Header textHead="You might also like" />
-        <div className="grid grid-cols-[repeat(auto-fill,minmax(250px,1fr))] gap-[20px]">
-          <ProductList items={sameCategories} />
-        </div>
+
+        <ProductsList items={sameCategories} />
       </div>
     </section>
   );

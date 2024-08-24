@@ -5,8 +5,8 @@ import ExperienceThree from "../../../assets/images/materials-three.png";
 
 export default function Materials() {
   return (
-    <section className="w-full bg-hero-bg pb-0 pt-[125px] md:h-[calc(100vh-80px)] md:pb-[125px]">
-      <div className="flexBetween mx-auto  w-full flex-col gap-12 overflow-hidden md:flex-row">
+    <section className="flexCenter w-full bg-secondary-color pb-0 pt-[80px] md:h-[calc(100vh-80px)] md:pb-[80px]">
+      <div className="flexBetween mx-auto w-full flex-col gap-12 overflow-hidden md:flex-row">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -15,13 +15,13 @@ export default function Materials() {
             hidden: { opacity: 0, x: -50 },
             visible: { opacity: 1, x: 0 },
           }}
-          className="w-5/6 pl-0 text-center md:basis-3/5 md:pl-5 md:text-left"
+          className="w-[90%] pl-0 text-center sm:w-5/6 md:basis-3/5 md:pl-5 md:text-left"
         >
-          <p className="font-[500] text-[#E58411]">MATERIALS</p>
-          <h2 className="my-2 text-2xl font-semibold text-primary-color md:text-4xl">
+          <p className="font-[500]">MATERIALS</p>
+          <h2 className="text-light-color my-2 text-2xl font-semibold md:text-4xl">
             Very Serious Materials For Making Furniture
           </h2>
-          <p className="leading-[28px] text-primary-color">
+          <p className="leading-[28px]">
             Because Panto was very serious about designing furniture for our
             environment, using a very expensive and famous capital but at a
             reltively low price.
