@@ -2,7 +2,13 @@ import { motion } from "framer-motion";
 import ProductCard from "./ProductCard";
 import { newProductProps } from "@/shared/types";
 
-export default function ProductsList({ items }: { items: newProductProps[] }) {
+export default function ProductsList({
+  items,
+  BorderColor,
+}: {
+  items: newProductProps[];
+  BorderColor?: string;
+}) {
   return (
     <div className="flex flex-col gap-8 xs:grid xs:grid-cols-[repeat(auto-fill,minmax(350px,1fr))]">
       {items?.map((item: newProductProps) => (
@@ -16,7 +22,7 @@ export default function ProductsList({ items }: { items: newProductProps[] }) {
             visible: { opacity: 1, x: 0 },
           }}
         >
-          <ProductCard key={item.id} item={item} />
+          <ProductCard key={item.id} item={item} BorderColor={BorderColor} />
         </motion.div>
       ))}
     </div>

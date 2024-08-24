@@ -10,8 +10,8 @@ export default function Home() {
   return (
     <Helmet title="Home">
       <Banner />
-      <Services />
       <NewArrivals />
+      <Services />
       <Experiences />
       <Offers />
       <Materials />

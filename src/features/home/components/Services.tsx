@@ -36,7 +36,7 @@ const serviceData: serviceProps[] = [
 
 export default function Services() {
   return (
-    <section className="w-full py-[80px]">
+    <section className="w-full bg-secondary-color py-[80px]">
       <div className="flexCenter mx-auto w-[90%] flex-col gap-[10px] sm:w-5/6 md:flex-row">
         {serviceData.map((item, index) => (
           <div

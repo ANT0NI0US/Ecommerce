@@ -25,7 +25,7 @@ export default function SmallScreenLinks({
         {/* SIDEBAR */}
         <nav
           ref={ref}
-          className="fixed bottom-0 right-0 z-[101] h-full w-[180px] bg-secondary-color py-16 shadow-md drop-shadow-xl xs:w-[300px]"
+          className="fixed bottom-0 right-0 z-[101] h-full w-[180px] bg-main-color py-16 shadow-md drop-shadow-xl xs:w-[300px]"
         >
           {/* CLOSE SIDEBAR BUTTON*/}
           <div className="absolute right-2 top-3 w-[35px]">
@@ -36,7 +36,7 @@ export default function SmallScreenLinks({
               Font="!rounded-full !h-[35px]"
             >
               <div className="flexCenter">
-                <IoCloseSharp className="text-white" size={20} />
+                <IoCloseSharp className="text-light-color" size={20} />
               </div>
             </Button>
           </div>
@@ -46,14 +46,14 @@ export default function SmallScreenLinks({
             {links.map((item: arrLinks, index: number) => (
               <div
                 key={item.text}
-                className={`flexCenter h-[70px] w-full ${
+                className={` ${
                   index === 0 ? "border-t-2" : ""
-                } border-main-color hover:bg-main-color/15 border-b-2 text-lg font-semibold transition-all hover:font-extrabold`}
+                } flexCenter h-[70px] w-full border-b-2 border-secondary-color text-lg font-semibold transition-all hover:bg-secondary-color/15 hover:font-extrabold`}
               >
                 <NavLink
                   className={(navClass) =>
                     navClass.isActive
-                      ? "flexCenter bg-main-color h-full w-full border-r-8 border-secondary-color px-7 py-3 text-xl font-extrabold text-light-gray"
+                      ? "flexCenter h-full w-full border-r-8 border-light-color bg-secondary-color/15 px-7 py-3 text-xl font-extrabold text-light-gray"
                       : "flexCenter h-full w-full px-7 py-3"
                   }
                   to={item.path}

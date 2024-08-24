@@ -8,14 +8,14 @@ export default function BigScreenLinks() {
       {links?.map((item: arrLinks, index: number) => (
         <div
           key={item.text}
-          className={`flexCenter h-full w-full ${
+          className={`${
             index === 0 ? "border-l-2" : ""
-          } hover:bg-main-color/15 border-main-color border-r-2 text-lg font-semibold transition-all hover:font-extrabold`}
+          } flexCenter h-full w-full border-r-2 border-secondary-color text-lg font-semibold transition-all hover:bg-secondary-color/15 hover:font-extrabold`}
         >
           <NavLink
             className={(navClass) =>
               navClass.isActive
-                ? "flexCenter bg-main-color text-light-color h-full w-full border-t-8 border-secondary-color px-7 py-3 text-xl font-extrabold"
+                ? "flexCenter h-full w-full border-b-8 border-light-color bg-secondary-color/15 px-7 py-3 text-xl font-extrabold text-light-color"
                 : "flexCenter h-full w-full px-7 py-3"
             }
             to={item?.path}

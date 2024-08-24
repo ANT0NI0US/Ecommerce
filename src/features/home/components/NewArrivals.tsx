@@ -34,7 +34,7 @@ export default function NewArrivals() {
   if (isLoading) return <Spinner height="h-[200px]" />;
 
   return (
-    <section className="w-full pb-[80px]">
+    <section className="w-full bg-secondary-color pt-[80px]">
       <div className="mx-auto w-[90%] sm:w-5/6">
         <Header textHead="New Arrivals" />
 
