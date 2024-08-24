@@ -1,6 +1,6 @@
 import ProductsList from "@/ui/products/ProductsList";
 import { newProductProps } from "@/shared/types";
-import { FadeLoader } from "react-spinners";
+import Spinner from "@/ui/spinner/Spinner";
 
 interface allProductsProps {
   isLoading: boolean;
@@ -8,16 +8,14 @@ interface allProductsProps {
 }
 
 const Allproducts = ({ productsData, isLoading }: allProductsProps) => {
+  if (isLoading) return <Spinner height="h-[200px]" />;
+
   return (
     <section className="mx-auto w-5/6 pb-[60px]">
-      {isLoading ? (
-        <div className="flexCenter">
-          <FadeLoader color="#36d7b7" />
-        </div>
-      ) : productsData.length === 0 ? (
+      {productsData.length === 0 ? (
         <div className="text-primary-color">No Products Are Found!</div>
       ) : (
-        <ProductsList items={productsData} />
+        <ProductsList items={productsData} BorderColor="#163b48" />
       )}
     </section>
   );

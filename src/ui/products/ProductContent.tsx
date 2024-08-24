@@ -7,7 +7,13 @@ import { cartActions } from "@/store/slice/cartSlice";
 import { toast } from "react-toastify";
 import { newProductProps } from "@/shared/types";
 
-export default function ProductContent({ item }: { item: newProductProps }) {
+export default function ProductContent({
+  item,
+  BorderColor,
+}: {
+  item: newProductProps;
+  BorderColor: string;
+}) {
   const dispatch = useDispatch<AppDispatch>();
 
   const addToCart = () => {
@@ -30,9 +36,14 @@ export default function ProductContent({ item }: { item: newProductProps }) {
         <h3 className="mt-[15px] text-[1.3rem] font-[600] text-light-color gridScreen:text-[1.2rem]">
           <Link to={`/shop/${id}`}>{productName}</Link>
         </h3>
-        <p className="text-sm capitalize">{category}</p>
+        <p className="capitalize">{category}</p>
       </div>
-      <div className="flexBetween border-t-[0.5px] border-secondary-color p-3 transition-all duration-200 group-hover:border-primary-color">
+      <div
+        className="flexBetween border-t-[0.5px] p-3 transition-all duration-200 group-hover:!border-primary-color"
+        style={{
+          borderColor: BorderColor,
+        }}
+      >
         <span className="text-lg font-medium">${price}</span>
         <motion.div
           onClick={addToCart}
