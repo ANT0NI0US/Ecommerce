@@ -1,5 +1,5 @@
 import HeadText from "@/shared/HeadText";
-import MotionDivContactUs from "./MotionDivContactUs";
+// import MotionDivContactUs from "./MotionDivContactUs";
 
 interface Props {
   textHead: string;
@@ -7,9 +7,9 @@ interface Props {
 
 const Header = ({ textHead }: Props) => {
   return (
-    <MotionDivContactUs tailwindClass="text-center" y={-50}>
-      <HeadText>{textHead}</HeadText>
-    </MotionDivContactUs>
+    // <MotionDivContactUs tailwindClass="text-center" y={-50}>
+    <HeadText>{textHead}</HeadText>
+    // </MotionDivContactUs>
   );
 };
 

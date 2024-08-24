@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Header from "@/shared/Header";
-import ProductList from "@/components/UI/product/ProductList";
+import ProductsList from "@/ui/products/ProductsList";
 import { getProducts } from "@/store/service/productService";
 import { productCardProps, productState } from "@/shared/types";
 import { AppDispatch } from "@/store";
@@ -31,15 +31,14 @@ export default function NewArrivals() {
       });
   }, [dispatch]);
 
+  if (isLoading) return <Spinner height="h-[200px]" />;
+
   return (
-    <section className="w-full py-[125px]">
-      <div className="mx-auto w-5/6">
+    <section className="w-full pb-[80px]">
+      <div className="mx-auto w-[90%] sm:w-5/6">
         <Header textHead="New Arrivals" />
-        {isLoading ? (
-          <Spinner height="h-[200px]" />
-        ) : (
-          <ProductList items={mobileWirlessProducts} />
-        )}
+
+        <ProductsList items={mobileWirlessProducts} />
       </div>
     </section>
   );

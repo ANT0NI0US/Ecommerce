@@ -12,7 +12,7 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="fixed top-0 z-30 h-[80px] w-full bg-hero-bg shadow-md drop-shadow-sm">
+      <div className="fixed top-0 z-30 h-[80px] w-full bg-secondary-color shadow-md drop-shadow-sm">
         <div className="flexBetween mx-auto h-full w-5/6 gap-10">
           {/* LOGO */}
           <Logo />

@@ -5,103 +5,65 @@
 @tailwind components;
 @tailwind utilities;
 
-html,
-body,
-#root,
-.app {
-  height: 100%;
-  width: 100%;
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: "Montserrat", sans-serif;
-  @apply text-gray-500;
+  @apply text-primary-color;
+  @apply bg-main-color;
 }
 
-p {
-  color: var(--small-text-color);
-  font-size: 1rem;
+svg {
+  font-size: 24px;
+  cursor: pointer;
 }
 
-h1,
-h2 {
-  font-size: var(--heading-fontSize);
+img {
+  @apply object-cover object-center;
 }
 
-ul {
-  list-style: none;
+@layer components {
+  .input {
+    @apply w-full rounded-md border border-gray-200 p-[10px] outline-none transition-all placeholder:text-sm;
+  }
+
+  .flexCenter {
+    @apply flex items-center justify-center;
+  }
+
+  .flexBetween {
+    @apply flex items-center justify-between;
+  }
+  .flexEvenly {
+    @apply flex items-center justify-evenly;
+  }
 }
 
-a {
-  text-decoration: none;
-  color: unset;
-}
-section {
-  @apply flex items-center justify-center;
-}
-
-.btn {
-  @apply px-5 py-2;
-  @apply rounded;
-  @apply transition-colors duration-[0.5s];
-  @apply w-full;
-}
-
-.btn-banner {
-  @apply bg-primary-color font-bold text-white hover:bg-slate-600;
-}
-
-.btn-timer {
-  @apply bg-white font-bold text-primary-color hover:bg-slate-300;
-}
-
-.flexBetween {
-  @apply flex items-center justify-between;
-}
-
-.flexCenter {
-  @apply flex items-center justify-center;
-}
-
-.input {
-  @apply w-full rounded-md border border-gray-200 p-[10px] outline-none transition-all placeholder:text-sm;
-}
-
-.input_style {
-  @apply w-full rounded-md border-[1px] border-primary-color px-5 py-2 text-primary-color outline-none;
-}
-
-.input_checkout {
-  @apply w-full rounded-md border-[1px] border-card-bg-01 px-5 py-2 text-primary-color outline-none;
-}
-
-.flexEvenly {
-  @apply flex items-center justify-evenly;
-}
-
-.active-stop-icon {
-  @apply h-4 w-4 bg-red-400;
-}
-
+/* scrollbar Syles */
 *::-webkit-scrollbar {
-  width: 6px;
+  width: 5px;
+  width: 5px;
 }
-
-/* Style the scrollbar thumb */
-*::-webkit-scrollbar-thumb {
-  background-color: #0a1d37;
-  border-radius: 0.375rem;
-}
-
-/* Style the scrollbar track */
 *::-webkit-scrollbar-track {
-  background-color: transparent;
+  border-radius: 20px;
+  background-color: #bcd2e0;
 }
 
-/* Hide the scrollbar corner */
-*::-webkit-scrollbar-corner {
-  display: none;
+*::-webkit-scrollbar-thumb {
+  border-radius: 20px;
+  @apply bg-primary-color;
 }
-/* add * behind the label that behind the requierd input */
-label:has(+ [required])::after {
-  content: "*";
-  color: red;
-  padding-left: 3px;
+
+/* Vertical scrollbar */
+*::-webkit-scrollbar:vertical {
+  width: 10px;
+}
+
+/* Horizontal scrollbar */
+*::-webkit-scrollbar:horizontal {
+  height: 10px;
 }

@@ -3,7 +3,7 @@ interface Props {
 }
 
 const HeadText = ({ children }: Props) => {
-  return <div className="text-3xl font-bold text-primary-color">{children}</div>;
+  return <div className="text-3xl font-bold">{children}</div>;
 };
 
 export default HeadText;

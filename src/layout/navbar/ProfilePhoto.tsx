@@ -16,11 +16,12 @@ interface CurrentUser {
 
 export default function ProfilePhoto() {
   const [toggleImageMenu, setToggleImageMenu] = useState<boolean>(false);
+  const closeImageMenu = () => setToggleImageMenu(false);
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
   const currentUser = useAuth();
   const { photoURL } = currentUser as CurrentUser;
-  const ref = useOutsideClick(() => setToggleImageMenu(false));
+  const ref = useOutsideClick<HTMLDivElement>(() => closeImageMenu());
 
   const signout = () => {
     signOut(auth)
@@ -37,9 +38,12 @@ export default function ProfilePhoto() {
   };
 
   return (
-    <div ref={ref} className="flexCenter relative">
+    <div
+      ref={ref}
+      className="flexCenter relative"
+      onClick={() => setToggleImageMenu((prev) => !prev)}
+    >
       <motion.img
-        onClick={() => setToggleImageMenu((prev) => !prev)}
         whileTap={{ scale: 1.2 }}
         className="h-[40px] w-[40px] cursor-pointer rounded-full"
         src={`${
@@ -49,9 +53,9 @@ export default function ProfilePhoto() {
       />
 
       {toggleImageMenu && (
-        <div className="flexCenter absolute bottom-[-50px] left-[50%] z-50 translate-x-[-50%] rounded-md border border-light-gray bg-card-bg-01 p-[5px] text-center text-sm shadow-lg">
+        <div className="flexCenter absolute bottom-[-40px] left-[50%] z-50 translate-x-[-50%] rounded-md border border-main-color bg-secondary-color p-[3px] text-center text-sm shadow-lg">
           <p
-            className="hover:bg-blue cursor-pointer rounded-md p-[5px] text-primary-color transition-all hover:bg-primary-color hover:text-card-bg-01"
+            className="hover:bg-blue cursor-pointer rounded-md px-2 py-1 font-semibold text-primary-color transition-all hover:bg-primary-color hover:text-light-color"
             onClick={signout}
           >
             Logout

@@ -28,11 +28,11 @@ export default function Button({
   const styles: Record<typeof variation, string> = {
     primary:
       base +
-      ` bg-primary-color font-bold text-white ${!disabled && !loading && "hover:bg-opacity-[0.8]"}`,
+      ` bg-primary-color font-bold text-light-color ${!disabled && !loading && "hover:bg-opacity-[0.8]"}`,
     secondary:
       base +
       ` bg-white font-bold text-primary-color
-    ${!disabled && !loading && "hover:bg-primary-color hover:text-white"}`,
+    ${!disabled && !loading && "hover:bg-primary-color hover:text-light-color"}`,
     delete:
       base +
       ` bg-[#2e7d32] text-white border-darkB 

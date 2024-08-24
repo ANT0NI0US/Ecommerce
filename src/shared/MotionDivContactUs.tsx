@@ -11,7 +11,7 @@ const MotionDivContactUs = ({ children, tailwindClass, delay, y }: Props) => {
   return (
     <motion.div
       initial="hidden"
-      whileInView="visible"
+      animate="visible"
       viewport={{ once: true, amount: 0.5 }}
       transition={{ delay, duration: 0.9 }}
       variants={{
