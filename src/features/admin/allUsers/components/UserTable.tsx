@@ -76,7 +76,7 @@ const UserTable = ({ allUsers, isLoading }: userTableProps) => {
                     deleteSpecificUser(user.id);
                   }}
                   whileTap={{ scale: 1.2 }}
-                  className=" flexCenter cursor-pointer gap-1 rounded-full bg-red-700 px-4 py-2 text-white"
+                  className=" flexCenter cursor-pointer gap-1 rounded-full bg-red-700 px-4 py-2 text-light-color"
                 >
                   <AiFillDelete className="text-[1.2rem]" />
                   <span>Delete</span>

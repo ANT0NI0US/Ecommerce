@@ -15,7 +15,7 @@ const categories: Array<categoriesProps> = [
 export default function TopCategories() {
   return (
     <div className="flex flex-col items-center gap-[15px] sm:items-start ">
-      <h4 className="text-light-color mb-3 text-xl font-extrabold">
+      <h4 className="text-orange-color mb-3 text-xl font-extrabold">
         Top Categories
       </h4>
       <div className="flex flex-col gap-2">

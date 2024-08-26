@@ -68,13 +68,13 @@ const AddProduct = ({ showModal, closeModal }: Props) => {
         }`}
       ></div>
       <div
-        className={`absolute left-1/2 top-1/2 z-[900000] h-[500px] max-h-[500px] w-[85%] -translate-x-1/2 -translate-y-1/2 transform overflow-y-auto overflow-x-hidden rounded-md bg-white transition-all duration-[0.1s] ease-out sm:w-[60%] md:w-[50%]  ${
+        className={`absolute left-1/2 top-1/2 z-[900000] h-[500px] max-h-[500px] w-[85%] -translate-x-1/2 -translate-y-1/2 transform overflow-y-auto overflow-x-hidden rounded-md bg-light-color transition-all duration-[0.1s] ease-out sm:w-[60%] md:w-[50%]  ${
           showModal ? "visible" : "invisible"
         }`}
       >
         <div
           onClick={handleCloseModal}
-          className="flexCenter absolute right-2 top-1 h-8 w-8 cursor-pointer rounded-full bg-red-500 font-semibold text-white duration-[0.1s] hover:bg-red-600 hover:font-bold "
+          className="flexCenter absolute right-2 top-1 h-8 w-8 cursor-pointer rounded-full bg-red-500 font-semibold text-light-color duration-[0.1s] hover:bg-red-600 hover:font-bold "
         >
           <span>x</span>
         </div>
@@ -186,7 +186,7 @@ const AddProduct = ({ showModal, closeModal }: Props) => {
                 id="productImage"
               />
               <input
-                className="input_style cursor-pointer duration-300 hover:bg-primary-color hover:text-white"
+                className="input_style cursor-pointer duration-300 hover:bg-primary-color hover:text-light-color"
                 type="button"
                 value="Add Product Image..."
                 onClick={() => document.getElementById("productImage")?.click()}

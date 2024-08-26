@@ -51,7 +51,7 @@ const FavProductTableContent = ({
         <motion.div
           onClick={() => addToCart(product)}
           whileTap={{ scale: 1.2 }}
-          className=" flexCenter cursor-pointer rounded-full bg-primary-color px-4 py-2 text-white"
+          className=" flexCenter cursor-pointer rounded-full bg-primary-color px-4 py-2 text-light-color"
         >
           <IoMdAdd className="text-[1.2rem]" />
           Add To Cart

@@ -57,11 +57,13 @@ const Login = () => {
   return (
     <form className="relative w-full space-y-8" onSubmit={handleSubmit(signIn)}>
       <div>
-        <h1 className="text-center text-4xl font-extrabold text-white">
+        <h1 className="text-center text-4xl font-extrabold text-light-color">
           Welcome To
           <span className="font-black text-primary-color"> STOREIFY</span>
         </h1>
-        <h3 className="text-center text-lg font-bold text-white">Sign In</h3>
+        <h3 className="text-center text-lg font-bold text-light-color">
+          Sign In
+        </h3>
       </div>
 
       <Input
@@ -103,7 +105,7 @@ const Login = () => {
         Login
       </Button>
 
-      <p className="mx-auto text-center text-white">
+      <p className="mx-auto text-center text-light-color">
         Don't have an account?
         <Link
           className="pl-1 underline transition-all hover:font-semibold"

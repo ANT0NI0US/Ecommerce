@@ -53,7 +53,7 @@ export default function SmallScreenLinks({
                 <NavLink
                   className={(navClass) =>
                     navClass.isActive
-                      ? "flexCenter h-full w-full border-r-8 border-light-color bg-secondary-color/15 px-7 py-3 text-xl font-extrabold text-light-gray"
+                      ? "flexCenter border-orange-color h-full w-full border-r-8 bg-secondary-color/15 px-7 py-3 text-xl font-extrabold text-light-gray"
                       : "flexCenter h-full w-full px-7 py-3"
                   }
                   to={item.path}

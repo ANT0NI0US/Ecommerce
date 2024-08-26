@@ -9,7 +9,7 @@ interface serviceProps {
   bg: string;
 }
 
-const iconStyle: string = "h-7 w-7 text-white md:h-5 md:w-5";
+const iconStyle: string = "h-7 w-7 text-light-color md:h-5 md:w-5";
 
 const serviceData: serviceProps[] = [
   {
@@ -43,7 +43,7 @@ export default function Services() {
             key={index}
             className={`${item.bg} flexCenter min-h-[125px] w-full flex-col gap-[15px] rounded-md p-5 text-center md:flex-row md:text-left`}
           >
-            <div className="flexCenter rounded-full bg-primary-color p-3 md:p-[10px]">
+            <div className="flexCenter bg-orange-color rounded-full p-3 md:p-[10px]">
               {item.icon}
             </div>
             <div>

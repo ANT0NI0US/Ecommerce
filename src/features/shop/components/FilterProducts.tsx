@@ -1,5 +1,13 @@
+import { useState, useEffect } from "react";
 import { newProductProps } from "@/shared/types";
+import Choose from "@/ui/Choose";
+import Input from "@/ui/Input";
 import { IoIosSearch } from "react-icons/io";
+import { MultiValue, SingleValue } from "react-select";
+import GridContainer from "@/ui/GridContainer";
+
+const categories = ["Sofa", "Mobile", "Chair", "Watch", "Wireless"];
+const sorts = ["Ascending", "Descending"];
 
 interface filteredProductsProps {
   handleChangingProduct: (newProductData: newProductProps[]) => void;
@@ -7,99 +15,122 @@ interface filteredProductsProps {
   productsData: newProductProps[];
 }
 
-const FilterProducts = ({
+interface Option {
+  value: string;
+  label: string;
+}
+
+export default function FilterProducts({
   allProducts,
-  productsData,
   handleChangingProduct,
-}: filteredProductsProps) => {
-  const handleFilter = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedFilter = e.target.value;
-    if (selectedFilter === "sofa") {
-      const fileredData = allProducts.filter(
-        (product: newProductProps) => product.category === "sofa",
-      );
-      handleChangingProduct(fileredData);
-    } else if (selectedFilter === "mobile") {
-      const fileredData = allProducts.filter(
-        (product: newProductProps) => product.category === "mobile",
-      );
-      handleChangingProduct(fileredData);
-    } else if (selectedFilter === "chair") {
-      const fileredData = allProducts.filter(
-        (product: newProductProps) => product.category === "chair",
-      );
-      handleChangingProduct(fileredData);
-    } else if (selectedFilter === "watch") {
-      const fileredData = allProducts.filter(
-        (product: newProductProps) => product.category === "watch",
-      );
-      handleChangingProduct(fileredData);
-    } else if (selectedFilter === "wireless") {
-      const fileredData = allProducts.filter(
-        (product: newProductProps) => product.category === "wireless",
-      );
-      handleChangingProduct(fileredData);
+}: filteredProductsProps) {
+  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+  const [sortOption, setSortOption] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState<string>("");
+
+  const handleFilter = (
+    selectedOptions:
+      | MultiValue<Option>
+      | readonly Option[]
+      | SingleValue<Option>
+      | null,
+  ) => {
+    if (Array.isArray(selectedOptions)) {
+      const selectedValues = selectedOptions.map((option) => option.value);
+      setSelectedCategories(selectedValues);
     } else {
-      handleChangingProduct(allProducts);
+      setSelectedCategories([]);
     }
   };
 
-  const handleSortBy = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedSort = e.target.value;
-    if (selectedSort === "ascending") {
-      const sortedData = [...productsData].sort((a, b) => a.price - b.price);
-      handleChangingProduct(sortedData);
-    } else if (selectedSort === "descending") {
-      const sortedData = [...productsData].sort((a, b) => b.price - a.price);
-      handleChangingProduct(sortedData);
+  const handleSortBy = (
+    selectedOptions:
+      | MultiValue<Option>
+      | readonly Option[]
+      | SingleValue<Option>
+      | null,
+  ) => {
+    if (selectedOptions && "value" in selectedOptions) {
+      setSortOption(selectedOptions.value);
+    } else {
+      setSortOption(null);
     }
   };
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const searchTerm = e.target.value;
-    const filteredData = allProducts.filter((product: newProductProps) =>
-      product.productName.toLowerCase().includes(searchTerm.toLowerCase()),
-    );
-    handleChangingProduct(filteredData);
+    setSearchTerm(e.target.value);
   };
+
+  useEffect(() => {
+    let filteredProducts = [...allProducts];
+
+    // Filter by category
+    if (selectedCategories.length > 0) {
+      filteredProducts = filteredProducts.filter((product) =>
+        selectedCategories.includes(product.category.toLowerCase()),
+      );
+    }
+
+    // Filter by search term
+    if (searchTerm) {
+      filteredProducts = filteredProducts.filter((product) =>
+        product.productName.toLowerCase().includes(searchTerm.toLowerCase()),
+      );
+    }
+
+    // Sort the products
+    if (sortOption) {
+      if (sortOption === "ascending") {
+        filteredProducts.sort((a, b) => a.price - b.price);
+      } else if (sortOption === "descending") {
+        filteredProducts.sort((a, b) => b.price - a.price);
+      }
+    }
+
+    // Update the displayed products
+    handleChangingProduct(filteredProducts);
+  }, [
+    selectedCategories,
+    sortOption,
+    searchTerm,
+    allProducts,
+    handleChangingProduct,
+  ]);
+
   return (
-    <section className="mx-auto w-5/6 py-[60px]">
-      <div className="grid w-full grid-cols-12 gap-4 sm:gap-8">
-        <div className="col-span-12 sm:col-span-4 md:col-span-3">
-          <select
-            onChange={handleFilter}
-            className="cursor-pointer rounded-[8px] border border-primary-color bg-primary-color px-5 py-2 text-[0.9rem] text-white"
-          >
-            <option>Filter by Category</option>
-            <option value="sofa">Sofa</option>
-            <option value="mobile">Mobile</option>
-            <option value="chair">Chair</option>
-            <option value="watch">Watch</option>
-            <option value="wireless">Wireless</option>
-          </select>
-        </div>
-        <div className="col-span-12 sm:col-span-4 md:col-span-3">
-          <select
-            onChange={handleSortBy}
-            className="cursor-pointer rounded-[8px] border border-primary-color bg-primary-color px-5 py-2 text-[0.9rem] text-white"
-          >
-            <option>Sort By</option>
-            <option value="ascending">Ascending</option>
-            <option value="descending">Descending</option>
-          </select>
-        </div>
-        <div className="flexBetween col-span-12 cursor-pointer rounded-[8px] border border-primary-color pr-3 sm:col-span-4 md:col-span-6">
-          <input
-            onChange={handleSearch}
-            className="ml-2 w-full py-1 outline-0"
-            type="text"
-            placeholder="Search...."
-          />
-          <IoIosSearch className="w-[10%] text-primary-color" />
-        </div>
-      </div>
+    <section className="mx-auto w-[90%] py-[80px] sm:w-5/6">
+      <GridContainer>
+        <Choose
+          name="FilterByCategory"
+          placeholder="Filter by Category"
+          data={categories?.map((category) => ({
+            value: category.toLowerCase(),
+            label: category,
+          }))}
+          onChange={handleFilter}
+          isClearable={true}
+          isMulti={true}
+          zindex={10}
+        />
+        <Choose
+          name="SortBy"
+          placeholder="Sort By"
+          data={sorts?.map((sort) => ({
+            value: sort.toLowerCase(),
+            label: sort,
+          }))}
+          onChange={handleSortBy}
+          isClearable={true}
+          zindex={9}
+        />
+        <Input
+          showLabel={false}
+          value={searchTerm}
+          onChange={handleSearch}
+          placeholder="Search...."
+          Icon={<IoIosSearch />}
+        />
+      </GridContainer>
     </section>
   );
-};
-
-export default FilterProducts;
+}

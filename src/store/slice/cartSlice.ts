@@ -104,7 +104,9 @@ const cartSlice = createSlice({
         });
         state.totalFavouriteItemsQuantity =
           state.totalFavouriteItemsQuantity + 1;
-        toast.success("Product added to favorites successfully!");
+        toast.success(
+          `${newFavouriteItem.productName} added to favorites successfully!`,
+        );
       }
     },
     resetCartItemsAndTotal(state) {

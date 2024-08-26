@@ -49,7 +49,7 @@ export default function NavbarActions() {
           >
             {action.icon}
             {action.value > 0 && (
-              <span className="flexCenter absolute left-[11px] top-[-11px] z-10 h-[20px] w-[20px] rounded-full bg-[#2e7d32] p-1 text-xs text-white">
+              <span className="flexCenter absolute left-[11px] top-[-11px] z-10 h-[20px] w-[20px] rounded-full bg-[#2e7d32] p-1 text-xs text-light-color">
                 {action.value}
               </span>
             )}

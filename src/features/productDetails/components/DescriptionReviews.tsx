@@ -1,5 +1,4 @@
 import { useState } from "react";
-
 import { Review } from "@/shared/types";
 import ReviewsTab from "./ReviewsTab";
 
@@ -8,38 +7,39 @@ interface CertainProductDetailProps {
   reviews: Review[] | undefined;
 }
 
-const DescriptionReviews = ({
+export default function DescriptionReviews({
   reviews,
   description,
-}: CertainProductDetailProps) => {
-  const [tab, setTab] = useState<"desc" | "rev">("desc");
+}: CertainProductDetailProps) {
+  const [tab, setTab] = useState<"Description" | "Reviews">("Description");
+
+  const tabOptions = [{ label: "Description" }, { label: "Reviews" }];
 
   return (
-    <section className="w-full pb-[60px]">
-      <div className={`w-5/6 mx-auto`}>
-        <div className="flex items-center gap-[15px] text-primary-color font-[500] text-sm sm:text-base">
-          <h6
-            className={`${tab === "desc" ? "font-[700]" : ""} cursor-pointer`}
-            onClick={() => setTab("desc")}
-          >
-            Description
-          </h6>
-          <p
-            className={`${tab === "rev" ? "font-[700]" : ""} cursor-pointer`}
-            onClick={() => setTab("rev")}
-          >
-            reviews ({reviews?.length})
-          </p>
+    <section className="w-full pb-[80px]">
+      <div className="mx-auto w-[90%] sm:w-5/6">
+        <div className="flex text-center text-sm font-medium sm:text-base">
+          {tabOptions.map(({ label }) => (
+            <div
+              key={label}
+              className={`basis-1/2 cursor-pointer border-b-2 py-3 transition-all duration-200 ${
+                tab === label
+                  ? "border-primary-color bg-secondary-color/50 font-extrabold text-primary-color"
+                  : "border-orange-color text-orange-color"
+              }`}
+              onClick={() => setTab(label as "Description" | "Reviews")}
+            >
+              {label}
+            </div>
+          ))}
         </div>
-        {tab === "desc" && (
-          <div className="text-center sm:text-left mt-5 leading-8">
-            {description}
-          </div>
+
+        {tab === "Description" ? (
+          <div className="mt-5 text-left leading-8 ">{description}</div>
+        ) : (
+          <ReviewsTab reviews={reviews} />
         )}
-        {tab === "rev" && <ReviewsTab reviews={reviews} />}
       </div>
     </section>
   );
-};
-
-export default DescriptionReviews;
+}

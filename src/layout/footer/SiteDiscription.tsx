@@ -7,7 +7,7 @@ export default function SiteDiscription() {
           src="https://i.ibb.co/ZS4YhxK/storeify-logo.webp"
           alt="storeify-logo"
         />
-        <h1 className="text-light-color text-lg font-extrabold">STOREIFY</h1>
+        <h1 className="text-orange-color text-lg font-extrabold">STOREIFY</h1>
       </div>
       <p className="text-center leading-[30px] xs:text-left">
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Soluta

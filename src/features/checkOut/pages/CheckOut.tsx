@@ -165,7 +165,7 @@ const CheckOut = () => {
               </div>
             </form>
           </div>
-          <div className="col-span-12 h-fit rounded-md bg-primary-color p-5 text-white  md:col-span-4">
+          <div className="col-span-12 h-fit rounded-md bg-primary-color p-5 text-light-color  md:col-span-4">
             <div className="flex w-full flex-col items-start justify-start gap-5 text-center">
               <h6 className="flexBetween w-full">
                 Total Qty:{" "}
