@@ -23,7 +23,7 @@ export default function Banner() {
           className={`space-y-2 text-center md:mt-0 md:basis-3/5 md:text-left`}
         >
           <p className="font-medium ">Trending Product in {Year}</p>
-          <h2 className="text-2xl font-semibold text-light-color md:text-4xl">
+          <h2 className="text-orange-color text-2xl font-semibold md:text-4xl">
             Make your Interior More Minimalistic & Modern
           </h2>
           <p className="leading-[28px]">

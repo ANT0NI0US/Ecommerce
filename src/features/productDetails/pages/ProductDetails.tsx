@@ -11,7 +11,7 @@ import { getProductById, getProducts } from "@/store/service/productService";
 import CertainProductDetail from "../components/CertainProductDetail";
 import DescriptionReviews from "../components/DescriptionReviews";
 import ProductsInTheSameCategory from "../components/ProductsInTheSameCategory";
-import Loader from "@/components/UI/loader/Loader";
+import Spinner from "@/ui/spinner/Spinner";
 
 const ProductDetails = () => {
   const dispatch = useDispatch<AppDispatch>();
@@ -53,15 +53,14 @@ const ProductDetails = () => {
 
   if (!product) {
     return (
-      <div className="flexCenter mt-[69px] py-[60px] text-center text-3xl text-primary-color">
+      <div className="flexCenter mt-[80px] py-[80px] text-center text-3xl text-primary-color">
         Product not found!
       </div>
     );
   }
 
-  if (isLoading) {
-    return <Loader />;
-  }
+  if (isLoading) return <Spinner />;
+
   return (
     <Helmet title={productName}>
       <CommonSection title={productName} />

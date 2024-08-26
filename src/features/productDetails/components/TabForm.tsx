@@ -9,7 +9,7 @@ import { FaStar } from "react-icons/fa";
 
 const starValues = [1, 2, 3, 4, 5];
 
-const TabForm = () => {
+export default function TabForm() {
   const dispatch = useDispatch<AppDispatch>();
   const { id } = useParams<{ id: string }>();
   const [rate, setRate] = useState<number | null>(null);
@@ -31,8 +31,8 @@ const TabForm = () => {
     }
   };
   return (
-    <div className="w-full sm:w-[70%] m-auto mt-[40px]">
-      <h4 className="text-[1.2rem] font-semibold text-center sm:text-left">
+    <div className="m-auto mt-[40px] w-full sm:w-[70%]">
+      <h4 className="text-center text-[1.2rem] font-semibold sm:text-left">
         Leave Your Experience
       </h4>
       <form
@@ -59,7 +59,7 @@ const TabForm = () => {
               onClick={() => setRate(value)}
             >
               {value}
-              <FaStar className="text-lime-600 font-semibold cursor-pointer" />
+              <FaStar className="cursor-pointer font-semibold text-lime-600" />
             </motion.span>
           ))}
         </div>
@@ -84,6 +84,4 @@ const TabForm = () => {
       </form>
     </div>
   );
-};
-
-export default TabForm;
+}

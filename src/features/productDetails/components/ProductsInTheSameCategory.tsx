@@ -6,7 +6,9 @@ interface sameCategoryProps {
   sameCategories: productCardProps[];
 }
 
-const ProductsInTheSameCategory = ({ sameCategories }: sameCategoryProps) => {
+export default function ProductsInTheSameCategory({
+  sameCategories,
+}: sameCategoryProps) {
   return (
     <section className="w-full py-[60px]">
       <div className="mx-auto w-5/6">
@@ -16,6 +18,4 @@ const ProductsInTheSameCategory = ({ sameCategories }: sameCategoryProps) => {
       </div>
     </section>
   );
-};
-
-export default ProductsInTheSameCategory;
+}

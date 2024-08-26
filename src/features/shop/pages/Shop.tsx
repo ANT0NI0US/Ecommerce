@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import CommonSection from "@/components/UI/commonSection/CommonSection";
 import Helmet from "@/components/UI/helmet/Helmet";
 import { newProductProps, productState } from "@/shared/types";
@@ -12,9 +12,12 @@ const Shop = () => {
   const dispatch = useDispatch<AppDispatch>();
   const [productsData, setProductData] = useState<newProductProps[]>([]);
 
-  const handleChangingProduct = (newProductData: newProductProps[]) => {
-    setProductData(newProductData);
-  };
+  const handleChangingProduct = useCallback(
+    (newProductData: newProductProps[]) => {
+      setProductData(newProductData);
+    },
+    [],
+  );
 
   const { isLoading, allProducts } = useSelector(
     (state: productState) => state.product,

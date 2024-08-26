@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent, ReactElement } from "react";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import Button from "./Button";
@@ -14,6 +14,7 @@ interface InputProps {
   disabled?: boolean;
   showLabel?: boolean;
   accept?: string;
+  Icon?: ReactElement;
 }
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
@@ -28,6 +29,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
       disabled,
       showLabel = true,
       accept,
+      Icon,
     },
     ref,
   ) => {
@@ -36,17 +38,19 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const toggleShowPassword = () => setShowPassword((prev) => !prev);
 
     return (
-      <div className="relative w-full">
+      <div className="relative h-full w-full">
         {showLabel && (
           <label
             htmlFor={placeholder}
-            className="block p-[3px] text-sm text-white"
+            className="block p-[3px] text-sm text-light-color"
           >
             {placeholder}
           </label>
         )}
 
-        <div className="relative">
+        <div
+          className={`${type !== "file" ? "z-10 flex h-full w-full items-center rounded-md border-[1px] border-orange-color bg-main-color/55 transition-all " : ""}`}
+        >
           <input
             disabled={disabled}
             ref={ref}
@@ -59,6 +63,13 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
             onChange={onChange}
             accept={accept}
           />
+
+          {Icon && (
+            <div className="flexCenter h-[44px] w-[40px] text-orange-color">
+              {Icon}
+            </div>
+          )}
+
           {type === "file" && (
             <div className="mt-[53px]">
               <Button
@@ -78,7 +89,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {type === "password" && (
             <button
               type="button"
-              className="text-gray absolute right-[10px] top-1/2 -translate-y-1/2"
+              className="flexCenter pr-[10px] text-orange-color"
               onClick={toggleShowPassword}
               aria-label={showPassword ? "Hide password" : "Show password"}
             >

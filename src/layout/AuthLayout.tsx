@@ -10,7 +10,7 @@ export default function AuthLayout() {
     >
       <div className="absolute inset-0 h-full w-full bg-black/45"></div>
 
-      <div className="w-[95%] rounded-md bg-white/20 p-[30px] shadow-xl sm:w-[540px]">
+      <div className="w-[95%] rounded-md bg-light-color/20 p-[30px] shadow-xl sm:w-[540px]">
         <Outlet />
       </div>
     </div>

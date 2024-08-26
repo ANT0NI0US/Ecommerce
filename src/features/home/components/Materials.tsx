@@ -18,7 +18,7 @@ export default function Materials() {
           className="w-[90%] pl-0 text-center sm:w-5/6 md:basis-3/5 md:pl-5 md:text-left"
         >
           <p className="font-[500]">MATERIALS</p>
-          <h2 className="my-2 text-2xl font-semibold text-light-color md:text-4xl">
+          <h2 className="text-orange-color my-2 text-2xl font-semibold md:text-4xl">
             Very Serious Materials For Making Furniture
           </h2>
           <p className="leading-[28px]">

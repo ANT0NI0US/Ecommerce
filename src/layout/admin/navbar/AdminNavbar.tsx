@@ -60,7 +60,7 @@ const AdminNavbar = ({ isTopOfPage }: navbarProps) => {
   const isAboveMediumScreens = useMediaQuery("(min-width: 1060px)");
   const navbarBackground = isTopOfPage
     ? "bg-hero-bg drop-shadow"
-    : "bg-white drop-shadow";
+    : "bg-light-color drop-shadow";
 
   useEffect(() => {
     if (!isAboveMediumScreens) {
@@ -171,7 +171,7 @@ const AdminNavbar = ({ isTopOfPage }: navbarProps) => {
               onClick={() => setToggleMenu(false)}
               className="absolute right-3 top-3 rounded-full bg-red-700 p-1"
             >
-              <IoCloseSharp className="h-5 w-5 text-white" />
+              <IoCloseSharp className="h-5 w-5 text-light-color" />
             </button>
 
             <ul className="flex flex-col gap-5">

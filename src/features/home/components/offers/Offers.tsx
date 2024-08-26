@@ -14,15 +14,15 @@ export default function Offers() {
         </div>
         <div className="mx-auto w-[90%] basis-1/2 space-y-4 py-[80px] text-center sm:w-5/6 md:px-[30px] md:py-0 md:text-left">
           <p className="font-bold">PROMOTION</p>
-          <h1 className="text-2xl font-semibold text-light-color md:text-5xl">
+          <h1 className="text-2xl font-semibold text-orange-color md:text-5xl">
             Hurry up! 40% OFF
           </h1>
           <p>Thousands of high tech are waiting for you</p>
-          <h2 className="font-medium text-light-color">Offer expires in:</h2>
+          <h2 className="font-medium text-orange-color">Offer expires in:</h2>
           <Clock />
           <motion.div className="w-full md:w-[150px]" whileTap={{ scale: 1.1 }}>
             <Button
-              variation="primary"
+              variation="secondary"
               ArialLabel="Go-To-Shop"
               onClick={() => navigate("/shop")}
             >

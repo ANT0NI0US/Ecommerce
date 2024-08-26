@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import ProductCard from "./ProductCard";
 import { newProductProps } from "@/shared/types";
+import GridContainer from "../GridContainer";
 
 export default function ProductsList({
   items,
@@ -10,7 +11,7 @@ export default function ProductsList({
   BorderColor?: string;
 }) {
   return (
-    <div className="flex flex-col gap-8 xs:grid xs:grid-cols-[repeat(auto-fill,minmax(350px,1fr))]">
+    <GridContainer>
       {items?.map((item: newProductProps) => (
         <motion.div
           key={item.id}
@@ -25,6 +26,6 @@ export default function ProductsList({
           <ProductCard key={item.id} item={item} BorderColor={BorderColor} />
         </motion.div>
       ))}
-    </div>
+    </GridContainer>
   );
 }
