@@ -5,7 +5,7 @@ interface spinnerProps {
 }
 
 export default function Spinner({
-  height = "h-[100vh] min-h-ful",
+  height = "h-[100vh] min-h-full",
 }: spinnerProps) {
   return (
     <div className={`flexCenter ${height} bg-transparent backdrop-blur-sm`}>

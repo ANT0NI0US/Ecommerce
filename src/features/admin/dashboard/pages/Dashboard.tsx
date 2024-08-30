@@ -1,8 +1,8 @@
-import Helmet from "@/components/UI/helmet/Helmet";
-import CommonSection from "@/components/UI/commonSection/CommonSection";
+import CommonSection from "@/ui/CommonSection";
 import { serviceProps } from "@/shared/types";
 
 import ServiceData from "../components/ServiceData";
+import useHelmet from "@/hooks/useHelmet";
 
 const servicesData: serviceProps[] = [
   {
@@ -23,9 +23,10 @@ const servicesData: serviceProps[] = [
   },
 ];
 
-const Dashboard = () => {
+export default function Dashboard() {
+  useHelmet("Dashboard");
   return (
-    <Helmet title="Dashboard">
+    <>
       <CommonSection title="Dashboard" />
       <section className="w-full py-[60px]">
         <div className="flexCenter mx-auto w-5/6 flex-col gap-[10px] md:flex-row">
@@ -34,8 +35,6 @@ const Dashboard = () => {
           ))}
         </div>
       </section>
-    </Helmet>
+    </>
   );
-};
-
-export default Dashboard;
+}

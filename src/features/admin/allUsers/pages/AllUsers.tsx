@@ -4,12 +4,13 @@ import { useDispatch, useSelector } from "react-redux";
 import UserTable from "../components/UserTable";
 
 import { getUsers } from "@/store/service/userService";
-import Helmet from "@/components/UI/helmet/Helmet";
-import CommonSection from "@/components/UI/commonSection/CommonSection";
+import CommonSection from "@/ui/CommonSection";
 import { userProps, userState } from "@/shared/types";
 import { AppDispatch } from "@/store";
+import useHelmet from "@/hooks/useHelmet";
 
-const AllUsers = () => {
+export default function AllUsers() {
+  useHelmet("Users");
   const dispatch = useDispatch<AppDispatch>();
   const { isLoading, allUsers }: { isLoading: boolean; allUsers: userProps[] } =
     useSelector((state: userState) => state.user);
@@ -19,7 +20,7 @@ const AllUsers = () => {
   }, [dispatch]);
 
   return (
-    <Helmet title="Users">
+    <>
       <CommonSection title="All Users" />
       <section className="w-full py-[60px]">
         {allUsers.length === 0 ? (
@@ -30,8 +31,6 @@ const AllUsers = () => {
           </div>
         )}
       </section>
-    </Helmet>
+    </>
   );
-};
-
-export default AllUsers;
+}
