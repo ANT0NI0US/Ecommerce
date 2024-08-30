@@ -13,8 +13,7 @@
 
 body {
   font-family: "Montserrat", sans-serif;
-  @apply text-primary-color;
-  @apply bg-main-color;
+  @apply bg-main-color text-primary-color;
 }
 
 svg {
@@ -27,7 +26,12 @@ img {
 
 @layer components {
   .input {
-    @apply w-full rounded-md bg-main-color/55 p-[10px] text-primary-color outline-none transition-all placeholder:text-sm placeholder:text-primary-color;
+    @apply w-full rounded-[5px] bg-main-color/55 p-[10px] text-primary-color outline-none transition-all placeholder:text-sm placeholder:text-primary-color;
+    &:-webkit-autofill {
+      -webkit-text-fill-color: #88d07a;
+      box-shadow: 0 0 0px 1000px rgba(14, 16, 19, 0.923) inset;
+      caret-color: #88d07a;
+    }
   }
 
   .flexCenter {
@@ -37,6 +41,7 @@ img {
   .flexBetween {
     @apply flex items-center justify-between;
   }
+
   .flexEvenly {
     @apply flex items-center justify-evenly;
   }

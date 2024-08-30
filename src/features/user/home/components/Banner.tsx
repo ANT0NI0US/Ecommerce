@@ -7,7 +7,7 @@ const Year = new Date().getFullYear();
 export default function Banner() {
   const navigate = useNavigate();
   return (
-    <section className="flexCenter w-full pb-[80px] pt-[160px] md:h-screen md:pb-0">
+    <section className="flexCenter w-full pb-[80px] pt-[160px]  md:h-screen md:pb-0">
       <div
         className={`flexBetween mx-auto h-full w-[90%] flex-col gap-12 sm:w-5/6 md:flex-row`}
       >
@@ -20,7 +20,7 @@ export default function Banner() {
             hidden: { opacity: 0, x: -50 },
             visible: { opacity: 1, x: 0 },
           }}
-          className={`space-y-2 text-center md:mt-0 md:basis-3/5 md:text-left`}
+          className={`space-y-2 text-center md:mt-0 md:basis-3/5 md:space-y-3 md:text-left`}
         >
           <p className="font-medium ">Trending Product in {Year}</p>
           <h2 className="text-2xl font-semibold text-orange-color md:text-4xl">
@@ -31,7 +31,10 @@ export default function Banner() {
             perspiciatis natus totam eaque distinctio esse a. Beatae repudiandae
             dolorum accusantium.
           </p>
-          <motion.div whileTap={{ scale: 1.1 }} className="w-full md:w-[150px]">
+          <motion.div
+            whileTap={{ scale: 1.1 }}
+            className="mx-auto w-[150px] md:mx-0"
+          >
             <Button ArialLabel="Go-To-Shop" onClick={() => navigate("/shop")}>
               SHOP NOW
             </Button>
