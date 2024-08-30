@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
-import Helmet from "@/components/UI/helmet/Helmet";
-import CommonSection from "@/components/UI/commonSection/CommonSection";
+import CommonSection from "@/ui/CommonSection";
 import { orderState } from "@/shared/types";
 import { AppDispatch } from "@/store";
 import { getOrders } from "@/store/service/ordersService";
 import ShowOrder from "../components/ShowOrder";
+import useHelmet from "@/hooks/useHelmet";
 
-const Orders = () => {
+export default function Orders() {
+  useHelmet("Orders");
   const dispatch = useDispatch<AppDispatch>();
   const [showModal, setShowModal] = useState<boolean>(false);
   const [selectedOrderId, setSelectedOrderId] = useState<string>("");
@@ -25,7 +26,7 @@ const Orders = () => {
   }, [dispatch]);
 
   return (
-    <Helmet title="Orders">
+    <>
       <CommonSection title="Orders" />
       <ShowOrder
         showModal={showModal}
@@ -63,8 +64,6 @@ const Orders = () => {
           </div>
         )}
       </section>
-    </Helmet>
+    </>
   );
-};
-
-export default Orders;
+}

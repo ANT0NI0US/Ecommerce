@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { loginState } from "@/shared/types";
-import Loader from "@/components/UI/loader/Loader";
+import Spinner from "@/ui/spinner/Spinner";
 
 interface Props {
   children: React.ReactNode;
@@ -21,7 +21,7 @@ const ProtectedRoute = ({ children }: Props) => {
   }, [isAuthenticated, isLoading, navigate]);
 
   if (isLoading) {
-    return <Loader />;
+    return <Spinner />;
   }
 
   if (isAuthenticated) return children;

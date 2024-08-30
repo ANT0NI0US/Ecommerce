@@ -22,8 +22,8 @@ export default function Button({
   ArialLabel,
 }: ButtonProps) {
   const base = `focus:outline-none w-full rounded-md border relative 
-  ${Font} transition-all h-[45px] font-bold
-  ${(disabled || loading) && "cursor-not-allowed border-slate-400 bg-orange-400"}`;
+   transition-all h-[45px] font-bold ${Font}
+  ${(disabled || loading) && "cursor-not-allowed border-light-color bg-main-color/30 !text-light-color"}`;
 
   const styles: Record<typeof variation, string> = {
     primary:

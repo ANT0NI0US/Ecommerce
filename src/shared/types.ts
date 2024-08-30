@@ -22,6 +22,7 @@ export interface selectedProps extends setSelectedPageProps {
 export interface Review {
   rating: number | null;
   text: string;
+  name?: string;
 }
 
 export interface productCardProps {
@@ -48,7 +49,7 @@ export interface newProductProps {
 }
 
 export interface Item {
-  id: string | undefined;
+  id: string;
   productName: string;
   imgUrl: string | File | null;
   price: number;

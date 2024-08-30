@@ -2,7 +2,7 @@ import { lazy, Suspense, useEffect, useState } from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import routes from "./routes";
 import ProtectedRoute from "./ProtectedRoute";
-import Loader from "@/components/UI/loader/Loader";
+import Spinner from "@/ui/spinner/Spinner";
 import PageNotFound from "./PageNotFound";
 import { useSelector } from "react-redux";
 import { loginState } from "@/shared/types";
@@ -12,13 +12,15 @@ const Login = lazy(() => import("@/features/auth/Login"));
 const SignUp = lazy(() => import("@/features/auth/SignUp"));
 
 //user
-const Home = lazy(() => import("@/features/home/pages/Home"));
-const Shop = lazy(() => import("@/features/shop/pages/Shop"));
-const Favourites = lazy(() => import("@/features/favourites/pages/Favourites"));
-const Cart = lazy(() => import("@/features/cart/pages/Cart"));
-const CheckOut = lazy(() => import("@/features/checkOut/pages/CheckOut"));
+const Home = lazy(() => import("@/features/user/home/pages/Home"));
+const Shop = lazy(() => import("@/features/user/shop/pages/Shop"));
+const Favourites = lazy(
+  () => import("@/features/user/favourites/pages/Favourites"),
+);
+const Cart = lazy(() => import("@/features/user/cart/pages/Cart"));
+const CheckOut = lazy(() => import("@/features/user/checkOut/pages/CheckOut"));
 const ProductDetails = lazy(
-  () => import("@/features/productDetails/pages/ProductDetails"),
+  () => import("@/features/user/productDetails/pages/ProductDetails"),
 );
 
 const Layout = lazy(() => import("@/layout/Layout"));
@@ -50,7 +52,7 @@ const Navigations = () => {
   }, []);
 
   return (
-    <Suspense fallback={<Loader />}>
+    <Suspense fallback={<Spinner />}>
       <Routes>
         <Route element={<AuthLayout />}>
           <Route path={routes.login} element={<Login />} />

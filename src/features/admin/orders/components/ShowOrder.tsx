@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "@/store";
 import { getOrderById } from "@/store/service/ordersService";
 import { CartItem, orderState, ordersFireBase } from "@/shared/types";
-import Loader from "@/components/UI/loader/Loader";
+import Spinner from "@/ui/spinner/Spinner";
 
 interface Props {
   showModal: boolean;
@@ -80,7 +80,7 @@ const ShowOrder = ({ showModal, closeModal, selectedOrderId }: Props) => {
         }`}
       >
         {isLoading ? (
-          <Loader height="h-full" />
+          <Spinner height="h-full" />
         ) : (
           <Fragment>
             <div

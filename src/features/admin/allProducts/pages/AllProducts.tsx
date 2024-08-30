@@ -1,13 +1,14 @@
 import { useState } from "react";
 
-import Helmet from "@/components/UI/helmet/Helmet";
-import CommonSection from "@/components/UI/commonSection/CommonSection";
+import CommonSection from "@/ui/CommonSection";
 import AddProduct from "../components/modal/AddProduct";
 
 import ProductTable from "../components/ProductTable";
 import AddProductBtn from "../components/AddProductBtn";
+import useHelmet from "@/hooks/useHelmet";
 
-const AllProducts = () => {
+export default function AllProducts() {
+  useHelmet("AllProducts");
   const [showModal, setShowModal] = useState<boolean>(false);
 
   const toggleModal = () => {
@@ -15,7 +16,7 @@ const AllProducts = () => {
   };
 
   return (
-    <Helmet title="AllProducts">
+    <>
       <CommonSection title="All Products" />
       <AddProduct
         showModal={showModal}
@@ -25,8 +26,6 @@ const AllProducts = () => {
       <section className="w-full pb-[60px] pt-[20px]">
         <ProductTable />
       </section>
-    </Helmet>
+    </>
   );
-};
-
-export default AllProducts;
+}
