@@ -10,7 +10,7 @@ export default function ProductImage({
   productName,
 }: productNameProps) {
   return (
-    <div className="h-[252px] max-h-[252px]">
+    <div className="h-[252px] max-h-[252px] p-2">
       <motion.img
         whileHover={{ scale: 0.9 }}
         className="max-h-full max-w-full"

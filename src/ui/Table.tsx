@@ -49,7 +49,7 @@ const Body = <T,>({ data, render }: BodyProps<T>): JSX.Element => {
 
 const Row: React.FC<RowProps> = ({ children }) => {
   return (
-    <tr className="border-b-[0.5px] border-secondary-color bg-main-color/90">
+    <tr className="border-b-[0.5px] border-secondary-color odd:bg-main-color/50 even:bg-secondary-color/50">
       {children}
     </tr>
   );
