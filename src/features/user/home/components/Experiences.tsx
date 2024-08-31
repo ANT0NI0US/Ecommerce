@@ -3,7 +3,7 @@ import Experience from "@/assets/images/experience.png";
 
 export default function Experiences() {
   return (
-    <section className="flexCenter w-full pb-0 pt-[80px] md:h-[calc(100vh-80px)] md:pb-[80px]">
+    <section className="flexCenter w-full bg-light-color pb-0 pt-[80px] text-primary-color-light dark:bg-main-color dark:text-primary-color md:h-[calc(100vh-80px)] md:pb-[80px]">
       <div
         className={`flexBetween mx-auto w-full flex-col-reverse overflow-hidden md:flex-row`}
       >
@@ -24,7 +24,7 @@ export default function Experiences() {
           className={`mx-auto w-[90%] space-y-4 pb-[80px] text-center sm:w-5/6 md:w-fit md:basis-3/5 md:px-[30px] md:pb-0 md:text-left`}
         >
           <p className="font-medium">EXPERIENCES</p>
-          <h2 className="my-2 text-2xl font-semibold text-orange-color md:text-4xl">
+          <h2 className="my-2 text-2xl font-semibold text-orange-color-light dark:text-orange-color md:text-4xl">
             We Provide You The Best Experience
           </h2>
           <p className="leading-[28px]">

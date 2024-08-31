@@ -4,7 +4,7 @@ import StoreProvider from "./StoreProvider";
 import { ToastContainer, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "react-multi-carousel/lib/styles.css";
-// import ScrollToTopButtons from "@/ui/ScrollToTopButtons";
+import ScrollToTopButtons from "@/ui/ScrollToTopButtons";
 
 export default function AppProvider() {
   return (
@@ -20,7 +20,7 @@ export default function AppProvider() {
           transition={Bounce}
         />
       </RoutesProvider>
-      {/* <ScrollToTopButtons /> */}
+      <ScrollToTopButtons />
     </StoreProvider>
   );
 }

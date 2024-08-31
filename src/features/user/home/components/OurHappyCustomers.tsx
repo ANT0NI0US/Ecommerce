@@ -8,6 +8,8 @@ import { getProducts } from "@/store/service/productService";
 import { productState, Review } from "@/shared/types";
 import Spinner from "@/ui/spinner/Spinner";
 
+import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
+
 const responsive = {
   superLargeDesktop: {
     breakpoint: { max: 4000, min: 3000 },
@@ -65,15 +67,26 @@ export default function OurHappyCustomers() {
   if (isLoading) return <Spinner height="h-[300px]" />;
 
   return (
-    <section className="w-full bg-secondary-color py-[80px]">
-      <div className="mx-auto w-[90%] bg-secondary-color md:w-5/6">
+    <section className="w-full bg-secondary-color-light py-[80px] text-primary-color-light dark:bg-secondary-color dark:text-primary-color">
+      <div className="mx-auto w-[90%] bg-secondary-color-light dark:bg-secondary-color md:w-5/6">
         <Header textHead="Our Happy Customers" />
         <Carousel
           additionalTransfrom={0}
           arrows
           autoPlay
           autoPlaySpeed={3000}
-          //   centerMode={true}
+          customLeftArrow={
+            <MdArrowBackIosNew
+              size={40}
+              className="absolute left-4 top-1/2 -translate-y-[50%] cursor-pointer rounded-full bg-transparent p-2 text-main-color/50 transition-all hover:bg-light-color dark:text-light-color dark:hover:bg-main-color/50"
+            />
+          }
+          customRightArrow={
+            <MdArrowForwardIos
+              size={40}
+              className="absolute right-4 top-1/2 -translate-y-[50%] cursor-pointer rounded-full bg-transparent p-2 text-main-color/50 transition-all hover:bg-light-color dark:text-light-color dark:hover:bg-main-color/50"
+            />
+          }
           containerClass="container-with-dots"
           draggable
           focusOnSelect={false}
@@ -91,11 +104,11 @@ export default function OurHappyCustomers() {
           {randomReviews?.map((review: Review, index: number) => (
             <div
               key={index}
-              className="mx-2 h-[200px] max-h-full overflow-y-auto rounded-md border-[.5px] border-main-color"
+              className="mx-2 h-[200px] max-h-full overflow-y-auto rounded-md border-[.5px] border-orange-color-light dark:border-main-color"
             >
               <div className="space-y-2 p-6">
                 <StarRatings readOnly={true} defaultRating={5} size={25} />
-                <h3 className="text-lg font-semibold capitalize text-orange-color">
+                <h3 className="text-lg font-semibold capitalize text-orange-color-light dark:text-orange-color">
                   {review?.name}
                 </h3>
                 <p className="text-sm font-medium leading-7">{review?.text}</p>

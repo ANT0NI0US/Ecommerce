@@ -1,7 +1,8 @@
 import { useState } from "react";
-import { FaArrowUp } from "react-icons/fa";
+import { LuSunMoon } from "react-icons/lu";
+import { FaMoon } from "react-icons/fa";
 
-function ScrollToTopButtons(): JSX.Element {
+export default function ScrollToTopButtons(): JSX.Element {
   const [dark, setDark] = useState(false);
 
   const darkModeHandler = () => {
@@ -10,16 +11,19 @@ function ScrollToTopButtons(): JSX.Element {
   };
   return (
     <div
-      className={`fixed bottom-2 right-2 flex items-center justify-center rounded-xl border-[2px] bg-white`}
+      title={`${dark ? "light mode" : "dark mode"} `}
+      className={`flexCenter fixed bottom-2 right-2 rounded-full bg-main-color p-2  dark:bg-light-color`}
     >
       <button onClick={() => darkModeHandler()}>
-        <FaArrowUp />
+        {dark ? (
+          <LuSunMoon size={30} color="#FDB813" />
+        ) : (
+          <FaMoon size={30} color="#F6F1D5" />
+        )}
       </button>
     </div>
   );
 }
-
-export default ScrollToTopButtons;
 
 // import { useState, useEffect } from "react";
 // import { FaArrowUp } from "react-icons/fa";
