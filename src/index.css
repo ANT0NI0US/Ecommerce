@@ -13,7 +13,7 @@
 
 body {
   font-family: "Montserrat", sans-serif;
-  @apply bg-main-color text-primary-color;
+  /* @apply bg-main-color text-primary-color; */
 }
 
 svg {

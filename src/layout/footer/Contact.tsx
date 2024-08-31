@@ -17,7 +17,9 @@ const allContacts: Array<allContactsProps> = [
 export default function Contact() {
   return (
     <div className="flex flex-col items-center gap-[15px] sm:items-start">
-      <h4 className="text-orange-color mb-3 text-xl font-extrabold">Contact</h4>
+      <h4 className="mb-3 text-xl font-extrabold text-orange-color-light dark:text-orange-color">
+        Contact
+      </h4>
       <div className="flex flex-col gap-4">
         {allContacts.map((contact: allContactsProps) => (
           <div

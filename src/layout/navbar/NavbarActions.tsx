@@ -13,7 +13,7 @@ interface allActionsProps {
   value: number;
 }
 const iconStyle: string =
-  "cursor-pointer transition-all hover:text-primary-color/[0.8]";
+  "cursor-pointer transition-all hover:text-primary-color-light/[0.8] dark:hover:text-primary-color/[0.8]";
 
 export default function NavbarActions() {
   const navigate = useNavigate();
@@ -49,7 +49,7 @@ export default function NavbarActions() {
           >
             {action.icon}
             {action.value > 0 && (
-              <span className="flexCenter absolute left-[11px] top-[-11px] z-10 h-[20px] w-[20px] rounded-full bg-[#2e7d32] p-1 text-xs text-light-color">
+              <span className="flexCenter absolute left-[11px] top-[-11px] z-10 h-[20px] w-[20px] rounded-full bg-orange-color-light p-1 text-xs text-light-color dark:bg-orange-color">
                 {action.value}
               </span>
             )}

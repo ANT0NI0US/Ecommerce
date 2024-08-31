@@ -6,8 +6,8 @@ import CopyRight from "./CopyRight";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-secondary-color pt-[80px]">
-      <div className="mx-auto flex w-[90%] flex-col gap-8 pb-[80px] sm:grid sm:w-5/6 sm:grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
+    <footer className="w-full bg-secondary-color-light pt-[80px] text-primary-color-light dark:bg-secondary-color dark:text-primary-color">
+      <div className="mx-auto flex w-[90%] flex-col gap-8 pb-[15px] sm:grid sm:w-5/6 sm:grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
         {/* SITE DISCRIPTION */}
         <SiteDiscription />
         {/* TOP CATEGORIES */}
