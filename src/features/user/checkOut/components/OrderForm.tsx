@@ -100,7 +100,7 @@ export default function OrderForm({
   }, [dispatch, uid]);
 
   return (
-    <div className="col-span-12 rounded-md border-[0.5px] border-secondary-color p-5 md:col-span-8">
+    <div className="col-span-12 rounded-md border-[0.5px] border-card-bg-01-light p-5 dark:border-secondary-color md:col-span-8">
       <h3 className="mb-5 text-center text-lg font-bold md:text-left">
         Billing Information
       </h3>

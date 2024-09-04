@@ -13,7 +13,7 @@ export default function QuantityControl({
   onIncrease,
 }: QuantityControlProps) {
   return (
-    <div className="flexBetween gap-5 rounded-md bg-secondary-color">
+    <div className="flexBetween gap-5 rounded-md bg-secondary-color-light dark:bg-secondary-color">
       <div className="w-[50px]" title="minus">
         <Button
           variation="secondary"

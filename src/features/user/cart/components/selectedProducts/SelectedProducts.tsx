@@ -129,7 +129,7 @@ export default function SelectedProducts({
   };
 
   return (
-    <div className="col-span-12 rounded-md border-[0.5px] border-secondary-color md:col-span-8">
+    <div className="col-span-12 rounded-md border-[0.5px] border-card-bg-01-light dark:border-secondary-color md:col-span-8">
       {allCartItems?.map((item, index) => (
         <SelectedProductItem
           key={item.id}

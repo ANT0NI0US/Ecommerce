@@ -53,9 +53,9 @@ export default function ProfilePhoto() {
       />
 
       {toggleImageMenu && (
-        <div className="flexCenter absolute bottom-[-40px] left-[50%] z-50 translate-x-[-50%] rounded-md border border-main-color bg-secondary-color p-[3px] text-center text-sm shadow-lg">
+        <div className="flexCenter absolute bottom-[-40px] left-[50%] z-50 translate-x-[-50%] rounded-md border border-light-color bg-secondary-color-light p-[3px] text-center text-sm shadow-lg dark:border-main-color dark:bg-secondary-color">
           <p
-            className="hover:bg-blue hover:text-orange-color cursor-pointer rounded-md px-2 py-1 font-semibold text-primary-color transition-all hover:bg-primary-color"
+            className="cursor-pointer rounded-md px-2 py-1 font-semibold text-primary-color-light transition-all hover:bg-primary-color-light/50 hover:text-light-color dark:text-primary-color dark:hover:bg-primary-color dark:hover:text-orange-color"
             onClick={signout}
           >
             Logout

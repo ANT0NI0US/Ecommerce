@@ -20,12 +20,12 @@ export default function SmallScreenLinks({
     showSidebar && (
       <div className="md:hidden">
         {/* OVERLAY */}
-        <div className="fixed inset-0 z-[100] h-full w-full bg-black/20"></div>
+        <div className="fixed inset-0 z-[100] h-full w-full bg-black/40 dark:bg-white/10"></div>
 
         {/* SIDEBAR */}
         <nav
           ref={ref}
-          className="fixed bottom-0 right-0 z-[101] h-full w-[180px] bg-main-color py-16 shadow-md drop-shadow-xl xs:w-[300px]"
+          className="fixed bottom-0 right-0 z-[101] h-full w-[180px] bg-light-color py-16 text-primary-color-light shadow-md drop-shadow-xl dark:bg-main-color dark:text-primary-color xs:w-[300px]"
         >
           {/* CLOSE SIDEBAR BUTTON*/}
           <div className="absolute right-2 top-3 w-[35px]">
@@ -45,15 +45,16 @@ export default function SmallScreenLinks({
           <div className="flex w-full flex-col">
             {links.map((item: arrLinks, index: number) => (
               <div
+                onClick={() => closeSidebar()}
                 key={item.text}
-                className={` ${
+                className={`${
                   index === 0 ? "border-t-2" : ""
-                } flexCenter h-[70px] w-full border-b-2 border-secondary-color text-lg font-semibold transition-all hover:bg-secondary-color/15 hover:font-extrabold`}
+                } flexCenter h-full w-full border-b-2 border-secondary-color-light text-lg font-semibold transition-all hover:border-secondary-color-light hover:bg-secondary-color-light/40 hover:font-extrabold dark:border-secondary-color dark:hover:bg-secondary-color/40`}
               >
                 <NavLink
                   className={(navClass) =>
                     navClass.isActive
-                      ? "flexCenter border-orange-color h-full w-full border-r-8 bg-secondary-color/15 px-7 py-3 text-xl font-extrabold text-light-gray"
+                      ? "flexCenter h-full w-full border-r-8 border-orange-color-light bg-secondary-color-light/50 px-7 py-3 text-xl font-extrabold text-orange-color-light dark:border-orange-color dark:bg-secondary-color/50 dark:text-orange-color"
                       : "flexCenter h-full w-full px-7 py-3"
                   }
                   to={item.path}

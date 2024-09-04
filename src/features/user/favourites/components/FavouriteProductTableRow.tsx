@@ -41,7 +41,7 @@ export default function FavouriteProductTableRow({
                 : undefined
             }
             alt={perfectItem.productName}
-            className="h-[80px] w-[80px]"
+            className="h-[150px]"
           />
         </div>
       </Table.Cell>
@@ -51,6 +51,7 @@ export default function FavouriteProductTableRow({
         <motion.div className="mx-auto w-[135px]" whileTap={{ scale: 1.2 }}>
           <Button
             ArialLabel="add-To-Cart"
+            variation="secondary"
             onClick={() => addToCart(perfectItem)}
           >
             <div className="flexCenter gap-1">

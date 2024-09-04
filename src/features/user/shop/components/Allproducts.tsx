@@ -7,7 +7,10 @@ interface allProductsProps {
   productsData: newProductProps[];
 }
 
-const Allproducts = ({ productsData, isLoading }: allProductsProps) => {
+export default function Allproducts({
+  productsData,
+  isLoading,
+}: allProductsProps) {
   if (isLoading) return <Spinner height="h-[200px]" />;
 
   if (productsData.length === 0)
@@ -17,9 +20,7 @@ const Allproducts = ({ productsData, isLoading }: allProductsProps) => {
 
   return (
     <section className="mx-auto w-[90%] pb-[80px] sm:w-5/6">
-      <ProductsList items={productsData} BorderColor="#163b48" />
+      <ProductsList items={productsData} BorderColor="#f39530" />
     </section>
   );
-};
-
-export default Allproducts;
+}

@@ -10,7 +10,7 @@ const initialState: loginServiceState = {
   errors: null,
   isAdmin: false,
   isAuthenticated: !!storedToken && storedToken !== "undefined",
-  token: storedToken ? storedToken : null,
+  token: storedToken || null,
 };
 
 const ordersSlice = createSlice({
@@ -37,7 +37,12 @@ const ordersSlice = createSlice({
         state.isLoading = false;
         state.isAuthenticated = true;
         state.isAdmin = type === "admin" ? true : false;
-        localStorage.setItem("token", uid);
+        if (typeof uid === "string") {
+          localStorage.setItem("token", uid);
+          state.token = uid;
+        } else {
+          state.token = null;
+        }
 
         state.user = action.payload;
       })

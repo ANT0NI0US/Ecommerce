@@ -31,7 +31,7 @@ export default function Offers() {
               ArialLabel="Go-To-Shop"
               onClick={() => navigate("/shop")}
             >
-              Shop Now
+              SHOP NOW
             </Button>
           </motion.div>
         </div>

@@ -5,12 +5,12 @@ export default function AuthLayout() {
     <div
       className="flexCenter relative min-h-screen w-full bg-cover bg-center py-[30px]"
       style={{
-        backgroundImage: `url('https://thumbs.dreamstime.com/b/online-shopping-concept-small-cart-stands-keyboard-dark-background-digital-e-commerce-generative-ai-319225212.jpg')`,
+        backgroundImage: `url('https://nairobibusiness.wordpress.com/wp-content/uploads/2015/11/online-shopping.gif')`,
       }}
     >
-      <div className="absolute inset-0 h-full w-full bg-black/45"></div>
+      <div className="absolute inset-0 h-full w-full bg-black/45 dark:bg-black/80"></div>
 
-      <div className="w-[95%] rounded-md bg-light-color/20 p-[30px] shadow-xl sm:w-[540px]">
+      <div className="w-[95%] rounded-md bg-light-color/70 p-[30px] shadow-2xl dark:bg-light-color/30 sm:w-[540px]">
         <Outlet />
       </div>
     </div>

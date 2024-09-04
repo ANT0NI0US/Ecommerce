@@ -37,7 +37,7 @@ export default function Services() {
         {serviceData.map((item, index) => (
           <div
             key={index}
-            className={`flexCenter min-h-[125px] w-full flex-col gap-[15px] rounded-md p-5  text-center odd:bg-card-bg-02-light even:bg-card-bg-04-light odd:dark:bg-card-bg-02 even:dark:bg-card-bg-01 md:flex-row md:text-left`}
+            className={`flexCenter min-h-[125px] w-full flex-col gap-[15px] rounded-md p-5  text-center odd:bg-card-bg-01-light even:bg-card-bg-02-light odd:dark:bg-card-bg-02 even:dark:bg-card-bg-01 md:flex-row md:text-left`}
           >
             <div className="flexCenter rounded-full bg-primary-color-light p-3 dark:bg-main-color md:p-[10px]">
               {item.icon}

@@ -1,5 +1,6 @@
 /* google fonts */
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Merienda:wght@300..900&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -12,8 +13,8 @@
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
-  /* @apply bg-main-color text-primary-color; */
+  /* font-family: "Montserrat", sans-serif; */
+  font-family: "Merienda", cursive;
 }
 
 svg {
@@ -26,12 +27,18 @@ img {
 
 @layer components {
   .input {
-    @apply w-full rounded-[5px] bg-main-color/55 p-[10px] text-primary-color outline-none transition-all placeholder:text-sm placeholder:text-primary-color;
+    @apply w-full items-center rounded-md bg-light-color/60 p-[10px] text-primary-color-light outline-none transition-all placeholder:text-sm placeholder:text-primary-color-light dark:bg-main-color/55 dark:text-primary-color dark:placeholder:text-primary-color;
     &:-webkit-autofill {
-      -webkit-text-fill-color: #88d07a;
-      box-shadow: 0 0 0px 1000px rgba(14, 16, 19, 0.923) inset;
-      caret-color: #88d07a;
+      -webkit-text-fill-color: #253b45;
+      box-shadow: 0 0 0px 1000px rgb(218 243 255 / 0.6) inset;
+      caret-color: #253b45;
     }
+  }
+
+  .dark .input:-webkit-autofill {
+    -webkit-text-fill-color: #88d07a;
+    box-shadow: 0 0 0px 1000px rgba(14, 16, 19, 0.923) inset;
+    caret-color: #88d07a;
   }
 
   .flexCenter {
@@ -49,23 +56,22 @@ img {
 
 /* scrollbar Syles */
 *::-webkit-scrollbar {
-  width: 5px;
-  width: 5px;
+  @apply w-[5px];
 }
 *::-webkit-scrollbar-track {
-  @apply bg-light-color;
+  @apply bg-light-color dark:bg-main-color;
 }
 
 *::-webkit-scrollbar-thumb {
-  @apply bg-primary-color;
+  @apply bg-primary-color-light dark:bg-primary-color;
 }
 
 /* Vertical scrollbar */
 *::-webkit-scrollbar:vertical {
-  width: 8px;
+  @apply w-[8px];
 }
 
 /* Horizontal scrollbar */
 *::-webkit-scrollbar:horizontal {
-  height: 10px;
+  @apply h-[10px];
 }

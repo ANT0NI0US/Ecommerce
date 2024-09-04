@@ -8,7 +8,7 @@ export default function Subtotal() {
   const navigate = useNavigate();
   const { totalAmount } = useSelector((state: cartSliceState) => state.cart);
   return (
-    <div className="flexCenter col-span-12 h-fit flex-col rounded-md border-[0.5px] border-secondary-color p-5 sm:items-start sm:justify-start md:col-span-4">
+    <div className="flexCenter col-span-12 h-fit flex-col rounded-md border-[0.5px] border-card-bg-01-light p-5 dark:border-secondary-color sm:items-start sm:justify-start md:col-span-4">
       <div className="flexCenter w-full gap-5 md:block">
         <h6 className="font-medium">Subtotal</h6>
         <span className="text-xl font-semibold">${totalAmount}</span>

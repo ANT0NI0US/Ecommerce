@@ -120,10 +120,11 @@ export default function SignUp() {
   };
 
   return (
-    <form onSubmit={handleSubmit(signUp)} className="relative w-full space-y-8">
-      <h3 className="text-center text-lg font-bold text-light-color">
-        Sign Up
-      </h3>
+    <form
+      onSubmit={handleSubmit(signUp)}
+      className="relative w-full space-y-8 text-main-color dark:text-light-color"
+    >
+      <h3 className="text-center text-lg font-bold">Sign Up</h3>
       <Input
         placeholder="User Name"
         disabled={loading}
@@ -171,7 +172,7 @@ export default function SignUp() {
       <Button loading={loading} ArialLabel="New Account" type="submit">
         Create An Account
       </Button>
-      <p className="mx-auto text-center text-light-color">
+      <p className="mx-auto text-center">
         Already have an account?
         <Link
           className="pl-1 underline transition-all hover:font-semibold"

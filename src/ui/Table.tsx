@@ -29,7 +29,7 @@ const Table: React.FC<TableProps> & {
   Cell: React.FC<CellProps>;
 } = ({ children }) => {
   return (
-    <div className="overflow-x-auto rounded-tl-[12px] rounded-tr-[12px] shadow-lg shadow-secondary-color drop-shadow-2xl">
+    <div className="overflow-x-auto rounded-tl-[12px] rounded-tr-[12px] shadow-lg shadow-secondary-color-light drop-shadow-lg dark:shadow-secondary-color">
       <table className="w-full p-[10px] text-center text-sm">{children}</table>
     </div>
   );
@@ -37,7 +37,7 @@ const Table: React.FC<TableProps> & {
 
 const Header: React.FC<HeaderProps> = ({ children }) => {
   return (
-    <thead className="bg-secondary-color text-xs uppercase">
+    <thead className="bg-secondary-color-light uppercase text-primary-color-light dark:bg-secondary-color dark:text-primary-color">
       <tr>{children}</tr>
     </thead>
   );
@@ -49,7 +49,7 @@ const Body = <T,>({ data, render }: BodyProps<T>): JSX.Element => {
 
 const Row: React.FC<RowProps> = ({ children }) => {
   return (
-    <tr className="border-b-[0.5px] border-secondary-color odd:bg-main-color/50 even:bg-secondary-color/50">
+    <tr className="border-b-[0.5px] border-secondary-color-light text-primary-color-light odd:bg-light-color even:bg-secondary-color-light dark:border-secondary-color dark:text-primary-color dark:odd:bg-main-color/50 dark:even:bg-secondary-color/50">
       {children}
     </tr>
   );

@@ -49,14 +49,14 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         )}
 
         <div
-          className={`${type !== "file" ? "z-10 flex h-full w-full items-center rounded-md border-[1px] border-orange-color bg-main-color/55 transition-all " : ""}`}
+          className={`${type !== "file" ? "z-10 flex h-full w-full items-center rounded-md border-[1px] border-orange-color-light bg-light-color/60 transition-all dark:border-orange-color dark:bg-main-color/55" : ""} ${type === "password" || Icon ? "relative" : ""}`}
         >
           <input
             disabled={disabled}
             ref={ref}
             type={showPassword ? "text" : type}
             placeholder={placeholder}
-            className={`input  ${type === "file" && "hidden"}`}
+            className={`input ${type === "file" && "hidden"} ${type === "password" || Icon ? "pr-10" : ""}`}
             id={placeholder}
             name={name}
             value={value}
@@ -65,7 +65,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           />
 
           {Icon && (
-            <div className="flexCenter h-[44px] w-[40px] text-orange-color">
+            <div className="flexCenter h-[44px] w-[40px] text-orange-color-light dark:text-orange-color">
               {Icon}
             </div>
           )}
@@ -89,7 +89,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           {type === "password" && (
             <button
               type="button"
-              className="flexCenter pr-[10px] text-orange-color"
+              className="absolute right-[10px] top-[50%] translate-y-[-50%] text-orange-color-light dark:text-orange-color"
               onClick={toggleShowPassword}
               aria-label={showPassword ? "Hide password" : "Show password"}
             >
@@ -103,7 +103,9 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         </div>
 
         {error && (
-          <div className="mt-[3px] pl-[5px] text-sm text-red-300">{error}</div>
+          <div className="mt-[3px] pl-[5px] text-sm text-red-900 dark:text-red-300">
+            {error}
+          </div>
         )}
       </div>
     );
