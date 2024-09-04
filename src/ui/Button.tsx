@@ -23,14 +23,14 @@ export default function Button({
 }: ButtonProps) {
   const base = `focus:outline-none w-full rounded-md border relative 
    transition-all h-[45px] font-bold ${Font}
-  ${(disabled || loading) && "cursor-not-allowed border-main-color bg-light-color/30 !text-main-color dark:border-light-color dark:bg-main-color/30 dark:!text-light-color"}`;
+  ${(disabled || loading) && "cursor-not-allowed border-main-color bg-light-color/90 !text-main-color dark:border-light-color dark:bg-main-color/35 dark:!text-light-color"}`;
 
   const styles: Record<typeof variation, string> = {
     primary:
       base +
       ` bg-secondary-color-light text-orange-color-light border-orange-color-light 
       dark:bg-secondary-color dark:text-orange-color dark:border-orange-color 
-      ${!disabled && !loading && "hover:bg-opacity-[0.5] dark:hover:bg-opacity-[0.8]"}`,
+      ${!disabled && !loading && "hover:bg-[#b5f4ac] dark:hover:bg-opacity-[0.8]"}`,
     secondary:
       base +
       ` bg-light-color/55 text-primary-color-light border-primary-color-light
@@ -52,9 +52,9 @@ export default function Button({
     >
       {loading ? (
         <div className="flexCenter gap-1">
-          <div className="h-3 w-3 animate-bounce rounded-full bg-light-color [animation-delay:-0.3s] dark:bg-main-color"></div>
-          <div className="h-3 w-3 animate-bounce rounded-full bg-light-color [animation-delay:-0.15s] dark:bg-main-color"></div>
-          <div className="h-3 w-3 animate-bounce rounded-full bg-light-color dark:bg-main-color"></div>
+          <div className="h-3 w-3 animate-bounce rounded-full bg-primary-color-light [animation-delay:-0.3s] dark:bg-light-color"></div>
+          <div className="h-3 w-3 animate-bounce rounded-full bg-primary-color-light [animation-delay:-0.15s] dark:bg-light-color"></div>
+          <div className="h-3 w-3 animate-bounce rounded-full bg-primary-color-light dark:bg-light-color"></div>
         </div>
       ) : (
         children

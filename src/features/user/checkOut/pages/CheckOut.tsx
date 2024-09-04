@@ -15,7 +15,7 @@ export default function CheckOut() {
   return (
     <>
       <CommonSection title="Checkout" />
-      <section className="w-full py-[80px]">
+      <section className="w-full bg-light-color py-[80px] text-primary-color-light dark:bg-main-color dark:text-primary-color">
         <div className="mx-auto grid w-[90%] grid-cols-12 gap-4 md:w-5/6">
           {/* ORDER FORM */}
           <OrderForm

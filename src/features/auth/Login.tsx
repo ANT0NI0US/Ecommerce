@@ -21,7 +21,7 @@ const initialState: loginFormProps = {
   password: "",
 };
 
-const Login = () => {
+export default function Login() {
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
@@ -55,13 +55,19 @@ const Login = () => {
   };
 
   return (
-    <form className="relative w-full space-y-8" onSubmit={handleSubmit(signIn)}>
+    <form
+      className="relative w-full space-y-8 text-main-color dark:text-light-color"
+      onSubmit={handleSubmit(signIn)}
+    >
       <div>
-        <h1 className="text-center text-4xl font-extrabold text-light-color">
+        <h1 className="text-center text-4xl font-extrabold">
           Welcome To
-          <span className="font-black text-primary-color"> STOREIFY</span>
+          <span className="font-black text-primary-color-light dark:text-primary-color">
+            {" "}
+            STOREIFY
+          </span>
         </h1>
-        <h3 className="text-center text-lg font-bold text-light-color">
+        <h3 className="mt-3 text-center text-lg font-bold uppercase">
           Sign In
         </h3>
       </div>
@@ -105,7 +111,7 @@ const Login = () => {
         Login
       </Button>
 
-      <p className="mx-auto text-center text-light-color">
+      <p className="mx-auto text-center">
         Don't have an account?
         <Link
           className="pl-1 underline transition-all hover:font-semibold"
@@ -116,6 +122,4 @@ const Login = () => {
       </p>
     </form>
   );
-};
-
-export default Login;
+}

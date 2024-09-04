@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Select, {
   MultiValue,
   SingleValue,
   StylesConfig,
   GroupBase,
+  SelectInstance,
 } from "react-select";
 
 interface Option {
@@ -33,46 +34,49 @@ interface ChooseProps {
   name?: string;
 }
 
-const getCustomStyles = (zindex: number): StylesConfig<Option> => ({
+const getCustomStyles = (
+  zindex: number,
+  mode: "light" | "dark",
+): StylesConfig<Option> => ({
   control: (provided) => ({
     ...provided,
-    border: "1px solid #c18500",
+    border: mode === "dark" ? "1px solid #c18500" : "1px solid #f39530",
     boxShadow: "none",
     "&:hover": {
-      borderColor: "#c18500",
+      borderColor: mode === "dark" ? "#c18500" : "#f39530",
     },
     width: "100%",
     height: "100%",
     padding: "0px",
     paddingTop: "10px",
     paddingBottom: "10px",
-    backgroundColor: "#0e1013",
-    color: "#88d07a",
+    backgroundColor: mode === "dark" ? "#0e1013" : "#daf3ff",
+    color: mode === "dark" ? "#88d07a" : "#253b45",
     outline: "none",
     maxHeight: "60px",
     overflowY: "auto",
   }),
   dropdownIndicator: (provided) => ({
     ...provided,
-    color: "#88d07a",
+    color: mode === "dark" ? "#88d07a" : "#253b45",
     "&:hover": {
-      color: "#88d07a",
+      color: mode === "dark" ? "#88d07a" : "#253b45",
     },
   }),
   clearIndicator: (provided) => ({
     ...provided,
-    color: "#88d07a",
+    color: mode === "dark" ? "#88d07a" : "#253b45",
     "&:hover": {
-      color: "#88d07a",
+      color: mode === "dark" ? "#88d07a" : "#253b45",
     },
   }),
   indicatorSeparator: (provided) => ({
     ...provided,
-    backgroundColor: "#88d07a",
+    backgroundColor: mode === "dark" ? "#88d07a" : "#253b45",
   }),
   noOptionsMessage: (provided) => ({
     ...provided,
-    color: "#88d07a",
+    color: mode === "dark" ? "#88d07a" : "#253b45",
   }),
   menu: (provided) => ({
     ...provided,
@@ -83,49 +87,59 @@ const getCustomStyles = (zindex: number): StylesConfig<Option> => ({
     ...provided,
     maxHeight: "100px",
     overflowY: "auto",
-    backgroundColor: "#0e1013",
-    border: "1px solid #c18500",
+    backgroundColor: mode === "dark" ? "#0e1013" : "#daf3ff",
+    border: mode === "dark" ? "1px solid #c18500" : "1px solid #f39530",
     padding: "0px",
   }),
   input: (provided) => ({
     ...provided,
-    color: "#88d07a",
+    color: mode === "dark" ? "#88d07a" : "#253b45",
   }),
   placeholder: (provided) => ({
     ...provided,
-    color: "#88d07a",
+    color: mode === "dark" ? "#88d07a" : "#253b45",
   }),
   option: (provided, state) => ({
     ...provided,
     cursor: "pointer",
     backgroundColor: state.isSelected
-      ? "#163b48"
-      : state.isFocused
+      ? mode === "dark"
         ? "#163b48"
+        : "#a3ffce"
+      : state.isFocused
+        ? mode === "dark"
+          ? "#163b48"
+          : "#a3ffce"
         : undefined,
     color: state.isSelected
-      ? "#daf3ff"
-      : state.isFocused
+      ? mode === "dark"
         ? "#daf3ff"
-        : "#daf3ff",
+        : "#253b45"
+      : state.isFocused
+        ? mode === "dark"
+          ? "#daf3ff"
+          : "#253b45"
+        : mode === "dark"
+          ? "#daf3ff"
+          : "#253b45",
     "&:hover": {
-      backgroundColor: "#163b48b5",
-      color: "#daf3ff",
+      backgroundColor: mode === "dark" ? "#163b48b5" : "#a3ffceb5",
+      color: mode === "dark" ? "#daf3ff" : "#253b45",
     },
   }),
   multiValue: (provided) => ({
     ...provided,
-    backgroundColor: "#0e1013",
+    backgroundColor: mode === "dark" ? "#0e1013" : "#daf3ff",
     maxHeight: "100px",
     overflowY: "auto",
   }),
   multiValueLabel: (provided) => ({
     ...provided,
-    color: "#88d07a",
+    color: mode === "dark" ? "#88d07a" : "#253b45",
   }),
   multiValueRemove: (provided) => ({
     ...provided,
-    color: "#88d07a",
+    color: mode === "dark" ? "#88d07a" : "#253b45",
     "&:hover": {
       backgroundColor: "transparent",
       color: "#ff0000",
@@ -133,13 +147,13 @@ const getCustomStyles = (zindex: number): StylesConfig<Option> => ({
   }),
   singleValue: (provided) => ({
     ...provided,
-    color: "#88d07a",
+    color: mode === "dark" ? "#88d07a" : "#253b45",
   }),
 });
 
 // Use Select type for ref
 const Choose = React.forwardRef<
-  Select<Option, boolean, GroupBase<Option>> | null,
+  SelectInstance<Option, boolean, GroupBase<Option>> | null,
   ChooseProps
 >(
   (
@@ -160,6 +174,29 @@ const Choose = React.forwardRef<
     }: ChooseProps,
     ref,
   ) => {
+    const [mode, setMode] = useState<"light" | "dark">("light");
+
+    // Effect to get the mode from body class
+    useEffect(() => {
+      const bodyClassList = document.body.classList;
+      const currentMode = bodyClassList.contains("dark") ? "dark" : "light";
+      setMode(currentMode);
+
+      // Optional: listen for class changes on the body
+      const observer = new MutationObserver(() => {
+        const updatedMode = bodyClassList.contains("dark") ? "dark" : "light";
+        setMode(updatedMode);
+      });
+
+      observer.observe(document.body, {
+        attributes: true,
+        attributeFilter: ["class"],
+      });
+
+      return () => {
+        observer.disconnect();
+      };
+    }, []);
     const handleChange = (
       selectedOptions:
         | MultiValue<Option>
@@ -174,7 +211,7 @@ const Choose = React.forwardRef<
       <div className="relative w-full" style={{ zIndex: zindex }}>
         <div className="relative z-10 flex items-center rounded-md transition-all">
           <Select
-            styles={getCustomStyles(zindex)}
+            styles={getCustomStyles(zindex, mode)}
             ref={ref}
             name={name}
             className="h-full w-full"

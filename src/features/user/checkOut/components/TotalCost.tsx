@@ -8,7 +8,7 @@ export default function TotalCost({
   totalAmount,
 }: totalCostProps) {
   return (
-    <div className="col-span-12 h-fit rounded-md border-[0.5px] border-secondary-color p-5 md:col-span-4">
+    <div className="col-span-12 h-fit rounded-md border-[0.5px] border-card-bg-01-light p-5 dark:border-secondary-color md:col-span-4">
       <div className="flex w-full flex-col gap-5">
         <h6 className="flexBetween w-full">
           Total Qty:
@@ -25,10 +25,12 @@ export default function TotalCost({
           <h6 className="flexBetween w-full">
             Shipping: <span>$0</span>
           </h6>
-          <span className="ml-2 text-sm text-orange-color">Free Shipping</span>
+          <span className="ml-2 text-sm text-orange-color-light dark:text-orange-color">
+            Free Shipping
+          </span>
         </div>
 
-        <h4 className="flexBetween w-full border-t-[0.5px] border-secondary-color py-5 text-xl font-medium">
+        <h4 className="flexBetween w-full border-t-[0.5px] border-card-bg-01-light py-5 text-xl font-medium dark:border-secondary-color">
           Total Cost: <span>${totalAmount}</span>
         </h4>
       </div>

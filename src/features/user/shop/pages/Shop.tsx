@@ -37,7 +37,7 @@ export default function Shop() {
   }, [dispatch]);
 
   return (
-    <>
+    <div className="bg-light-color text-primary-color-light dark:bg-main-color dark:text-primary-color">
       <CommonSection title="Products" />
       <FilterProducts
         productsData={productsData}
@@ -45,6 +45,6 @@ export default function Shop() {
         handleChangingProduct={handleChangingProduct}
       />
       <Allproducts productsData={productsData} isLoading={isLoading} />
-    </>
+    </div>
   );
 }

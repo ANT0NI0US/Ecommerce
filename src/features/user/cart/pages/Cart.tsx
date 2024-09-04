@@ -14,7 +14,7 @@ export default function Cart() {
   return (
     <>
       <CommonSection title="Shopping Cart" />
-      <section className="w-full py-[80px]">
+      <section className="w-full bg-light-color py-[80px] text-primary-color-light dark:bg-main-color dark:text-primary-color">
         {allCartItems.length === 0 ? (
           <h2 className="flexCenter mx-auto w-[90%] py-[80px] text-center text-xl font-semibold md:w-5/6">
             No items Added To The Cart

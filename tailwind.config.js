@@ -15,20 +15,13 @@ module.exports = {
         "orange-color": "#c18500",
         "card-bg-01": "#007c49",
         "card-bg-02": "#636568",
-        "card-bg-03": "#3b212a",
-        "card-bg-04": "#463323",
 
         "light-color": "#daf3ff",
         "primary-color-light": "#253b45",
         "secondary-color-light": "#a3ffce",
         "orange-color-light": "#f39530",
-        "card-bg-01-light": "#4c626b",
-        "card-bg-02-light": "#98afba",
-        "card-bg-03-light": "#ffead5",
-        "card-bg-04-light": "#ccb29e",
-      },
-      fontFamily: {
-        montserrat: ["Montserrat", "sans-serif"],
+        "card-bg-01-light": "#98afba",
+        "card-bg-02-light": "#ccb29e",
       },
     },
     screens: {

@@ -64,7 +64,7 @@ const Navigations = () => {
           <Route
             element={
               <ProtectedRoute>
-                <Layout isTopOfPage={isTopOfPage} />
+                <Layout />
               </ProtectedRoute>
             }
           >

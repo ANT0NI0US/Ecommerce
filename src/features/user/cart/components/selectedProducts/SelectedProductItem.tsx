@@ -22,7 +22,9 @@ export default function SelectedProductItem({
   return (
     <div
       className={`flexBetween relative h-[500px] flex-col gap-2 p-5 md:h-[250px] md:flex-row ${
-        isLastItem ? "" : "border-b-[0.5px] border-b-secondary-color"
+        isLastItem
+          ? ""
+          : "border-b-[0.5px] border-b-card-bg-01-light dark:border-b-secondary-color"
       }`}
     >
       <DeleteButton onDelete={onDelete} />
