@@ -17,29 +17,31 @@ export default function ProductContent({
   const dispatch = useDispatch<AppDispatch>();
 
   const addToCart = () => {
-    dispatch(
-      cartActions.addItem({
-        id: item.id,
-        productName: item.productName,
-        price: item.price,
-        imgUrl: item.imgUrl,
-      }),
-    );
-    toast.success("Product added to the cart successfully");
+    if (item.id) {
+      dispatch(
+        cartActions.addItem({
+          id: item.id,
+          productName: item.productName,
+          price: item.price,
+          imgUrl: item.imgUrl,
+        }),
+      );
+      toast.success("Product added to the cart successfully");
+    }
   };
 
   const { id, productName, category, price } = item;
 
   return (
-    <div className="text-primary-color-light w-full dark:text-primary-color">
+    <div className="w-full text-primary-color-light dark:text-primary-color">
       <div className="h-[130px] p-3 text-center gridScreen:text-left">
-        <h3 className="text-orange-color-light mt-[15px] text-[1.3rem] font-[600] dark:text-orange-color gridScreen:text-[1.2rem]">
+        <h3 className="mt-[15px] text-[1.3rem] font-[600] text-orange-color-light dark:text-orange-color gridScreen:text-[1.2rem]">
           <Link to={`/shop/${id}`}>{productName}</Link>
         </h3>
         <p className="capitalize">{category}</p>
       </div>
       <div
-        className="flexBetween group-hover:!border-primary-color-light border-t-[0.5px] p-3 transition-all duration-200 dark:group-hover:!border-primary-color"
+        className="flexBetween border-t-[0.5px] p-3 transition-all duration-200 group-hover:!border-primary-color-light dark:group-hover:!border-primary-color"
         style={{
           borderColor: BorderColor,
         }}
@@ -48,7 +50,7 @@ export default function ProductContent({
         <motion.div
           onClick={addToCart}
           whileTap={{ scale: 1.2 }}
-          className="flexCenter bg-primary-color-light cursor-pointer rounded-full p-2 dark:bg-primary-color"
+          className="flexCenter cursor-pointer rounded-full bg-primary-color-light p-2 dark:bg-primary-color"
           title="add to cart"
         >
           <IoMdAdd className="text-secondary-color-light dark:text-secondary-color" />

@@ -73,7 +73,7 @@ const UserTable = ({ allUsers, isLoading }: userTableProps) => {
               <td className="whitespace-nowrap px-6 py-4 text-center">
                 <motion.div
                   onClick={() => {
-                    deleteSpecificUser(user.id);
+                    user.id && deleteSpecificUser(user.id);
                   }}
                   whileTap={{ scale: 1.2 }}
                   className=" flexCenter cursor-pointer gap-1 rounded-full bg-red-700 px-4 py-2 text-light-color"

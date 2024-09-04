@@ -18,14 +18,16 @@ export default function AddFavouriteProduct({
   };
 
   const addToFavourite = () => {
-    dispatch(
-      cartActions.addPerfectItem({
-        id: item.id,
-        productName: item.productName,
-        price: item.price,
-        imgUrl: item.imgUrl,
-      }),
-    );
+    if (item.id) {
+      dispatch(
+        cartActions.addPerfectItem({
+          id: item.id,
+          productName: item.productName,
+          price: item.price,
+          imgUrl: item.imgUrl,
+        }),
+      );
+    }
   };
 
   const { id } = item;
