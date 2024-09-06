@@ -104,7 +104,7 @@ export default function OrderForm({
       <h3 className="mb-5 text-center text-lg font-bold md:text-left">
         Billing Information
       </h3>
-      <form onSubmit={handleSubmit(addNewOrder)} className="space-y-5">
+      <form onSubmit={handleSubmit(addNewOrder)} className="space-y-2">
         <Input
           placeholder="Name"
           disabled={isOrderLoading}
@@ -177,7 +177,7 @@ export default function OrderForm({
             },
           })}
         />
-        <motion.div whileTap={{ scale: 1.1 }} className="w-full">
+        <motion.div whileTap={{ scale: 1.1 }} className="!mt-10 w-full">
           <Button
             ArialLabel="place-an-order"
             type="submit"

@@ -89,12 +89,10 @@ export default function OurHappyCustomers() {
           }
           containerClass="container-with-dots"
           draggable
-          focusOnSelect={false}
           infinite
           keyBoardControl
           minimumTouchDrag={80}
           pauseOnHover
-          rtl={false}
           shouldResetAutoplay
           slidesToSlide={1}
           swipeable

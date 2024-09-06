@@ -8,6 +8,7 @@ import {
   getDoc,
 } from "firebase/firestore";
 import { userProps } from "@/shared/types";
+import { deleteObject, getStorage, ref } from "firebase/storage";
 
 export const getUsers = createAsyncThunk<userProps[], void>(
   "user/getUsers",
@@ -25,11 +26,14 @@ export const getUsers = createAsyncThunk<userProps[], void>(
   },
 );
 
-export const deleteUser = createAsyncThunk<string, string>(
+export const deleteUser = createAsyncThunk(
   "user/deleteUser",
-  async (id: string, thunkAPI) => {
+  async ({ id, photoURL }: { id: string; photoURL: string }, thunkAPI) => {
     try {
       await deleteDoc(doc(db, "users", id));
+      const storage = getStorage();
+      const desertRef = ref(storage, photoURL);
+      await deleteObject(desertRef);
       return thunkAPI.fulfillWithValue(id);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

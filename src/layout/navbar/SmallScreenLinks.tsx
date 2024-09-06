@@ -1,9 +1,10 @@
 import { IoCloseSharp } from "react-icons/io5";
-import { links } from "./links";
-import { arrLinks } from "@/shared/types";
+import { userLinks, adminLinks } from "./links";
+import { arrLinks, loginState } from "@/shared/types";
 import { NavLink } from "react-router-dom";
 import Button from "@/ui/Button";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
+import { useSelector } from "react-redux";
 
 interface smallLinksProps {
   showSidebar: boolean;
@@ -15,6 +16,9 @@ export default function SmallScreenLinks({
   closeSidebar,
 }: smallLinksProps) {
   const ref = useOutsideClick(() => closeSidebar());
+  const { isAdmin } = useSelector((state: loginState) => state.login);
+
+  const links = isAdmin ? adminLinks : userLinks;
 
   return (
     showSidebar && (
@@ -43,7 +47,7 @@ export default function SmallScreenLinks({
 
           {/* LINKS */}
           <div className="flex w-full flex-col">
-            {links.map((item: arrLinks, index: number) => (
+            {links?.map((item: arrLinks, index: number) => (
               <div
                 onClick={() => closeSidebar()}
                 key={item.text}

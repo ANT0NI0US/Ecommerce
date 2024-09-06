@@ -237,7 +237,9 @@ const Choose = React.forwardRef<
         </div>
 
         {error && (
-          <div className="mt-[3px] p-[2px] text-sm text-red-700">{error}</div>
+          <div className="mt-[3px] pl-[5px] text-sm text-red-900 dark:text-red-300">
+            {error}
+          </div>
         )}
       </div>
     );

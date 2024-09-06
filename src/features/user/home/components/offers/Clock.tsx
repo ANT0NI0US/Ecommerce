@@ -1,5 +1,8 @@
 import ClockList from "./ClockList";
-import { clockProps } from "@/shared/types";
+
+interface clockProps {
+  label: string;
+}
 
 const allClocks: Array<clockProps> = [
   {

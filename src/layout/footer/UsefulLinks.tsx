@@ -1,31 +1,25 @@
+import { loginState } from "@/shared/types";
+import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-
-interface allUsefulLinksProps {
-  title: string;
-  path: string;
-}
-
-const allUsefulLinks: Array<allUsefulLinksProps> = [
-  { title: "Home", path: "/home" },
-  { title: "Shop", path: "/shop" },
-  { title: "Cart", path: "/cart" },
-  { title: "Login", path: "/login" },
-];
+import { adminLinks, userLinks } from "../navbar/links";
 
 export default function UsefulLinks() {
+  const { isAdmin } = useSelector((state: loginState) => state.login);
+
+  const links = isAdmin ? adminLinks : userLinks;
   return (
     <div className="flex flex-col items-center gap-[15px] sm:items-start">
       <h4 className="mb-3 text-xl font-extrabold text-orange-color-light dark:text-orange-color">
         Useful Links
       </h4>
       <div className="flex flex-col gap-2">
-        {allUsefulLinks.map((category: allUsefulLinksProps) => (
+        {links?.map((category) => (
           <Link
-            key={category.title}
+            key={category.text}
             className="p-0 transition-all duration-300 hover:pl-1 hover:font-bold"
             to={category.path}
           >
-            {category.title}
+            {category.text}
           </Link>
         ))}
       </div>

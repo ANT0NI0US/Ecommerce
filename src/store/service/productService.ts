@@ -10,7 +10,13 @@ import {
   getDocs,
   updateDoc,
 } from "firebase/firestore";
-import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import {
+  deleteObject,
+  getDownloadURL,
+  getStorage,
+  ref,
+  uploadBytesResumable,
+} from "firebase/storage";
 
 export const getProducts = createAsyncThunk(
   "product/getProducts",
@@ -52,7 +58,7 @@ export const addProduct = createAsyncThunk(
       }
 
       if (downloadURL) {
-        await addDoc(collection(db, "products"), {
+        const docRef = await addDoc(collection(db, "products"), {
           category: newProduct.category,
           description: newProduct.description,
           imgUrl: downloadURL,
@@ -65,6 +71,7 @@ export const addProduct = createAsyncThunk(
 
         // Modify newProduct to store the download URL
         newProduct.imgUrl = downloadURL;
+        newProduct.id = docRef.id;
 
         return thunkAPI.fulfillWithValue(newProduct);
       } else {
@@ -76,11 +83,14 @@ export const addProduct = createAsyncThunk(
   },
 );
 
-export const deleteProduct = createAsyncThunk<string, string>(
+export const deleteProduct = createAsyncThunk(
   "product/deleteProduct",
-  async (id: string, thunkAPI) => {
+  async ({ id, imgUrl }: { id: string; imgUrl: string }, thunkAPI) => {
     try {
       await deleteDoc(doc(db, "products", id));
+      const storage = getStorage();
+      const desertRef = ref(storage, imgUrl);
+      await deleteObject(desertRef);
       return thunkAPI.fulfillWithValue(id);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

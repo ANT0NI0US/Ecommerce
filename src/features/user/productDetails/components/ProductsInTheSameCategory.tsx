@@ -10,7 +10,7 @@ export default function ProductsInTheSameCategory({
   sameCategories,
 }: sameCategoryProps) {
   return (
-    <section className="w-full py-[60px]">
+    <section className="w-full bg-light-color py-[60px] text-primary-color-light dark:bg-main-color dark:text-primary-color">
       <div className="mx-auto w-5/6">
         <Header textHead="You might also like" />
 
