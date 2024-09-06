@@ -28,11 +28,11 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
     ref: ForwardedRef<HTMLTextAreaElement>,
   ) => {
     return (
-      <div className="h-full w-full">
+      <div className="w-full">
         {showLabel && (
           <label
             htmlFor={placeholder}
-            className="block p-[3px] text-sm text-light-color"
+            className="block p-[3px] text-sm text-main-color dark:text-light-color"
           >
             {placeholder}
           </label>
@@ -43,7 +43,7 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
           ref={ref}
           id={placeholder}
           rows={Rows}
-          className={`input h-full w-full resize-none rounded-md border-[1px] border-orange-color bg-main-color/55 transition-all`}
+          className={`input resize-none rounded-md border-[1px] border-orange-color-light bg-light-color/60 transition-all dark:border-orange-color dark:bg-main-color/55`}
           placeholder={placeholder}
           disabled={disabled}
           name={name}
@@ -52,7 +52,9 @@ const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
         />
 
         {error && (
-          <div className="mt-[3px] pl-[5px] text-sm text-red-300">{error}</div>
+          <div className="pl-[5px] text-sm text-red-900 dark:text-red-300">
+            {error}
+          </div>
         )}
       </div>
     );

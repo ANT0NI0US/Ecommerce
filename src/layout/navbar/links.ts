@@ -1,6 +1,6 @@
 import { arrLinks } from "@/shared/types";
 
-export const links: Array<arrLinks> = [
+export const userLinks: Array<arrLinks> = [
   {
     path: "home",
     text: "Home",
@@ -12,5 +12,24 @@ export const links: Array<arrLinks> = [
   {
     path: "cart",
     text: "Cart",
+  },
+];
+
+export const adminLinks: Array<arrLinks> = [
+  {
+    path: "dashboard",
+    text: "Dashboard",
+  },
+  {
+    path: "products",
+    text: "All Products",
+  },
+  {
+    path: "users",
+    text: "Users",
+  },
+  {
+    path: "orders",
+    text: "Orders",
   },
 ];

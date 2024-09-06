@@ -8,23 +8,17 @@ interface Props {
   children: React.ReactNode;
 }
 
-const ProtectedRoute = ({ children }: Props) => {
+export default function ProtectedRoute({ children }: Props) {
   const navigate = useNavigate();
   const { isLoading, isAuthenticated } = useSelector(
     (state: loginState) => state.login,
   );
 
   useEffect(() => {
-    if (!isAuthenticated && !isLoading) {
-      navigate("/login");
-    }
+    if (!isAuthenticated && !isLoading) navigate("/login", { replace: true });
   }, [isAuthenticated, isLoading, navigate]);
 
-  if (isLoading) {
-    return <Spinner />;
-  }
+  if (isLoading) return <Spinner />;
 
   if (isAuthenticated) return children;
-};
-
-export default ProtectedRoute;
+}

@@ -1,30 +1,20 @@
-import { useState } from "react";
-
 import CommonSection from "@/ui/CommonSection";
-import AddProduct from "../components/modal/AddProduct";
-
 import ProductTable from "../components/ProductTable";
-import AddProductBtn from "../components/AddProductBtn";
 import useHelmet from "@/hooks/useHelmet";
+import AddNewProduct from "../components/AddNewProduct";
 
 export default function AllProducts() {
   useHelmet("AllProducts");
-  const [showModal, setShowModal] = useState<boolean>(false);
-
-  const toggleModal = () => {
-    setShowModal(!showModal);
-  };
 
   return (
     <>
       <CommonSection title="All Products" />
-      <AddProduct
-        showModal={showModal}
-        closeModal={() => setShowModal(false)}
-      />
-      <AddProductBtn toggleModal={toggleModal} />
-      <section className="w-full pb-[60px] pt-[20px]">
-        <ProductTable />
+
+      <section className="w-full bg-light-color py-[80px] text-primary-color-light dark:bg-main-color dark:text-primary-color">
+        <div className="mx-auto w-[90%] space-y-6 md:w-5/6">
+          <AddNewProduct />
+          <ProductTable />
+        </div>
       </section>
     </>
   );

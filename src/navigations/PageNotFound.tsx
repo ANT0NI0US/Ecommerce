@@ -1,17 +1,17 @@
 import { Link } from "react-router-dom";
 
-function PageNotFound() {
+export default function PageNotFound() {
   return (
-    <main className="bg-primary flex h-screen w-full flex-col items-center justify-center">
-      <h1 className="text-bgColor text-9xl font-extrabold tracking-widest">
+    <main className="flexCenter h-screen w-full flex-col bg-light-color dark:bg-main-color">
+      <h1 className="text-7xl font-extrabold tracking-widest text-orange-color-light dark:text-orange-color sm:text-9xl">
         404
       </h1>
-      <div className="bg-gray text-bgColor absolute rotate-12 rounded px-2 text-sm">
+      <h2 className="absolute z-10 rotate-12 px-2 text-center text-4xl font-black  text-primary-color-light dark:text-primary-color sm:text-6xl">
         Page Not Found
-      </div>
+      </h2>
       <button
         aria-label="Go to home"
-        className="text-bgColor mt-5 underline hover:bg-opacity-[0.9]"
+        className="mt-5 text-primary-color-light underline transition-all hover:font-bold dark:text-primary-color"
       >
         <Link to="/" replace>
           Go Home &rarr;
@@ -20,5 +20,3 @@ function PageNotFound() {
     </main>
   );
 }
-
-export default PageNotFound;

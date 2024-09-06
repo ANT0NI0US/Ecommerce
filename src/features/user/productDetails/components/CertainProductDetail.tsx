@@ -24,7 +24,7 @@ export default function CertainProductDetail({
   return (
     <section
       id="my-product"
-      className="w-full pb-[80px] md:h-[calc(100vh-80px)]"
+      className="w-full bg-light-color py-[80px] text-primary-color-light dark:bg-main-color dark:text-primary-color md:h-[calc(100vh-160px)]"
     >
       <div className="flexBetween mx-auto h-full w-[90%] flex-col gap-12 sm:w-5/6 md:flex-row">
         <div className="flexCenter h-full md:basis-1/2">

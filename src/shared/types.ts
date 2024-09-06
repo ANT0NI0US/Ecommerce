@@ -1,51 +1,26 @@
-export enum selectedPageNum {
-  Home = "home",
-  Benefits = "benefits",
-  OurClasses = "ourclasses",
-  ContactUs = "contactus",
+/*----------------------------------------  AUTHANTICATION ----------------------------------------*/
+export interface loginServiceState {
+  isLoading: boolean;
+  user: userProps | object;
+  errors: string | null;
+  isAdmin: boolean;
+  isAuthenticated: boolean | undefined;
+  token: string | null;
 }
 
-// nav bar
+export interface loginState {
+  login: loginServiceState;
+}
+/*----------------------------------------  NAVBAR + FOOTER ----------------------------------------*/
 export interface arrLinks {
   path: string;
   text: string;
 }
-
-export interface setSelectedPageProps {
-  setSelectedPage: (page: selectedPageNum) => void;
-}
-
-export interface selectedProps extends setSelectedPageProps {
-  selectedPage: selectedPageNum;
-}
-
+/*----------------------------------------  NAVBAR + FOOTER ----------------------------------------*/
 export interface Review {
   rating: number | null;
   text: string;
   name?: string;
-}
-
-export interface productCardProps {
-  id: string;
-  productName: string;
-  imgUrl: string;
-  category: string;
-  price: number;
-  shortDesc: string;
-  description: string;
-  reviews?: Review[];
-  avgRating?: number;
-}
-export interface newProductProps {
-  id?: string;
-  productName: string;
-  imgUrl: File | null | string;
-  category: string;
-  price: number;
-  shortDesc: string;
-  description: string;
-  reviews?: Review[];
-  avgRating?: number;
 }
 
 export interface Item {
@@ -71,34 +46,8 @@ export interface CartState {
 export interface cartSliceState {
   cart: CartState;
 }
-
-export interface clockProps {
-  label: string;
-}
-
-// login user
-export interface loginServiceState {
-  isLoading: boolean;
-  user: userProps | object;
-  errors: string | null;
-  isAdmin: boolean;
-  isAuthenticated: boolean | undefined;
-  token: string | null;
-}
-
-export interface loginState {
-  login: loginServiceState;
-}
-
-// admin
-
-// dashboard
-export interface serviceProps {
-  title: string;
-  bg: string;
-}
-
-// all users
+/*----------------------------------------  ADMIN ----------------------------------------*/
+/* ALL USERS */
 export interface userProps {
   id?: string;
   displayName: string;
@@ -119,18 +68,19 @@ export interface userState {
   user: userServiceState;
 }
 
-// all products
+/* ALL PRODUCTS */
 export interface productServiceState {
   isLoading: boolean;
   product: newProductProps | object;
   errors: null | string;
   allProducts: newProductProps[];
 }
+
 export interface productState {
   product: productServiceState;
 }
 
-// all orders
+/* ALL ORDERS */
 export interface ordersFireBase {
   id?: string;
   name: string;
@@ -146,6 +96,7 @@ export interface ordersFireBase {
   userId: string;
   userPhoto: string;
 }
+
 export interface order {
   Name: string;
   Phone: string;
@@ -154,6 +105,7 @@ export interface order {
   Code: string;
   Country: string;
 }
+
 export interface newOrderProps extends order {
   id?: string;
   cartItems: CartItem[];
@@ -170,6 +122,43 @@ export interface orderServiceState {
   order: ordersFireBase | object;
   allOrders: ordersFireBase[];
 }
+
 export interface orderState {
   order: orderServiceState;
+}
+/*----------------------------------------  UI ----------------------------------------*/
+/*  WIDGETS */
+export interface widgetProps {
+  icon: JSX.Element;
+  title: string;
+  description: string;
+}
+
+export interface WidgetsProps {
+  widgetsData: widgetProps[];
+}
+
+/*  PRODUCTS */
+export interface newProductProps {
+  id?: string;
+  productName: string;
+  imgUrl: File | null | string;
+  category: string;
+  price: number;
+  shortDesc: string;
+  description: string;
+  reviews?: Review[];
+  avgRating?: number;
+}
+
+export interface productCardProps {
+  id: string;
+  productName: string;
+  imgUrl: string;
+  category: string;
+  price: number;
+  shortDesc: string;
+  description: string;
+  reviews?: Review[];
+  avgRating?: number;
 }

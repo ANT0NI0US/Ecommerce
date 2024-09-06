@@ -38,18 +38,18 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     const toggleShowPassword = () => setShowPassword((prev) => !prev);
 
     return (
-      <div className="relative h-full w-full">
+      <div className="relative w-full">
         {showLabel && (
           <label
             htmlFor={placeholder}
-            className="block p-[3px] text-sm text-light-color"
+            className="block p-[3px] text-sm text-main-color dark:text-light-color"
           >
             {placeholder}
           </label>
         )}
 
         <div
-          className={`${type !== "file" ? "z-10 flex h-full w-full items-center rounded-md border-[1px] border-orange-color-light bg-light-color/60 transition-all dark:border-orange-color dark:bg-main-color/55" : ""} ${type === "password" || Icon ? "relative" : ""}`}
+          className={`${type !== "file" ? "z-10 flex w-full items-center rounded-md border-[1px] border-orange-color-light bg-light-color/60 transition-all dark:border-orange-color dark:bg-main-color/55" : ""} ${type === "password" || Icon ? "relative" : ""}`}
         >
           <input
             disabled={disabled}
@@ -71,19 +71,17 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
           )}
 
           {type === "file" && (
-            <div className="mt-[53px]">
-              <Button
-                disabled={disabled}
-                ArialLabel="File Upload"
-                variation="secondary"
-                onClick={() => document.getElementById(placeholder)?.click()}
-              >
-                <div className="flexCenter gap-2">
-                  <SlCloudUpload size={25} />
-                  <span>{placeholder}</span>
-                </div>
-              </Button>
-            </div>
+            <Button
+              disabled={disabled}
+              ArialLabel="File Upload"
+              variation="secondary"
+              onClick={() => document.getElementById(placeholder)?.click()}
+            >
+              <div className="flexCenter gap-2">
+                <SlCloudUpload size={25} />
+                <span>{placeholder}</span>
+              </div>
+            </Button>
           )}
 
           {type === "password" && (

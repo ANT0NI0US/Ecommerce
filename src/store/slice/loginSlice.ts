@@ -3,17 +3,18 @@ import { getUserByToken, signInFireBase } from "../service/loginService";
 import { loginServiceState } from "@/shared/types";
 
 const storedToken = localStorage.getItem("token");
+const storedIsAdmin = localStorage.getItem("isAdmin");
 
 const initialState: loginServiceState = {
   isLoading: false,
   user: {},
   errors: null,
-  isAdmin: false,
+  isAdmin: storedIsAdmin === "true",
   isAuthenticated: !!storedToken && storedToken !== "undefined",
   token: storedToken || null,
 };
 
-const ordersSlice = createSlice({
+const loginSlice = createSlice({
   name: "login",
   initialState,
   reducers: {
@@ -22,11 +23,11 @@ const ordersSlice = createSlice({
       state.token = null;
       state.isAdmin = false;
       window.localStorage.removeItem("token");
+      window.localStorage.removeItem("isAdmin");
     },
   },
   extraReducers: (builder) => {
     builder
-      // sign in function
       .addCase(signInFireBase.pending, (state) => {
         state.isLoading = true;
         state.isAuthenticated = false;
@@ -36,14 +37,14 @@ const ordersSlice = createSlice({
         const { type, uid } = action.payload;
         state.isLoading = false;
         state.isAuthenticated = true;
-        state.isAdmin = type === "admin" ? true : false;
+        state.isAdmin = type === "admin";
         if (typeof uid === "string") {
           localStorage.setItem("token", uid);
           state.token = uid;
         } else {
           state.token = null;
         }
-
+        localStorage.setItem("isAdmin", state.isAdmin.toString());
         state.user = action.payload;
       })
       .addCase(signInFireBase.rejected, (state, action) => {
@@ -51,8 +52,6 @@ const ordersSlice = createSlice({
         state.isAuthenticated = false;
         state.errors = action.payload as string;
       })
-
-      // getUserByToken
       .addCase(getUserByToken.pending, (state) => {
         state.isLoading = true;
         state.errors = null;
@@ -68,4 +67,5 @@ const ordersSlice = createSlice({
   },
 });
 
-export default ordersSlice.reducer;
+export const { logoutUser } = loginSlice.actions;
+export default loginSlice.reducer;
