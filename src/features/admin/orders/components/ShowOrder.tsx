@@ -15,12 +15,7 @@ export default function ShowOrder({
     <Modal>
       <Modal.Open opens="orderDetails">{children}</Modal.Open>
       <Modal.Window name="orderDetails">
-        {({ onCloseModal }) => (
-          <OrderDetails
-            selectedOrderId={selectedOrderId}
-            onCloseModal={onCloseModal}
-          />
-        )}
+        {() => <OrderDetails selectedOrderId={selectedOrderId} />}
       </Modal.Window>
     </Modal>
   );

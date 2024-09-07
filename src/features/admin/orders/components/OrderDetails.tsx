@@ -8,11 +8,10 @@ import OrderDetailsInfo from "./OrderDetailsInfo";
 import OrderItems from "./OrderItems";
 
 interface Props {
-  onCloseModal: () => void;
   selectedOrderId: string | undefined;
 }
 
-export default function OrderDetails({ onCloseModal, selectedOrderId }: Props) {
+export default function OrderDetails({ selectedOrderId }: Props) {
   const dispatch = useDispatch<AppDispatch>();
   const { isCertainOrderLoading, order } = useSelector(
     (state: orderState) => state.order,
