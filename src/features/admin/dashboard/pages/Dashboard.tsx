@@ -12,7 +12,7 @@ import {
   userProps,
   userState,
   widgetProps,
-} from "@/shared/types";
+} from "@/utils/types";
 import useHelmet from "@/hooks/useHelmet";
 import { AppDispatch } from "@/store";
 import { getProducts } from "@/store/service/productService";

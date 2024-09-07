@@ -1,4 +1,4 @@
-import { CartItem, CartState, Item } from "@/shared/types";
+import { CartItem, CartState, Item } from "@/utils/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
 

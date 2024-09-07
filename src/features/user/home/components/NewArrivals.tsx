@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Header from "@/shared/Header";
+import HeadText from "@/ui/HeadText";
 import ProductsList from "@/ui/products/ProductsList";
 import { getProducts } from "@/store/service/productService";
-import { productCardProps, productState } from "@/shared/types";
+import { productCardProps, productState } from "@/utils/types";
 import { AppDispatch } from "@/store";
 import Spinner from "@/ui/spinner/Spinner";
 
@@ -34,9 +34,9 @@ export default function NewArrivals() {
   if (isLoading) return <Spinner height="h-[200px]" />;
 
   return (
-    <section className="bg-secondary-color-light w-full pt-[80px] dark:bg-secondary-color">
+    <section className="w-full bg-secondary-color-light pt-[80px] dark:bg-secondary-color">
       <div className="mx-auto w-[90%] sm:w-5/6">
-        <Header textHead="New Arrivals" />
+        <HeadText text="New Arrivals" />
 
         <ProductsList items={mobileWirlessProducts} />
       </div>

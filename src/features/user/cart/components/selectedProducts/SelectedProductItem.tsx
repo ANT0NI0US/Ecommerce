@@ -1,4 +1,4 @@
-import { CartItem } from "@/shared/types";
+import { CartItem } from "@/utils/types";
 import ProductImage from "./ProductImage";
 import ProductDetails from "./ProductDetails";
 import QuantityControl from "./QuantityControl";

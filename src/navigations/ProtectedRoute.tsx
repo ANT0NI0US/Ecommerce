@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginState } from "@/shared/types";
+import { loginState } from "@/utils/types";
 import Spinner from "@/ui/spinner/Spinner";
 
 interface Props {

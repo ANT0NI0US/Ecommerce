@@ -2,7 +2,7 @@ import { useState } from "react";
 import Button from "@/ui/Button";
 import AllExistReviews from "./AllExistReviews";
 import TabForm from "./TabForm";
-import { Review } from "@/shared/types";
+import { Review } from "@/utils/types";
 
 type Props = {
   reviews: Review[] | undefined;

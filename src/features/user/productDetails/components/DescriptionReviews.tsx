@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Review } from "@/shared/types";
+import { Review } from "@/utils/types";
 import ReviewsTab from "./ReviewsTab";
 
 interface CertainProductDetailProps {

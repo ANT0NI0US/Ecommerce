@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { db } from "@/firebase.config";
-import { newOrderProps, ordersFireBase } from "@/shared/types";
+import { newOrderProps, ordersFireBase } from "@/utils/types";
 import { addDoc, collection, doc, getDoc, getDocs } from "firebase/firestore";
 
 export const getOrders = createAsyncThunk(

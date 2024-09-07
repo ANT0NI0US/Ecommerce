@@ -12,7 +12,7 @@ import Button from "@/ui/Button";
 import Input from "@/ui/Input";
 import { isOnlySpaces } from "@/utils/helpers";
 import TextArea from "@/ui/TextArea";
-import { productState } from "@/shared/types";
+import { productState } from "@/utils/types";
 
 interface newReviewProps {
   name: string;

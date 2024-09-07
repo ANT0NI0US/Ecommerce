@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getUserByToken, signInFireBase } from "../service/loginService";
-import { loginServiceState } from "@/shared/types";
+import { loginServiceState } from "@/utils/types";
 
 const storedToken = localStorage.getItem("token");
 const storedIsAdmin = localStorage.getItem("isAdmin");

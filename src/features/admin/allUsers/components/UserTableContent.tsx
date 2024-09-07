@@ -1,4 +1,4 @@
-import { userProps } from "@/shared/types";
+import { userProps } from "@/utils/types";
 import Table from "@/ui/Table";
 import DeleteUser from "./DeleteUser";
 

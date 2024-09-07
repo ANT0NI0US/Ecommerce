@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
 import CommonSection from "@/ui/CommonSection";
-import { productCardProps, productState } from "@/shared/types";
+import { productCardProps, productState } from "@/utils/types";
 import { AppDispatch } from "@/store";
 import { getProductById, getProducts } from "@/store/service/productService";
 

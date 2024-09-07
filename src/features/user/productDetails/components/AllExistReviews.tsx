@@ -1,4 +1,4 @@
-import { Review } from "@/shared/types";
+import { Review } from "@/utils/types";
 import GridContainer from "@/ui/GridContainer";
 import StarRatings from "@/ui/StarRatings";
 import { FaCheckCircle } from "react-icons/fa";

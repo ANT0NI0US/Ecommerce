@@ -1,5 +1,5 @@
 import DeleteProduct from "./DeleteProduct";
-import { newProductProps } from "@/shared/types";
+import { newProductProps } from "@/utils/types";
 import Table from "@/ui/Table";
 
 interface Props {

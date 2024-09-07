@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { useDispatch, useSelector } from "react-redux";
-import { cartSliceState, newProductProps } from "@/shared/types";
+import { cartSliceState, newProductProps } from "@/utils/types";
 import { cartActions } from "@/store/slice/cartSlice";
 import { AppDispatch } from "@/store";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";

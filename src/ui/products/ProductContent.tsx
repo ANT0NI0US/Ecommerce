@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "@/store";
 import { cartActions } from "@/store/slice/cartSlice";
 import { toast } from "react-toastify";
-import { newProductProps } from "@/shared/types";
+import { newProductProps } from "@/utils/types";
 
 export default function ProductContent({
   item,

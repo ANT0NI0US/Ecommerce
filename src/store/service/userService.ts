@@ -7,7 +7,7 @@ import {
   doc,
   getDoc,
 } from "firebase/firestore";
-import { userProps } from "@/shared/types";
+import { userProps } from "@/utils/types";
 import { deleteObject, getStorage, ref } from "firebase/storage";
 
 export const getUsers = createAsyncThunk<userProps[], void>(

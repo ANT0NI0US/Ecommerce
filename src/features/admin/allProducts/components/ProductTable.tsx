@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import ProductTableContent from "./ProductTableContent";
-import { productState } from "@/shared/types";
+import { productState } from "@/utils/types";
 import { AppDispatch } from "@/store";
 import { getProducts } from "@/store/service/productService";
 import Table from "@/ui/Table";

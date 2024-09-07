@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getUsers, deleteUser, getUserById } from "../service/userService";
-import { userServiceState } from "@/shared/types";
+import { userServiceState } from "@/utils/types";
 
 const initialState: userServiceState = {
   isLoading: false,

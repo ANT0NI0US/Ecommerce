@@ -1,11 +1,11 @@
-import Header from "@/shared/Header";
+import HeadText from "@/ui/HeadText";
 import Carousel from "react-multi-carousel";
 import StarRatings from "@/ui/StarRatings";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { AppDispatch } from "@/store";
 import { getProducts } from "@/store/service/productService";
-import { productState, Review } from "@/shared/types";
+import { productState, Review } from "@/utils/types";
 import Spinner from "@/ui/spinner/Spinner";
 
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
@@ -69,7 +69,7 @@ export default function OurHappyCustomers() {
   return (
     <section className="w-full bg-secondary-color-light py-[80px] text-primary-color-light dark:bg-secondary-color dark:text-primary-color">
       <div className="mx-auto w-[90%] bg-secondary-color-light dark:bg-secondary-color md:w-5/6">
-        <Header textHead="Our Happy Customers" />
+        <HeadText text="Our Happy Customers" />
         <Carousel
           additionalTransfrom={0}
           arrows

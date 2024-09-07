@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { newProductProps } from "@/shared/types";
+import { newProductProps } from "@/utils/types";
 import Choose from "@/ui/Choose";
 import Input from "@/ui/Input";
 import { IoIosSearch } from "react-icons/io";

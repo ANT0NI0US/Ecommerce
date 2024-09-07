@@ -7,7 +7,7 @@ import { AppDispatch } from "@/store";
 import { cartActions } from "@/store/slice/cartSlice";
 import Button from "@/ui/Button";
 import Table from "@/ui/Table";
-import { Item } from "@/shared/types";
+import { Item } from "@/utils/types";
 
 interface perfectItemProp {
   perfectItem: Item;

@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 
 import { signInFireBase } from "@/store/service/loginService.ts";
 import { AppDispatch } from "@/store/index.ts";
-import { loginState } from "@/shared/types.ts";
+import { loginState } from "@/utils/types";
 import Button from "@/ui/Button.tsx";
 import Input from "@/ui/Input.tsx";
 import { EMAIL_REGEX } from "@/utils/constants.ts";

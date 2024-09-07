@@ -1,4 +1,4 @@
-import { productCardProps } from "@/shared/types";
+import { productCardProps } from "@/utils/types";
 import DetailsAction from "./DetailsAction";
 import StarRatings from "@/ui/StarRatings";
 
