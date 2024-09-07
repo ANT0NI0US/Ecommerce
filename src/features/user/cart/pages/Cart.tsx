@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import CommonSection from "@/ui/CommonSection";
-import { cartSliceState } from "@/shared/types";
+import { cartSliceState } from "@/utils/types";
 import Subtotal from "../components/Subtotal";
 import SelectedProducts from "../components/selectedProducts/SelectedProducts";
 import useHelmet from "@/hooks/useHelmet";

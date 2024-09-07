@@ -8,7 +8,7 @@ import { toast } from "react-toastify";
 import { AppDispatch } from "@/store";
 import Button from "@/ui/Button";
 import { AiFillDelete } from "react-icons/ai";
-import { userProps, userState } from "@/shared/types";
+import { userProps, userState } from "@/utils/types";
 import { deleteUser } from "@/store/service/userService";
 
 interface Props {

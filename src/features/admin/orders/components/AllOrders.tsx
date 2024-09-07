@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { orderState } from "@/shared/types";
+import { orderState } from "@/utils/types";
 import { AppDispatch } from "@/store";
 import { getOrders } from "@/store/service/ordersService";
 import GridContainer from "@/ui/GridContainer";

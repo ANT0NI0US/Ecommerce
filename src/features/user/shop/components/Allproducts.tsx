@@ -1,5 +1,5 @@
 import ProductsList from "@/ui/products/ProductsList";
-import { newProductProps } from "@/shared/types";
+import { newProductProps } from "@/utils/types";
 import Spinner from "@/ui/spinner/Spinner";
 
 interface allProductsProps {

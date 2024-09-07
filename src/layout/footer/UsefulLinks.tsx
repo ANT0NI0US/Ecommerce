@@ -1,4 +1,4 @@
-import { loginState } from "@/shared/types";
+import { loginState } from "@/utils/types";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { adminLinks, userLinks } from "../navbar/links";

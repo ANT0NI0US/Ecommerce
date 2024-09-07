@@ -1,6 +1,6 @@
 import { IoCloseSharp } from "react-icons/io5";
 import { userLinks, adminLinks } from "./links";
-import { arrLinks, loginState } from "@/shared/types";
+import { arrLinks, loginState } from "@/utils/types";
 import { NavLink } from "react-router-dom";
 import Button from "@/ui/Button";
 import { useOutsideClick } from "@/hooks/useOutsideClick";

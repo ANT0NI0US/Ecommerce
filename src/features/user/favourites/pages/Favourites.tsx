@@ -1,7 +1,7 @@
 import useHelmet from "@/hooks/useHelmet";
 import CommonSection from "@/ui/CommonSection";
 import FavouriteProductTable from "../components/FavouriteProductTable";
-import { cartSliceState } from "@/shared/types";
+import { cartSliceState } from "@/utils/types";
 import { useSelector } from "react-redux";
 
 export default function Favourites() {

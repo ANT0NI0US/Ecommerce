@@ -1,4 +1,4 @@
-import { WidgetsProps } from "@/shared/types";
+import { WidgetsProps } from "@/utils/types";
 import { motion } from "framer-motion";
 
 export default function Widgets({ widgetsData }: WidgetsProps) {

@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { FaShoppingBag } from "react-icons/fa";
 import { FaHeart } from "react-icons/fa6";
 import ProfilePhoto from "./ProfilePhoto";
-import { cartSliceState } from "@/shared/types";
+import { cartSliceState } from "@/utils/types";
 
 interface allActionsProps {
   icon: ReactElement;

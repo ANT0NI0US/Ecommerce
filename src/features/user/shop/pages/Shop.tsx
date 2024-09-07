@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import CommonSection from "@/ui/CommonSection";
-import { newProductProps, productState } from "@/shared/types";
+import { newProductProps, productState } from "@/utils/types";
 import { getProducts } from "@/store/service/productService";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "@/store";

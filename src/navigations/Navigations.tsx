@@ -4,7 +4,7 @@ import ProtectedRoute from "./ProtectedRoute";
 import Spinner from "@/ui/spinner/Spinner";
 import PageNotFound from "./PageNotFound";
 import { useSelector } from "react-redux";
-import { loginState } from "@/shared/types";
+import { loginState } from "@/utils/types";
 import AuthLayout from "@/layout/AuthLayout";
 
 const Login = lazy(() => import("@/features/auth/Login"));

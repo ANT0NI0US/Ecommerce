@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { adminLinks, userLinks } from "./links";
-import { arrLinks, loginState } from "@/shared/types";
+import { arrLinks, loginState } from "@/utils/types";
 import { useSelector } from "react-redux";
 
 export default function BigScreenLinks() {

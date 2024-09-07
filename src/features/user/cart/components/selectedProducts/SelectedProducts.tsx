@@ -99,7 +99,7 @@
 //   );
 // }
 
-import { CartItem } from "@/shared/types";
+import { CartItem } from "@/utils/types";
 import { AppDispatch } from "@/store";
 import { cartActions } from "@/store/slice/cartSlice";
 import { useDispatch } from "react-redux";

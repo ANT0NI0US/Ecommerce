@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import ProductCard from "./ProductCard";
-import { newProductProps } from "@/shared/types";
+import { newProductProps } from "@/utils/types";
 import GridContainer from "../GridContainer";
 
 export default function ProductsList({

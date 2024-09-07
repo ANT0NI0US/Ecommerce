@@ -1,4 +1,4 @@
-import { arrLinks } from "@/shared/types";
+import { arrLinks } from "@/utils/types";
 
 export const userLinks: Array<arrLinks> = [
   {

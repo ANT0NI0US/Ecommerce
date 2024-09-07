@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch } from "@/store";
 import { getOrderById } from "@/store/service/ordersService";
-import { orderState, ordersFireBase } from "@/shared/types";
+import { orderState, ordersFireBase } from "@/utils/types";
 import Spinner from "@/ui/spinner/Spinner";
 import OrderDetailsInfo from "./OrderDetailsInfo";
 import OrderItems from "./OrderItems";

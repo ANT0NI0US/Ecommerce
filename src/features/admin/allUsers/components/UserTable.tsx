@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userProps, userState } from "@/shared/types";
+import { userProps, userState } from "@/utils/types";
 import { AppDispatch } from "@/store";
 import Table from "@/ui/Table";
 import Spinner from "@/ui/spinner/Spinner";

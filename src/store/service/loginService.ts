@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { auth, db } from "@/firebase.config";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { userProps } from "@/shared/types";
+import { userProps } from "@/utils/types";
 import { collection, getDocs } from "firebase/firestore";
 
 export const signInFireBase = createAsyncThunk(

@@ -1,4 +1,4 @@
-import { widgetProps } from "@/shared/types";
+import { widgetProps } from "@/utils/types";
 import Widgets from "@/ui/Widgets";
 import { FaTruck } from "react-icons/fa";
 import { FaRepeat } from "react-icons/fa6";

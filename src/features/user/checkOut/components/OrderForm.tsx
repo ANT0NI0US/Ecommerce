@@ -13,7 +13,7 @@ import {
   orderState,
   userProps,
   userState,
-} from "@/shared/types";
+} from "@/utils/types";
 import { AppDispatch } from "@/store";
 import { getUserById, getUsers } from "@/store/service/userService";
 import { addOrder } from "@/store/service/ordersService";

@@ -1,6 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { db, storage } from "@/firebase.config";
-import { newProductProps, productCardProps } from "@/shared/types";
+import { newProductProps, productCardProps } from "@/utils/types";
 import {
   addDoc,
   collection,

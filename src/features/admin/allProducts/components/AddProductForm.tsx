@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addProduct } from "@/store/service/productService";
 import { AppDispatch } from "@/store";
 import Button from "@/ui/Button";
-import { newProductProps, productState } from "@/shared/types";
+import { newProductProps, productState } from "@/utils/types";
 import ModalFormGrid from "@/ui/ModalFormGrid";
 import { isOnlySpaces } from "@/utils/helpers";
 import Input from "@/ui/Input";

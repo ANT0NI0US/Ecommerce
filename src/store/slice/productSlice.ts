@@ -6,7 +6,7 @@ import {
   addReviewToProduct,
   getProductById,
 } from "../service/productService";
-import { productCardProps, productServiceState } from "@/shared/types";
+import { productCardProps, productServiceState } from "@/utils/types";
 
 const initialState: productServiceState = {
   isLoading: false,

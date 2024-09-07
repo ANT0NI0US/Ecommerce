@@ -1,6 +1,6 @@
 import Table from "@/ui/Table";
 import FavouriteProductTableRow from "./FavouriteProductTableRow";
-import { Item } from "@/shared/types";
+import { Item } from "@/utils/types";
 
 const tableHeadCells = ["Image", "Title", "Price", "Actions"];
 

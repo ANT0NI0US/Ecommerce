@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { addOrder, getOrders, getOrderById } from "../service/ordersService";
-import { orderServiceState } from "@/shared/types";
+import { orderServiceState } from "@/utils/types";
 
 const initialState: orderServiceState = {
   isLoading: false,
