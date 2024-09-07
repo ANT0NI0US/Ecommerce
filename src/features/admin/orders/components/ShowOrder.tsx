@@ -2,6 +2,7 @@ import Modal from "@/ui/Modal";
 import { ReactElement } from "react";
 import OrderDetails from "./OrderDetails";
 
+// PROPS
 interface orderDetailsProps {
   children: ReactElement;
   selectedOrderId: string | undefined;
