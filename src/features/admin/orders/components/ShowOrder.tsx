@@ -2,6 +2,7 @@ import Modal from "@/ui/Modal";
 import { ReactElement } from "react";
 import OrderDetails from "./OrderDetails";
 
+// PROPS
 interface orderDetailsProps {
   children: ReactElement;
   selectedOrderId: string | undefined;
@@ -15,12 +16,7 @@ export default function ShowOrder({
     <Modal>
       <Modal.Open opens="orderDetails">{children}</Modal.Open>
       <Modal.Window name="orderDetails">
-        {({ onCloseModal }) => (
-          <OrderDetails
-            selectedOrderId={selectedOrderId}
-            onCloseModal={onCloseModal}
-          />
-        )}
+        {() => <OrderDetails selectedOrderId={selectedOrderId} />}
       </Modal.Window>
     </Modal>
   );
