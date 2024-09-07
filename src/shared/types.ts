@@ -118,6 +118,7 @@ export interface newOrderProps extends order {
 
 export interface orderServiceState {
   isLoading: boolean;
+  isCertainOrderLoading: boolean;
   errors: null | string;
   order: ordersFireBase | object;
   allOrders: ordersFireBase[];

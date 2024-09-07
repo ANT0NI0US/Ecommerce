@@ -4,6 +4,7 @@ import { orderServiceState } from "@/shared/types";
 
 const initialState: orderServiceState = {
   isLoading: false,
+  isCertainOrderLoading: false,
   allOrders: [],
   order: {},
   errors: null,
@@ -46,11 +47,11 @@ const ordersSlice = createSlice({
 
     // get a specific order
     builder.addCase(getOrderById.pending, (state) => {
-      state.isLoading = true;
+      state.isCertainOrderLoading = true;
       state.errors = null;
     });
     builder.addCase(getOrderById.fulfilled, (state, action) => {
-      state.isLoading = false;
+      state.isCertainOrderLoading = false;
       const existingOrderIndex = state.allOrders.findIndex(
         (order) => order.id === action.payload.id,
       );
@@ -60,7 +61,7 @@ const ordersSlice = createSlice({
       state.errors = null;
     });
     builder.addCase(getOrderById.rejected, (state, action) => {
-      state.isLoading = false;
+      state.isCertainOrderLoading = false;
       state.errors = action.payload as string;
     });
   },
