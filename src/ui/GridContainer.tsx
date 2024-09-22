@@ -9,5 +9,3 @@ export default function GridContainer({ children }: gridProps) {
     </div>
   );
 }
-
-GridContainer;
