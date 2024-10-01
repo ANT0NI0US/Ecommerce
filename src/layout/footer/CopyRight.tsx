@@ -9,5 +9,3 @@ export default function CopyRight() {
     </div>
   );
 }
-
-CopyRight;
