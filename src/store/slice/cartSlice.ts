@@ -7,7 +7,7 @@ const initialState: CartState = {
   totalAmount: 0,
   totalQuantity: 0,
   perfectItems: [],
-  totalFavouriteItemsQuantity: 0,
+  totalFavoriteItemsQuantity: 0,
 };
 
 const cartSlice = createSlice({
@@ -84,28 +84,26 @@ const cartSlice = createSlice({
       );
     },
     addPerfectItem: (state, action: PayloadAction<Item>) => {
-      const newFavouriteItem = action.payload;
+      const newFavoriteItem = action.payload;
       const existingItem = state.perfectItems.find(
-        (item) => item.id === newFavouriteItem.id,
+        (item) => item.id === newFavoriteItem.id,
       );
       if (existingItem) {
         state.perfectItems = state.perfectItems.filter(
-          (item) => item.id !== newFavouriteItem.id,
+          (item) => item.id !== newFavoriteItem.id,
         );
-        state.totalFavouriteItemsQuantity =
-          state.totalFavouriteItemsQuantity - 1;
+        state.totalFavoriteItemsQuantity = state.totalFavoriteItemsQuantity - 1;
         toast.success("Product removed from favorites");
       } else {
         state.perfectItems.push({
-          id: newFavouriteItem.id,
-          productName: newFavouriteItem.productName,
-          imgUrl: newFavouriteItem.imgUrl,
-          price: newFavouriteItem.price,
+          id: newFavoriteItem.id,
+          productName: newFavoriteItem.productName,
+          imgUrl: newFavoriteItem.imgUrl,
+          price: newFavoriteItem.price,
         });
-        state.totalFavouriteItemsQuantity =
-          state.totalFavouriteItemsQuantity + 1;
+        state.totalFavoriteItemsQuantity = state.totalFavoriteItemsQuantity + 1;
         toast.success(
-          `${newFavouriteItem.productName} added to favorites successfully!`,
+          `${newFavoriteItem.productName} added to favorites successfully!`,
         );
       }
     },

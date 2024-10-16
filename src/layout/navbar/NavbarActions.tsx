@@ -18,16 +18,16 @@ const iconStyle: string =
 export default function NavbarActions() {
   const navigate = useNavigate();
 
-  const { totalQuantity, totalFavouriteItemsQuantity } = useSelector(
+  const { totalQuantity, totalFavoriteItemsQuantity } = useSelector(
     (state: cartSliceState) => state.cart,
   );
 
   const allActions: Array<allActionsProps> = [
     {
       icon: <FaHeart className={iconStyle} size={20} />,
-      text: "Favourites",
-      href: "/favourites",
-      value: totalFavouriteItemsQuantity,
+      text: "Favorites",
+      href: "/favorites",
+      value: totalFavoriteItemsQuantity,
     },
     {
       icon: <FaShoppingBag className={iconStyle} size={20} />,

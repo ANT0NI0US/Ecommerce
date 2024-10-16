@@ -1,22 +1,22 @@
-import useHelmet from "@/hooks/useHelmet";
-import CommonSection from "@/ui/CommonSection";
-import FavouriteProductTable from "../components/FavouriteProductTable";
-import { cartSliceState } from "@/utils/types";
 import { useSelector } from "react-redux";
+import FavoriteProductTable from "../components/FavoriteProductTable";
+import CommonSection from "@/ui/CommonSection";
+import { cartSliceState } from "@/utils/types";
+import useHelmet from "@/hooks/useHelmet";
 
-export default function Favourites() {
-  useHelmet("Favourites");
+export default function Favorites() {
+  useHelmet("Favorites");
   const { perfectItems } = useSelector((state: cartSliceState) => state.cart);
   return (
     <>
-      <CommonSection title="My Favourites" />
+      <CommonSection title="My Favorites" />
       <section className="w-full bg-light-color py-[80px] text-primary-color-light dark:bg-main-color dark:text-primary-color">
         {perfectItems.length === 0 ? (
           <h2 className="flexCenter mx-auto w-[90%] py-[80px] text-center text-xl font-semibold md:w-5/6">
-            No items Added To The Favourites
+            No items Added To The Favorites
           </h2>
         ) : (
-          <FavouriteProductTable perfectItems={perfectItems} />
+          <FavoriteProductTable perfectItems={perfectItems} />
         )}
       </section>
     </>

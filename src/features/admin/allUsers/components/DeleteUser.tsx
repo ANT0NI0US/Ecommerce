@@ -1,14 +1,13 @@
 import { useDispatch } from "react-redux";
+import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
+import { AiFillDelete } from "react-icons/ai";
 import Modal from "@/ui/Modal";
 import ConfirmMessage from "@/ui/ConfirmMessage";
-import { useSelector } from "react-redux";
-import { motion } from "framer-motion";
-
-import { toast } from "react-toastify";
-import { AppDispatch } from "@/store";
 import Button from "@/ui/Button";
-import { AiFillDelete } from "react-icons/ai";
 import { userProps, userState } from "@/utils/types";
+import { AppDispatch } from "@/store";
 import { deleteUser } from "@/store/service/userService";
 
 interface Props {

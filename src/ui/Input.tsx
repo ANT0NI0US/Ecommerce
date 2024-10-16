@@ -1,8 +1,8 @@
 import React, { useState, ChangeEvent, ReactElement } from "react";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { FaRegEyeSlash } from "react-icons/fa6";
-import Button from "./Button";
 import { SlCloudUpload } from "react-icons/sl";
+import Button from "./Button";
 
 interface InputProps {
   type?: string;

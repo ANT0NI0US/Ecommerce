@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import Experience from "@/assets/images/experience.png";
 
 export default function Experiences() {
   return (
@@ -8,8 +7,9 @@ export default function Experiences() {
         className={`flexBetween mx-auto w-full flex-col-reverse overflow-hidden md:flex-row`}
       >
         <img
+          loading="lazy"
           className={`max-h-full w-full basis-3/5 rounded-none object-cover object-center md:rounded-br-lg md:rounded-tr-lg`}
-          src={Experience}
+          src="https://firebasestorage.googleapis.com/v0/b/furniture-ecommerce-841f4.appspot.com/o/siteImages%2Fexperience.webp?alt=media&token=8361f283-de20-49de-9dd4-e7aaa33e8db8"
           alt="experience-image"
         />
 
@@ -28,9 +28,9 @@ export default function Experiences() {
             We Provide You The Best Experience
           </h2>
           <p className="leading-[28px]">
-            You don't have worry about the result because all of these interios
+            You don't have worry about the result because all of these interiors
             are made by people who are professionals in their fields with an
-            elegant and lucurious style and with premimum quality materilas.
+            elegant and luxurious style and with premium quality materials.
           </p>
         </motion.div>
       </div>

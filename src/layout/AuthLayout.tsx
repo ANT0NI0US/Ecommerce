@@ -5,7 +5,7 @@ export default function AuthLayout() {
     <div
       className="flexCenter relative min-h-screen w-full bg-cover bg-center py-[30px]"
       style={{
-        backgroundImage: `url('https://nairobibusiness.wordpress.com/wp-content/uploads/2015/11/online-shopping.gif')`,
+        backgroundImage: `url('https://firebasestorage.googleapis.com/v0/b/furniture-ecommerce-841f4.appspot.com/o/siteImages%2Fonline-shopping.webp?alt=media&token=3613355b-23d6-4a58-8e3a-d94e84c4bb92')`,
       }}
     >
       <div className="absolute inset-0 h-full w-full bg-black/45 dark:bg-black/80"></div>

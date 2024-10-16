@@ -2,7 +2,6 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import Clock from "./Clock";
 import Button from "@/ui/Button";
-import offers from "@/assets/images/offers.png";
 
 export default function Offers() {
   const navigate = useNavigate();
@@ -10,7 +9,12 @@ export default function Offers() {
     <section className="w-full overflow-hidden bg-secondary-color-light text-primary-color-light dark:bg-secondary-color dark:text-primary-color md:h-[530px]">
       <div className="flex h-full w-full flex-col-reverse md:flex-row md:items-center md:justify-evenly">
         <div className="h-full w-full basis-1/2">
-          <img className="h-full w-full" src={offers} alt="counter-timer-img" />
+          <img
+            loading="lazy"
+            className="h-full w-full"
+            src="https://firebasestorage.googleapis.com/v0/b/furniture-ecommerce-841f4.appspot.com/o/siteImages%2Foffers.webp?alt=media&token=6499f1e7-b28f-4221-b0c2-3c3d6867b020"
+            alt="counter-timer-img"
+          />
         </div>
         <div className="mx-auto w-[90%] basis-1/2 space-y-4 py-[80px] text-center sm:w-5/6 md:px-[30px] md:py-0 md:text-left">
           <p className="font-bold">PROMOTION</p>

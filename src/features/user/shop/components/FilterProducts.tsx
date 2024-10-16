@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
-import { newProductProps } from "@/utils/types";
+import { MultiValue, SingleValue } from "react-select";
+import { IoIosSearch } from "react-icons/io";
 import Choose from "@/ui/Choose";
 import Input from "@/ui/Input";
-import { IoIosSearch } from "react-icons/io";
-import { MultiValue, SingleValue } from "react-select";
 import GridContainer from "@/ui/GridContainer";
+import { newProductProps } from "@/utils/types";
 
 const categories = ["Sofa", "Mobile", "Chair", "Watch", "Wireless"];
 const sorts = ["Ascending", "Descending"];

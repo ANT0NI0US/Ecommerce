@@ -1,9 +1,9 @@
-import { CartItem } from "@/utils/types";
-import { AppDispatch } from "@/store";
-import { cartActions } from "@/store/slice/cartSlice";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
 import SelectedProductItem from "./SelectedProductItem";
+import { CartItem } from "@/utils/types";
+import { AppDispatch } from "@/store";
+import { cartActions } from "@/store/slice/cartSlice";
 
 interface selectedProductsProps {
   allCartItems: CartItem[];

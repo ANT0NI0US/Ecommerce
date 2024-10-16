@@ -1,7 +1,4 @@
 import { motion } from "framer-motion";
-import ExperienceOne from "@/assets/images/materials-one.png";
-import ExperienceTwo from "@/assets/images/materials-two.png";
-import ExperienceThree from "@/assets/images/materials-three.png";
 
 export default function Materials() {
   return (
@@ -22,28 +19,30 @@ export default function Materials() {
             Very Serious Materials For Making Furniture
           </h2>
           <p className="leading-[28px]">
-            Because Panto was very serious about designing furniture for our
-            environment, using a very expensive and famous capital but at a
-            reltively low price.
+            Serious design furniture for our environment, using a very expensive
+            and famous capital but at a relatively low price.
           </p>
         </motion.div>
         <div className="flex w-full basis-3/4 flex-col-reverse items-center md:flex-row md:gap-[30px]">
           <div className="hidden gap-[30px] md:flex md:w-[35%] md:flex-col">
             <img
+              loading="lazy"
               className="h-[250px] rounded-xl"
-              src={ExperienceTwo}
-              alt="experience-image-two"
+              src="https://firebasestorage.googleapis.com/v0/b/furniture-ecommerce-841f4.appspot.com/o/siteImages%2Fmaterials-two.webp?alt=media&token=6c926c64-4b5a-4bb9-aac1-13f431f72470"
+              alt="material-image-two"
             />
             <img
+              loading="lazy"
               className="h-[200px] rounded-xl"
-              src={ExperienceThree}
-              alt="experience-image-three"
+              src="https://firebasestorage.googleapis.com/v0/b/furniture-ecommerce-841f4.appspot.com/o/siteImages%2Fmaterials-three.webp?alt=media&token=c22384dc-f50f-497a-a4b2-69b6438afb30"
+              alt="material-image-three"
             />
           </div>
           <img
+            loading="lazy"
             className="w-full rounded-none rounded-bl-lg rounded-tl-lg md:w-[65%]"
-            src={ExperienceOne}
-            alt="experience-image-one"
+            src="https://firebasestorage.googleapis.com/v0/b/furniture-ecommerce-841f4.appspot.com/o/siteImages%2Fmaterials-one.webp?alt=media&token=be327d9e-b8c7-422e-a522-5f0708a60e83"
+            alt="material-image-one"
           />
         </div>
       </div>

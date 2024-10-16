@@ -4,8 +4,8 @@ import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
-
-import useAuth from "@/hooks/useAuth";
+import Input from "@/ui/Input";
+import Button from "@/ui/Button";
 import {
   CartItem,
   newOrderProps,
@@ -14,13 +14,12 @@ import {
   userProps,
   userState,
 } from "@/utils/types";
+import { isOnlySpaces } from "@/utils/helpers";
 import { AppDispatch } from "@/store";
 import { getUserById, getUsers } from "@/store/service/userService";
 import { addOrder } from "@/store/service/ordersService";
 import { cartActions } from "@/store/slice/cartSlice";
-import { isOnlySpaces } from "@/utils/helpers";
-import Input from "@/ui/Input";
-import Button from "@/ui/Button";
+import useAuth from "@/hooks/useAuth";
 
 interface orderFormProps {
   cartItems: CartItem[];
@@ -119,7 +118,7 @@ export default function OrderForm({
         />
         <Input
           placeholder="Phone Number"
-          //   disabled={isLoading}
+          disabled={isOrderLoading}
           error={errors?.Phone?.message}
           {...register("Phone", {
             required: "This Field is required",
@@ -154,7 +153,7 @@ export default function OrderForm({
           })}
         />
         <Input
-          placeholder="Potal Code"
+          placeholder="Portal Code"
           disabled={isOrderLoading}
           error={errors?.Code?.message}
           {...register("Code", {

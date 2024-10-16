@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
-import { cartSliceState } from "@/utils/types";
 import Button from "@/ui/Button";
+import { cartSliceState } from "@/utils/types";
 
 export default function Subtotal() {
   const navigate = useNavigate();

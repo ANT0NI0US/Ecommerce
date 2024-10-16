@@ -1,9 +1,8 @@
 import { useSelector } from "react-redux";
-
-import CommonSection from "@/ui/CommonSection";
-import { cartSliceState } from "@/utils/types";
 import OrderForm from "../components/OrderForm";
 import TotalCost from "../components/TotalCost";
+import CommonSection from "@/ui/CommonSection";
+import { cartSliceState } from "@/utils/types";
 import useHelmet from "@/hooks/useHelmet";
 
 export default function CheckOut() {

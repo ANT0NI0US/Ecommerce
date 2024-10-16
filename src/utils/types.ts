@@ -1,4 +1,4 @@
-/*----------------------------------------  AUTHANTICATION ----------------------------------------*/
+/*----------------------------------------  AUTHENTICATION ----------------------------------------*/
 export interface loginServiceState {
   isLoading: boolean;
   user: userProps | object;
@@ -40,7 +40,7 @@ export interface CartState {
   totalAmount: number;
   totalQuantity: number;
   perfectItems: Item[];
-  totalFavouriteItemsQuantity: number;
+  totalFavoriteItemsQuantity: number;
 }
 
 export interface cartSliceState {

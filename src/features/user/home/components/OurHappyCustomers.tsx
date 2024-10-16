@@ -1,12 +1,12 @@
-import HeadText from "@/ui/HeadText";
-import Carousel from "react-multi-carousel";
-import StarRatings from "@/ui/StarRatings";
-import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import Carousel from "react-multi-carousel";
+import HeadText from "@/ui/HeadText";
+import StarRatings from "@/ui/StarRatings";
+import Spinner from "@/ui/spinner/Spinner";
+import { productState, Review } from "@/utils/types";
 import { AppDispatch } from "@/store";
 import { getProducts } from "@/store/service/productService";
-import { productState, Review } from "@/utils/types";
-import Spinner from "@/ui/spinner/Spinner";
 
 import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 

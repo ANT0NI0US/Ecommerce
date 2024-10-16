@@ -13,8 +13,8 @@ const SignUp = lazy(() => import("@/features/auth/SignUp"));
 // USER
 const Home = lazy(() => import("@/features/user/home/pages/Home"));
 const Shop = lazy(() => import("@/features/user/shop/pages/Shop"));
-const Favourites = lazy(
-  () => import("@/features/user/favourites/pages/Favourites"),
+const Favorites = lazy(
+  () => import("@/features/user/favorites/pages/Favorites"),
 );
 const Cart = lazy(() => import("@/features/user/cart/pages/Cart"));
 const CheckOut = lazy(() => import("@/features/user/checkOut/pages/CheckOut"));
@@ -33,7 +33,7 @@ const AllProducts = lazy(
 const AllUsers = lazy(() => import("@/features/admin/allUsers/pages/AllUsers"));
 const Orders = lazy(() => import("@/features/admin/orders/pages/Orders"));
 
-export default function Navigations() {
+export default function Navigation() {
   const { isAdmin } = useSelector((state: loginState) => state.login);
 
   return (
@@ -41,7 +41,7 @@ export default function Navigations() {
       <Routes>
         <Route element={<AuthLayout />}>
           <Route path="login" element={<Login />} />
-          <Route path="signup" element={<SignUp />} />
+          <Route path="signUp" element={<SignUp />} />
         </Route>
         <Route path="*" element={<PageNotFound />} />
 
@@ -59,7 +59,7 @@ export default function Navigations() {
               <Route path="shop" element={<Shop />} />
               <Route path="shop/:id" element={<ProductDetails />} />
               <Route path="cart" element={<Cart />} />
-              <Route path="favourites" element={<Favourites />} />
+              <Route path="favorites" element={<Favorites />} />
               <Route path="checkout" element={<CheckOut />} />
             </>
           ) : (

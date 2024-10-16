@@ -5,7 +5,7 @@ import { cartActions } from "@/store/slice/cartSlice";
 import { AppDispatch } from "@/store";
 import { IoMdHeart, IoMdHeartEmpty } from "react-icons/io";
 
-export default function AddFavouriteProduct({
+export default function AddFavoriteProduct({
   item,
 }: {
   item: newProductProps;
@@ -17,7 +17,7 @@ export default function AddFavouriteProduct({
     return perfectItems?.find((item) => item.id === id);
   };
 
-  const addToFavourite = () => {
+  const addToFavorite = () => {
     if (item.id) {
       dispatch(
         cartActions.addPerfectItem({
@@ -35,10 +35,10 @@ export default function AddFavouriteProduct({
     <motion.div
       title={
         id && checkProductExistInPerfectProducts(id)
-          ? "Remove from Favourites"
-          : "Add To Favourites"
+          ? "Remove from Favorites"
+          : "Add To Favorites"
       }
-      onClick={addToFavourite}
+      onClick={addToFavorite}
       whileTap={{ scale: 1.2 }}
       className="flexCenter absolute left-0 top-0 z-10 cursor-pointer rounded-full p-2"
     >

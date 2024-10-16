@@ -1,16 +1,14 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
-
-import CommonSection from "@/ui/CommonSection";
-import { productCardProps, productState } from "@/utils/types";
-import { AppDispatch } from "@/store";
-import { getProductById, getProducts } from "@/store/service/productService";
-
 import CertainProductDetail from "../components/CertainProductDetail";
 import DescriptionReviews from "../components/DescriptionReviews";
 import ProductsInTheSameCategory from "../components/ProductsInTheSameCategory";
+import CommonSection from "@/ui/CommonSection";
 import Spinner from "@/ui/spinner/Spinner";
+import { productCardProps, productState } from "@/utils/types";
+import { getProductById, getProducts } from "@/store/service/productService";
+import { AppDispatch } from "@/store";
 import useHelmet from "@/hooks/useHelmet";
 
 export default function ProductDetails() {

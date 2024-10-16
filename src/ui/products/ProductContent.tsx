@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { IoMdAdd } from "react-icons/io";
+import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
+import { IoMdAdd } from "react-icons/io";
+import { newProductProps } from "@/utils/types";
 import { AppDispatch } from "@/store";
 import { cartActions } from "@/store/slice/cartSlice";
-import { toast } from "react-toastify";
-import { newProductProps } from "@/utils/types";
 
 export default function ProductContent({
   item,

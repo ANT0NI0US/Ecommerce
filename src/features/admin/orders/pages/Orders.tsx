@@ -1,6 +1,6 @@
+import AllOrders from "../components/AllOrders";
 import CommonSection from "@/ui/CommonSection";
 import useHelmet from "@/hooks/useHelmet";
-import AllOrders from "../components/AllOrders";
 
 export default function Orders() {
   useHelmet("Orders");

@@ -1,6 +1,6 @@
 import DeleteProduct from "./DeleteProduct";
-import { newProductProps } from "@/utils/types";
 import Table from "@/ui/Table";
+import { newProductProps } from "@/utils/types";
 
 interface Props {
   product: newProductProps;
@@ -12,6 +12,7 @@ export default function ProductTableContent({ product }: Props) {
       <Table.Cell>
         <div className="flexCenter">
           <img
+            loading="lazy"
             src={
               typeof product?.imgUrl === "string" ? product.imgUrl : undefined
             }

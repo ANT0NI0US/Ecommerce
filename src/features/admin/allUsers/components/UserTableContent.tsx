@@ -1,6 +1,6 @@
-import { userProps } from "@/utils/types";
-import Table from "@/ui/Table";
 import DeleteUser from "./DeleteUser";
+import Table from "@/ui/Table";
+import { userProps } from "@/utils/types";
 
 interface Props {
   user: userProps;
@@ -13,6 +13,7 @@ export default function UserTableContent({ user }: Props) {
       <Table.Cell>
         <div className="flexCenter">
           <img
+            loading="lazy"
             src={typeof user?.photoURL === "string" ? user.photoURL : undefined}
             alt={user?.displayName}
             className="h-16 max-h-full w-16 max-w-full 

@@ -2,18 +2,17 @@ import { motion } from "framer-motion";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { IoMdAdd } from "react-icons/io";
-
-import { AppDispatch } from "@/store";
-import { cartActions } from "@/store/slice/cartSlice";
 import Button from "@/ui/Button";
 import Table from "@/ui/Table";
 import { Item } from "@/utils/types";
+import { AppDispatch } from "@/store";
+import { cartActions } from "@/store/slice/cartSlice";
 
 interface perfectItemProp {
   perfectItem: Item;
 }
 
-export default function FavouriteProductTableRow({
+export default function FavoriteProductTableRow({
   perfectItem,
 }: perfectItemProp) {
   const dispatch = useDispatch<AppDispatch>();

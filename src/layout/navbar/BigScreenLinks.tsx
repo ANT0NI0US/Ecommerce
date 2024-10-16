@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { adminLinks, userLinks } from "./links";
 import { arrLinks, loginState } from "@/utils/types";
-import { useSelector } from "react-redux";
 
 export default function BigScreenLinks() {
   const { isAdmin } = useSelector((state: loginState) => state.login);

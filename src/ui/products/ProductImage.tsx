@@ -12,6 +12,7 @@ export default function ProductImage({
   return (
     <div className="h-[252px] max-h-[252px] p-2">
       <motion.img
+        loading="lazy"
         whileHover={{ scale: 0.9 }}
         className="max-h-full max-w-full"
         src={typeof imgUrl === "string" ? imgUrl : undefined}

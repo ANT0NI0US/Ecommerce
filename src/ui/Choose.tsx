@@ -27,17 +27,13 @@ interface ChooseProps {
   isMulti?: boolean;
   defaultValue?: MultiValue<Option> | SingleValue<Option> | null;
   placeholder?: string;
-  zindex?: number;
   isClearable?: boolean;
   Label?: string;
   showLabel?: boolean;
   name?: string;
 }
 
-const getCustomStyles = (
-  zindex: number,
-  mode: "light" | "dark",
-): StylesConfig<Option> => ({
+const getCustomStyles = (mode: "light" | "dark"): StylesConfig<Option> => ({
   control: (provided) => ({
     ...provided,
     border: mode === "dark" ? "1px solid #c18500" : "1px solid #f39530",
@@ -77,11 +73,6 @@ const getCustomStyles = (
   noOptionsMessage: (provided) => ({
     ...provided,
     color: mode === "dark" ? "#88d07a" : "#253b45",
-  }),
-  menu: (provided) => ({
-    ...provided,
-    zIndex: zindex + 1,
-    position: "absolute",
   }),
   menuList: (provided) => ({
     ...provided,
@@ -149,6 +140,10 @@ const getCustomStyles = (
     ...provided,
     color: mode === "dark" ? "#88d07a" : "#253b45",
   }),
+  menuPortal: (provided) => ({
+    ...provided,
+    zIndex: 1000,
+  }),
 });
 
 // Use Select type for ref
@@ -166,7 +161,6 @@ const Choose = React.forwardRef<
       isMulti = false,
       defaultValue,
       placeholder = "",
-      zindex = 100,
       isClearable = false,
       Label,
       name,
@@ -208,10 +202,10 @@ const Choose = React.forwardRef<
     };
 
     return (
-      <div className="relative w-full" style={{ zIndex: zindex }}>
+      <div className="relative w-full">
         <div className="relative z-10 flex items-center rounded-md transition-all">
           <Select
-            styles={getCustomStyles(zindex, mode)}
+            styles={getCustomStyles(mode)}
             ref={ref}
             name={name}
             className="h-full w-full"
@@ -224,6 +218,8 @@ const Choose = React.forwardRef<
             defaultValue={defaultValue}
             isMulti={isMulti}
             menuPosition="absolute"
+            menuPortalTarget={document.body}
+            menuShouldBlockScroll={true}
           />
 
           {showLabel && Label && (

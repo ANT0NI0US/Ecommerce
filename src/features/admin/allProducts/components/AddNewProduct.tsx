@@ -1,5 +1,5 @@
-import Modal from "@/ui/Modal";
 import AddProductForm from "./AddProductForm";
+import Modal from "@/ui/Modal";
 import Button from "@/ui/Button";
 
 export default function AddNewProduct() {

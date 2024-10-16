@@ -3,13 +3,12 @@ import Modal from "@/ui/Modal";
 import ConfirmMessage from "@/ui/ConfirmMessage";
 import { useSelector } from "react-redux";
 import { motion } from "framer-motion";
-
 import { toast } from "react-toastify";
+import { AiFillDelete } from "react-icons/ai";
+import Button from "@/ui/Button";
+import { newProductProps, productState } from "@/utils/types";
 import { AppDispatch } from "@/store";
 import { deleteProduct } from "@/store/service/productService";
-import Button from "@/ui/Button";
-import { AiFillDelete } from "react-icons/ai";
-import { newProductProps, productState } from "@/utils/types";
 
 interface Props {
   product: newProductProps;

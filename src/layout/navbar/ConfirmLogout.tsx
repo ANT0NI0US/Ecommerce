@@ -1,14 +1,14 @@
+import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import Modal from "@/ui/Modal";
-import ConfirmMessage from "@/ui/ConfirmMessage";
 import { toast } from "react-toastify";
-import { AppDispatch } from "@/store";
 import { auth } from "@/firebase.config";
 import { signOut } from "firebase/auth";
+import { IoLogOutOutline } from "react-icons/io5";
+import Modal from "@/ui/Modal";
+import ConfirmMessage from "@/ui/ConfirmMessage";
+import { AppDispatch } from "@/store";
 import { logoutUser } from "@/store/slice/loginSlice";
 import { cartActions } from "@/store/slice/cartSlice";
-import { useNavigate } from "react-router-dom";
-import { IoLogOutOutline } from "react-icons/io5";
 
 export default function ConfirmLogout() {
   const dispatch = useDispatch<AppDispatch>();

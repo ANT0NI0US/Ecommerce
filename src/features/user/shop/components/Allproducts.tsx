@@ -1,13 +1,13 @@
 import ProductsList from "@/ui/products/ProductsList";
-import { newProductProps } from "@/utils/types";
 import Spinner from "@/ui/spinner/Spinner";
+import { newProductProps } from "@/utils/types";
 
 interface allProductsProps {
   isLoading: boolean;
   productsData: newProductProps[];
 }
 
-export default function Allproducts({
+export default function AllProducts({
   productsData,
   isLoading,
 }: allProductsProps) {

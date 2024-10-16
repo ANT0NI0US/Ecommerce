@@ -1,10 +1,10 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { userProps, userState } from "@/utils/types";
-import { AppDispatch } from "@/store";
 import Table from "@/ui/Table";
 import Spinner from "@/ui/spinner/Spinner";
+import { userProps, userState } from "@/utils/types";
 import { getUsers } from "@/store/service/userService";
+import { AppDispatch } from "@/store";
 import UserTableContent from "./UserTableContent";
 
 const tableHeadCells = ["Name", "Photo", "Email", "Actions"];

@@ -28,7 +28,7 @@ export default function CertainProductDetail({
     >
       <div className="flexBetween mx-auto h-full w-[90%] flex-col gap-12 sm:w-5/6 md:flex-row">
         <div className="flexCenter h-full md:basis-1/2">
-          {/* Prodcut Image */}
+          {/* Product Image */}
           <img
             className="h-full max-h-full w-full max-w-full object-contain xs:h-[500px] md:h-full"
             src={imgUrl}
