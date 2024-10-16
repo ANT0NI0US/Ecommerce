@@ -110,7 +110,6 @@ export default function FilterProducts({
           onChange={handleFilter}
           isClearable={true}
           isMulti={true}
-          zindex={10}
         />
         <Choose
           name="SortBy"
@@ -121,7 +120,6 @@ export default function FilterProducts({
           }))}
           onChange={handleSortBy}
           isClearable={true}
-          zindex={9}
         />
         <Input
           showLabel={false}
