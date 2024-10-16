@@ -3,12 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
-import { AppDispatch } from "@/store";
-import { cartActions } from "@/store/slice/cartSlice";
-import useAuth from "@/hooks/useAuth";
 import { signOut } from "firebase/auth";
 import { auth } from "@/firebase.config";
+import { AppDispatch } from "@/store";
+import { cartActions } from "@/store/slice/cartSlice";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
+import useAuth from "@/hooks/useAuth";
 
 interface CurrentUser {
   photoURL: string;
@@ -23,7 +23,7 @@ export default function ProfilePhoto() {
   const { photoURL } = currentUser as CurrentUser;
   const ref = useOutsideClick<HTMLDivElement>(() => closeImageMenu());
 
-  const signout = () => {
+  const logout = () => {
     signOut(auth)
       .then(() => {
         toast.success("Logout successfully");
@@ -56,7 +56,7 @@ export default function ProfilePhoto() {
         <div className="flexCenter absolute bottom-[-40px] left-[50%] z-50 translate-x-[-50%] rounded-md border border-light-color bg-secondary-color-light p-[3px] text-center text-sm shadow-lg dark:border-main-color dark:bg-secondary-color">
           <p
             className="cursor-pointer rounded-md px-2 py-1 font-semibold text-primary-color-light transition-all hover:bg-primary-color-light/50 hover:text-light-color dark:text-primary-color dark:hover:bg-primary-color dark:hover:text-orange-color"
-            onClick={signout}
+            onClick={logout}
           >
             Logout
           </p>

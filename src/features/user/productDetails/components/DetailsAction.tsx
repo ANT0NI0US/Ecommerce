@@ -1,9 +1,9 @@
-import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { AppDispatch } from "@/store";
+import { motion } from "framer-motion";
 import Button from "@/ui/Button";
 import { cartActions } from "@/store/slice/cartSlice";
+import { AppDispatch } from "@/store";
 
 interface actionsProps {
   id: string;
@@ -31,7 +31,7 @@ export default function DetailsAction({
     toast.success("Product added successfully");
   };
 
-  const addToFavourite = () => {
+  const addToFavorite = () => {
     dispatch(
       cartActions.addPerfectItem({
         id,
@@ -41,6 +41,7 @@ export default function DetailsAction({
       }),
     );
   };
+
   return (
     <div className="flex flex-col items-center justify-center gap-4 sm:flex-row md:justify-start">
       <motion.div className="w-full sm:w-[200px]" whileTap={{ scale: 1.1 }}>
@@ -50,8 +51,8 @@ export default function DetailsAction({
       </motion.div>
 
       <motion.div className="w-full sm:w-[200px]" whileTap={{ scale: 1.1 }}>
-        <Button onClick={addToFavourite} ArialLabel="Add to favourite">
-          Add to Favourites
+        <Button onClick={addToFavorite} ArialLabel="Add to favorite">
+          Add to Favorites
         </Button>
       </motion.div>
     </div>

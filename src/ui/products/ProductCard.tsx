@@ -1,9 +1,8 @@
-import { newProductProps } from "@/utils/types";
-
-import AddFavouriteProduct from "./AddFavouriteProduct";
+import { useEffect, useState } from "react";
+import AddFavoriteProduct from "./AddFavoriteProduct";
 import ProductImage from "./ProductImage";
 import ProductContent from "./ProductContent";
-import { useEffect, useState } from "react";
+import { newProductProps } from "@/utils/types";
 
 export default function ProductCard({
   item,
@@ -48,8 +47,8 @@ export default function ProductCard({
         boxShadow: `0 0 10px ${finalBorderColor}`,
       }}
     >
-      {/* ADD TO FAVOURITES */}
-      <AddFavouriteProduct item={item} />
+      {/* ADD TO FAVORITES */}
+      <AddFavoriteProduct item={item} />
       {/* PRODUCT IMAGE */}
       <ProductImage imgUrl={imgUrl} productName={productName} />
       {/* PRODUCT CONTENT */}

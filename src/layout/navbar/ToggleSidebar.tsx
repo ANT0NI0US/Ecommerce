@@ -7,7 +7,7 @@ interface toggleMenuProps {
 export default function ToggleSidebar({ toggleSidebar }: toggleMenuProps) {
   return (
     <div className="flexCenter md:hidden">
-      <button aria-label="Toogle-menu" onClick={toggleSidebar}>
+      <button aria-label="Toggle-menu" onClick={toggleSidebar}>
         <div className="rounded-full bg-secondary-color-light p-2 dark:bg-secondary-color">
           <GiHamburgerMenu />
         </div>

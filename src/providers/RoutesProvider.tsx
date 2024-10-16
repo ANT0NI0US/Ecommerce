@@ -3,8 +3,6 @@ interface Props {
   children: React.ReactNode;
 }
 
-const RoutesProvider = ({ children }: Props) => {
+export default function RoutesProvider({ children }: Props) {
   return <BrowserRouter>{children}</BrowserRouter>;
-};
-
-export default RoutesProvider;
+}

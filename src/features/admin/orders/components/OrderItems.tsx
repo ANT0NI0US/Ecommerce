@@ -1,5 +1,5 @@
-import { CartItem } from "@/utils/types";
 import ModalFormGrid from "@/ui/ModalFormGrid";
+import { CartItem } from "@/utils/types";
 
 interface Props {
   items: CartItem[];

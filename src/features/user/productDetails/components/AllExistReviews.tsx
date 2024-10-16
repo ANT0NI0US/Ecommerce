@@ -1,7 +1,7 @@
-import { Review } from "@/utils/types";
+import { FaCheckCircle } from "react-icons/fa";
 import GridContainer from "@/ui/GridContainer";
 import StarRatings from "@/ui/StarRatings";
-import { FaCheckCircle } from "react-icons/fa";
+import { Review } from "@/utils/types";
 
 type Props = {
   reviews: Review[] | undefined;

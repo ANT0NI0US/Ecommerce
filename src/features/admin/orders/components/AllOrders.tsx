@@ -1,11 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import ShowOrder from "./ShowOrder";
+import GridContainer from "@/ui/GridContainer";
+import Spinner from "@/ui/spinner/Spinner";
 import { orderState } from "@/utils/types";
 import { AppDispatch } from "@/store";
 import { getOrders } from "@/store/service/ordersService";
-import GridContainer from "@/ui/GridContainer";
-import Spinner from "@/ui/spinner/Spinner";
-import ShowOrder from "./ShowOrder";
 
 export default function AllOrders() {
   const dispatch = useDispatch<AppDispatch>();

@@ -1,8 +1,7 @@
-import Modal from "@/ui/Modal";
 import { ReactElement } from "react";
 import OrderDetails from "./OrderDetails";
+import Modal from "@/ui/Modal";
 
-// PROPS
 interface orderDetailsProps {
   children: ReactElement;
   selectedOrderId: string | undefined;

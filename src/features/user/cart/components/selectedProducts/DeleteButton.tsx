@@ -1,6 +1,6 @@
-import Button from "@/ui/Button";
 import { motion } from "framer-motion";
 import { RiDeleteBin5Line } from "react-icons/ri";
+import Button from "@/ui/Button";
 
 interface DeleteButtonProps {
   onDelete: () => void;

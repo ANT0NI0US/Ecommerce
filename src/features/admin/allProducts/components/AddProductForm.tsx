@@ -1,17 +1,17 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { MultiValue, SingleValue } from "react-select";
 import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
+import Button from "@/ui/Button";
+import ModalFormGrid from "@/ui/ModalFormGrid";
+import TextArea from "@/ui/TextArea";
+import Input from "@/ui/Input";
+import Choose from "@/ui/Choose";
+import { newProductProps, productState } from "@/utils/types";
+import { isOnlySpaces } from "@/utils/helpers";
 import { addProduct } from "@/store/service/productService";
 import { AppDispatch } from "@/store";
-import Button from "@/ui/Button";
-import { newProductProps, productState } from "@/utils/types";
-import ModalFormGrid from "@/ui/ModalFormGrid";
-import { isOnlySpaces } from "@/utils/helpers";
-import Input from "@/ui/Input";
-import TextArea from "@/ui/TextArea";
-import Choose from "@/ui/Choose";
-import { useState } from "react";
-import { MultiValue, SingleValue } from "react-select";
 
 const initialState: newProductProps = {
   productName: "",
@@ -81,7 +81,7 @@ export default function AddProductForm({ onCloseModal }: addProductFormProps) {
       const fileExtension = value.type.split("/")[1];
       if (!allowedImagesTypes.includes(fileExtension)) {
         setImgUrl(null);
-        return "يُسمح فقط بتحميل امتدادات الصور من نوع (jpg, png, webp)";
+        return "Only image extensions of type (jpg, png, webp) are allowed to be uploaded.";
       }
       setImgUrl(URL.createObjectURL(value));
       return true;

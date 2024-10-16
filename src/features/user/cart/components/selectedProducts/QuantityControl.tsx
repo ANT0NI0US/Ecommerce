@@ -1,5 +1,5 @@
-import Button from "@/ui/Button";
 import { FaMinus, FaPlus } from "react-icons/fa6";
+import Button from "@/ui/Button";
 
 interface QuantityControlProps {
   quantity: number | undefined;

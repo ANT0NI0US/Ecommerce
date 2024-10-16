@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { createUserWithEmailAndPassword, updateProfile } from "firebase/auth";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { doc, setDoc } from "firebase/firestore";
 import { auth, storage, db } from "@/firebase.config";
-import { toast } from "react-toastify";
 import Button from "@/ui/Button";
-import { useForm } from "react-hook-form";
 import Input from "@/ui/Input";
 
 interface signUpFormProps {

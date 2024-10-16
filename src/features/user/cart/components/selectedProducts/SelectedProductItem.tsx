@@ -1,8 +1,8 @@
-import { CartItem } from "@/utils/types";
 import ProductImage from "./ProductImage";
 import ProductDetails from "./ProductDetails";
 import QuantityControl from "./QuantityControl";
 import DeleteButton from "./DeleteButton";
+import { CartItem } from "@/utils/types";
 
 interface SelectedProductItemProps {
   item: CartItem;

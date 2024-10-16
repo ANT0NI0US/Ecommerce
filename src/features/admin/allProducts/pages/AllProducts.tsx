@@ -1,7 +1,7 @@
-import CommonSection from "@/ui/CommonSection";
 import ProductTable from "../components/ProductTable";
-import useHelmet from "@/hooks/useHelmet";
 import AddNewProduct from "../components/AddNewProduct";
+import CommonSection from "@/ui/CommonSection";
+import useHelmet from "@/hooks/useHelmet";
 
 export default function AllProducts() {
   useHelmet("AllProducts");

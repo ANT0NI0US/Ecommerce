@@ -1,10 +1,10 @@
+import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { IoCloseSharp } from "react-icons/io5";
 import { userLinks, adminLinks } from "./links";
-import { arrLinks, loginState } from "@/utils/types";
-import { NavLink } from "react-router-dom";
 import Button from "@/ui/Button";
+import { arrLinks, loginState } from "@/utils/types";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
-import { useSelector } from "react-redux";
 
 interface smallLinksProps {
   showSidebar: boolean;

@@ -4,15 +4,14 @@ import { useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import { motion } from "framer-motion";
-
-import { AppDispatch } from "@/store";
-import { addReviewToProduct } from "@/store/service/productService";
 import StarRatings from "@/ui/StarRatings";
 import Button from "@/ui/Button";
 import Input from "@/ui/Input";
-import { isOnlySpaces } from "@/utils/helpers";
 import TextArea from "@/ui/TextArea";
+import { isOnlySpaces } from "@/utils/helpers";
 import { productState } from "@/utils/types";
+import { AppDispatch } from "@/store";
+import { addReviewToProduct } from "@/store/service/productService";
 
 interface newReviewProps {
   name: string;

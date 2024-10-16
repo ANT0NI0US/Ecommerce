@@ -1,11 +1,10 @@
-import store from "@/store";
 import { Provider } from "react-redux";
+import store from "@/store";
+
 interface Props {
   children: React.ReactNode;
 }
 
-const StoreProvider = ({ children }: Props) => {
+export default function StoreProvider({ children }: Props) {
   return <Provider store={store}>{children}</Provider>;
-};
-
-export default StoreProvider;
+}

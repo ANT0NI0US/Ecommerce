@@ -2,14 +2,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { useForm } from "react-hook-form";
-
-import { signInFireBase } from "@/store/service/loginService.ts";
-import { AppDispatch } from "@/store/index.ts";
-import { loginState } from "@/utils/types";
 import Button from "@/ui/Button.tsx";
 import Input from "@/ui/Input.tsx";
+import { loginState } from "@/utils/types";
 import { EMAIL_REGEX } from "@/utils/constants.ts";
 import { isOnlySpaces } from "@/utils/helpers.ts";
+import { signInFireBase } from "@/store/service/loginService.ts";
+import { AppDispatch } from "@/store/index.ts";
 
 interface loginFormProps {
   email: string;
@@ -60,7 +59,7 @@ export default function Login() {
       onSubmit={handleSubmit(signIn)}
     >
       <div>
-        <h1 className="text-center text-4xl font-extrabold">
+        <h1 className="text-center text-lg font-extrabold xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl">
           Welcome To
           <span className="font-black text-primary-color-light dark:text-primary-color">
             {" "}
@@ -115,7 +114,7 @@ export default function Login() {
         Don't have an account?
         <Link
           className="pl-1 underline transition-all hover:font-semibold"
-          to="/signup"
+          to="/signUp"
         >
           Create an account
         </Link>

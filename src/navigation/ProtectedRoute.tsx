@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { loginState } from "@/utils/types";
 import Spinner from "@/ui/spinner/Spinner";
+import { loginState } from "@/utils/types";
 
 interface Props {
   children: React.ReactNode;

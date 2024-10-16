@@ -97,6 +97,7 @@ function Window({ children, name }: WindowProps) {
           ref={ref}
         >
           <button
+            aria-label="close modal"
             onClick={close}
             className="absolute left-[10px] top-[10px] text-primary-color-light dark:text-primary-color"
           >

@@ -1,7 +1,7 @@
-import { loginState } from "@/utils/types";
-import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { adminLinks, userLinks } from "../navbar/links";
+import { loginState } from "@/utils/types";
 
 export default function UsefulLinks() {
   const { isAdmin } = useSelector((state: loginState) => state.login);
