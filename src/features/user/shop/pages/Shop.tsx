@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import FilterProducts from "../components/FilterProducts";
-import AllProducts from "../components/AllProducts";
+import Products from "../components/Products";
 import CommonSection from "@/ui/CommonSection";
 import { newProductProps, productState } from "@/utils/types";
 import { getProducts } from "@/store/service/productService";
@@ -44,7 +44,7 @@ export default function Shop() {
         allProducts={allProducts}
         handleChangingProduct={handleChangingProduct}
       />
-      <AllProducts productsData={productsData} isLoading={isLoading} />
+      <Products productsData={productsData} isLoading={isLoading} />
     </div>
   );
 }

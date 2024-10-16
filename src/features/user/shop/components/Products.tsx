@@ -7,7 +7,7 @@ interface allProductsProps {
   productsData: newProductProps[];
 }
 
-export default function AllProducts({
+export default function Products({
   productsData,
   isLoading,
 }: allProductsProps) {
