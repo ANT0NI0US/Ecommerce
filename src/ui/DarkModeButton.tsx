@@ -14,7 +14,7 @@ export default function DarkModeButton(): JSX.Element {
       title={`${dark ? "light mode" : "dark mode"} `}
       className={`flexCenter fixed bottom-2 right-2 rounded-full bg-main-color p-2  dark:bg-light-color`}
     >
-      <button onClick={() => darkModeHandler()}>
+      <button aria-label="color theme" onClick={() => darkModeHandler()}>
         {dark ? (
           <LuSunMoon size={30} color="#FDB813" />
         ) : (

@@ -172,7 +172,7 @@ export default function SignUp() {
       <Button loading={loading} ArialLabel="New Account" type="submit">
         Create An Account
       </Button>
-      <p className="mx-auto text-center">
+      <p className="mx-auto text-center text-sm sm:text-base">
         Already have an account?
         <Link
           className="pl-1 underline transition-all hover:font-semibold"

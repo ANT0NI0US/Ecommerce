@@ -110,7 +110,7 @@ export default function Login() {
         Login
       </Button>
 
-      <p className="mx-auto text-center">
+      <p className="mx-auto text-center text-sm sm:text-base">
         Don't have an account?
         <Link
           className="pl-1 underline transition-all hover:font-semibold"
