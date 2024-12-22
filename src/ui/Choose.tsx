@@ -6,6 +6,7 @@ import Select, {
   GroupBase,
   SelectInstance,
 } from "react-select";
+import { Error } from "./Error";
 
 interface Option {
   value: string;
@@ -51,6 +52,7 @@ const getCustomStyles = (mode: "light" | "dark"): StylesConfig<Option> => ({
     outline: "none",
     maxHeight: "60px",
     overflowY: "auto",
+    cursor: "pointer",
   }),
   dropdownIndicator: (provided) => ({
     ...provided,
@@ -140,10 +142,6 @@ const getCustomStyles = (mode: "light" | "dark"): StylesConfig<Option> => ({
     ...provided,
     color: mode === "dark" ? "#88d07a" : "#253b45",
   }),
-  menuPortal: (provided) => ({
-    ...provided,
-    zIndex: 1000,
-  }),
 });
 
 // Use Select type for ref
@@ -202,41 +200,31 @@ const Choose = React.forwardRef<
     };
 
     return (
-      <div className="relative w-full">
-        <div className="relative z-10 flex items-center rounded-md transition-all">
-          <Select
-            styles={getCustomStyles(mode)}
-            ref={ref}
-            name={name}
-            className="h-full w-full"
-            options={data}
-            onChange={handleChange}
-            isClearable={isClearable}
-            isLoading={isLoading}
-            placeholder={placeholder}
-            isDisabled={disabled}
-            defaultValue={defaultValue}
-            isMulti={isMulti}
-            menuPosition="absolute"
-            menuPortalTarget={document.body}
-            menuShouldBlockScroll={true}
-          />
-
-          {showLabel && Label && (
-            <label
-              htmlFor={Label}
-              className="absolute top-[11px] -translate-y-6 bg-white px-[0.5px] ltr:left-6 rtl:right-6"
-            >
-              {Label}
-            </label>
-          )}
-        </div>
-
-        {error && (
-          <div className="mt-[3px] pl-[5px] text-sm text-red-900 dark:text-red-300">
-            {error}
-          </div>
+      <div className="w-full">
+        {showLabel && (
+          <label
+            htmlFor={placeholder}
+            className="block p-[3px] text-sm font-extrabold uppercase tracking-wider text-main-color dark:text-light-color"
+          >
+            {Label}
+          </label>
         )}
+        <Select
+          styles={getCustomStyles(mode)}
+          ref={ref}
+          name={name}
+          className="w-full"
+          options={data}
+          onChange={handleChange}
+          isClearable={isClearable}
+          isLoading={isLoading}
+          placeholder={placeholder}
+          isDisabled={disabled}
+          defaultValue={defaultValue}
+          isMulti={isMulti}
+        />
+
+        <Error message={error} />
       </div>
     );
   },

@@ -9,9 +9,7 @@ export default function Spinner({
 }: spinnerProps) {
   return (
     <div className={`flexCenter ${height} bg-transparent backdrop-blur-sm`}>
-      <div
-        className={`${styles.loader} h-[4px] w-[4px] rounded-[50%] text-primary-color`}
-      ></div>
+      <div className={`${styles.loader}`}></div>
     </div>
   );
 }

@@ -9,6 +9,7 @@ import { EMAIL_REGEX } from "@/utils/constants.ts";
 import { isOnlySpaces } from "@/utils/helpers.ts";
 import { signInFireBase } from "@/store/service/loginService.ts";
 import { AppDispatch } from "@/store/index.ts";
+import useHelmet from "@/hooks/useHelmet";
 
 interface loginFormProps {
   email: string;
@@ -21,6 +22,7 @@ const initialState: loginFormProps = {
 };
 
 export default function Login() {
+  useHelmet("login");
   const navigate = useNavigate();
   const dispatch = useDispatch<AppDispatch>();
 
@@ -39,12 +41,8 @@ export default function Login() {
   const signIn = async (data: loginFormProps) => {
     dispatch(signInFireBase(data))
       .unwrap()
-      .then((response) => {
-        if (response?.type === "admin") {
-          navigate("/dashboard");
-        } else {
-          navigate("/home");
-        }
+      .then(() => {
+        navigate("/home");
         toast.success("Successfully Logged in");
         reset();
       })
@@ -66,16 +64,14 @@ export default function Login() {
             STOREIFY
           </span>
         </h1>
-        <h3 className="mt-3 text-center text-lg font-bold uppercase">
-          Sign In
-        </h3>
+        <h3 className="mt-3 text-center text-lg font-bold uppercase">Login</h3>
       </div>
 
       <Input
+        label="Email"
         placeholder="Email"
         disabled={isLoading}
-        error={errors?.email?.message}
-        {...register("email", {
+        register={register("email", {
           required: "This Field is required",
           validate: {
             noOnlySpaces: (value) =>
@@ -86,24 +82,22 @@ export default function Login() {
             message: "Enter a valid email.",
           },
         })}
+        error={errors?.email?.message}
       />
 
       <Input
-        placeholder="Password"
+        label="Password"
         type="password"
+        placeholder="Password"
         disabled={isLoading}
-        error={errors?.password?.message}
-        {...register("password", {
+        register={register("password", {
           required: "This Field is required",
           validate: {
             noOnlySpaces: (value) =>
               !isOnlySpaces(value) || "It Mustn't contains only spaces",
           },
-          minLength: {
-            value: 8,
-            message: "Enter at least 8 letters",
-          },
         })}
+        error={errors?.password?.message}
       />
 
       <Button loading={isLoading} ArialLabel="Login" type="submit">

@@ -1,22 +1,20 @@
+import Container from "@/ui/Container";
 import SiteDescription from "./SiteDescription";
 import TopCategories from "./TopCategories";
-import Contact from "./Contact";
 import UsefulLinks from "./UsefulLinks";
 import CopyRight from "./CopyRight";
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-secondary-color-light pt-[80px] text-primary-color-light dark:bg-secondary-color dark:text-primary-color">
-      <div className="mx-auto flex w-[90%] flex-col gap-8 pb-[40px] sm:grid sm:w-5/6 sm:grid-cols-[repeat(auto-fill,minmax(250px,1fr))]">
+    <footer className="w-full bg-secondary-color-light text-primary-color-light dark:bg-secondary-color dark:text-primary-color">
+      <Container Styles="flex flex-col gap-6 sm:gap-8 py-[40px] sm:grid sm:grid-cols-[repeat(auto-fill,minmax(250px,1fr))] sm:py-[30px] md:py-[80px]">
         {/* SITE DESCRIPTION */}
         <SiteDescription />
         {/* TOP CATEGORIES */}
         <TopCategories />
         {/* USEFUL LINKs */}
         <UsefulLinks />
-        {/* CONTACT */}
-        <Contact />
-      </div>
+      </Container>
       {/* COPYRIGHT */}
       <CopyRight />
     </footer>

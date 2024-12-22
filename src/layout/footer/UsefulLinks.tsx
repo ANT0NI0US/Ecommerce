@@ -1,25 +1,21 @@
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { adminLinks, userLinks } from "../navbar/links";
-import { loginState } from "@/utils/types";
+import { userLinks } from "../navbar/links";
+import ListHeader from "./ListHeader";
+import { arrLinks } from "@/utils/types";
 
 export default function UsefulLinks() {
-  const { isAdmin } = useSelector((state: loginState) => state.login);
-
-  const links = isAdmin ? adminLinks : userLinks;
   return (
-    <div className="flex flex-col items-center gap-[15px] sm:items-start">
-      <h4 className="mb-3 text-xl font-extrabold text-orange-color-light dark:text-orange-color">
-        Useful Links
-      </h4>
+    <div className="flex flex-col items-center gap-1 sm:items-start sm:gap-3">
+      <ListHeader title="Useful Links" />
+
       <div className="flex flex-col gap-2">
-        {links?.map((category) => (
+        {userLinks?.map(({ text, path }: arrLinks) => (
           <Link
-            key={category.text}
+            key={text}
             className="p-0 transition-all duration-300 hover:pl-1 hover:font-bold"
-            to={category.path}
+            to={path}
           >
-            {category.text}
+            {text}
           </Link>
         ))}
       </div>

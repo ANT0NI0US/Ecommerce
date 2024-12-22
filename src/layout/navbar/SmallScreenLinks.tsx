@@ -1,9 +1,8 @@
 import { NavLink } from "react-router-dom";
-import { useSelector } from "react-redux";
 import { IoCloseSharp } from "react-icons/io5";
-import { userLinks, adminLinks } from "./links";
+import { userLinks } from "./links";
 import Button from "@/ui/Button";
-import { arrLinks, loginState } from "@/utils/types";
+import { arrLinks } from "@/utils/types";
 import { useOutsideClick } from "@/hooks/useOutsideClick";
 
 interface smallLinksProps {
@@ -16,15 +15,12 @@ export default function SmallScreenLinks({
   closeSidebar,
 }: smallLinksProps) {
   const ref = useOutsideClick(() => closeSidebar());
-  const { isAdmin } = useSelector((state: loginState) => state.login);
-
-  const links = isAdmin ? adminLinks : userLinks;
 
   return (
     showSidebar && (
       <div className="md:hidden">
         {/* OVERLAY */}
-        <div className="fixed inset-0 z-[100] h-full w-full bg-black/40 dark:bg-white/10"></div>
+        <div className="fixed inset-0 z-[100] h-full w-full bg-black/40 backdrop-blur-sm dark:bg-white/10"></div>
 
         {/* SIDEBAR */}
         <nav
@@ -47,7 +43,7 @@ export default function SmallScreenLinks({
 
           {/* LINKS */}
           <div className="flex w-full flex-col">
-            {links?.map((item: arrLinks, index: number) => (
+            {userLinks?.map((item: arrLinks, index: number) => (
               <div
                 onClick={() => closeSidebar()}
                 key={item.text}

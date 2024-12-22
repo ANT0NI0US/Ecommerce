@@ -1,8 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   getProducts,
-  addProduct,
-  deleteProduct,
   addReviewToProduct,
   getProductById,
 } from "../service/productService";
@@ -34,39 +32,6 @@ const productSlice = createSlice({
       state.isLoading = false;
       state.errors = action.payload as string;
     });
-
-    // add new product
-    builder.addCase(addProduct.pending, (state) => {
-      state.isLoading = true;
-      state.errors = null;
-    });
-    builder.addCase(addProduct.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.allProducts.push(action.payload);
-      state.errors = null;
-    });
-    builder.addCase(addProduct.rejected, (state, action) => {
-      state.isLoading = false;
-      state.errors = action.payload as string;
-    });
-
-    // delete product
-    builder.addCase(deleteProduct.pending, (state) => {
-      state.isLoading = true;
-      state.errors = null;
-    });
-    builder.addCase(deleteProduct.fulfilled, (state, action) => {
-      state.isLoading = false;
-      state.allProducts = state.allProducts.filter(
-        (product) => product.id !== action.payload,
-      );
-      state.errors = null;
-    });
-    builder.addCase(deleteProduct.rejected, (state, action) => {
-      state.isLoading = false;
-      state.errors = action.payload as string;
-    });
-
     //add new review to the product
     builder.addCase(addReviewToProduct.pending, (state) => {
       state.isLoading = true;

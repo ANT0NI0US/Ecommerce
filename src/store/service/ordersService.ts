@@ -23,19 +23,15 @@ export const addOrder = createAsyncThunk(
   "order/addOrder",
   async (newOrder: newOrderProps, thunkAPI) => {
     try {
+      const { cartItems, totalAmount, totalQuantity, uid, photoURL, ...data } =
+        newOrder;
       const theNewOrder = {
-        name: newOrder.Name,
-        phone: newOrder.Phone,
-        address: newOrder.Address,
-        city: newOrder.City,
-        code: newOrder.Code,
-        country: newOrder.Country,
-        items: newOrder.cartItems,
-        itemsAmount: newOrder.totalAmount,
-        itemsQuantity: newOrder.totalQuantity,
-        email: newOrder.email,
-        userId: newOrder.uid,
-        userPhoto: newOrder.photoURL,
+        ...data,
+        items: cartItems,
+        itemsAmount: totalAmount,
+        itemsQuantity: totalQuantity,
+        userId: uid,
+        userPhoto: photoURL,
       };
       await addDoc(collection(db, "orders"), theNewOrder);
 
