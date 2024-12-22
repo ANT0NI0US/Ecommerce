@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import ListHeader from "./ListHeader";
 
 interface categoriesProps {
   title: string;
@@ -14,18 +15,17 @@ const categories: Array<categoriesProps> = [
 
 export default function TopCategories() {
   return (
-    <div className="flex flex-col items-center gap-[15px] sm:items-start ">
-      <h4 className="mb-3 text-xl font-extrabold text-orange-color-light dark:text-orange-color">
-        Top Categories
-      </h4>
+    <div className="flex flex-col items-center gap-1 sm:items-start sm:gap-3">
+      <ListHeader title="Top Categories" />
+
       <div className="flex flex-col gap-2">
-        {categories.map((category: categoriesProps) => (
+        {categories.map(({ title, path }: categoriesProps) => (
           <Link
-            key={category.title}
+            key={title}
             className="p-0 transition-all duration-300 hover:pl-1 hover:font-bold"
-            to={category.path}
+            to={path}
           >
-            {category.title}
+            {title}
           </Link>
         ))}
       </div>

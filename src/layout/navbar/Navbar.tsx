@@ -1,9 +1,10 @@
 import { useState } from "react";
-import Logo from "./Logo";
 import BigScreenLinks from "./BigScreenLinks";
 import NavbarActions from "./NavbarActions";
 import ToggleSidebar from "./ToggleSidebar";
 import SmallScreenLinks from "./SmallScreenLinks";
+import Logo from "@/ui/Logo";
+import Container from "@/ui/Container";
 
 export default function Navbar() {
   const [showSidebar, setShowSidebar] = useState<boolean>(false);
@@ -12,22 +13,24 @@ export default function Navbar() {
 
   return (
     <>
-      <div className="fixed top-0 z-30 h-[80px] w-full bg-light-color text-primary-color-light shadow-md drop-shadow-sm dark:bg-main-color dark:text-primary-color">
-        <div className="flexBetween mx-auto h-full w-5/6 gap-6">
+      <div className="fixed top-0 z-30 h-[80px] w-full bg-light-color text-primary-color-light shadow-md dark:bg-main-color dark:text-primary-color">
+        <Container Styles="flexBetween gap-6">
           {/* LOGO */}
           <Logo />
 
-          {/* LINKS IN BIG SCREENS */}
-          <BigScreenLinks />
+          <div className="flexBetween h-full gap-8">
+            {/* LINKS IN BIG SCREENS */}
+            <BigScreenLinks />
 
-          <div className="flex gap-2 sm:gap-5">
-            {/* ACTIONS */}
-            <NavbarActions />
+            <div className="flex gap-2 sm:gap-5">
+              {/* ACTIONS */}
+              <NavbarActions />
 
-            {/* TOGGLE SIDEBAR */}
-            <ToggleSidebar toggleSidebar={toggleSidebar} />
+              {/* TOGGLE SIDEBAR */}
+              <ToggleSidebar toggleSidebar={toggleSidebar} />
+            </div>
           </div>
-        </div>
+        </Container>
       </div>
       {/* LINKS IN SMALL SCREENS */}
       <SmallScreenLinks showSidebar={showSidebar} closeSidebar={closeSidebar} />

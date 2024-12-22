@@ -1,64 +1,41 @@
-import React, { ForwardedRef } from "react";
+import React from "react";
+import { UseFormRegisterReturn } from "react-hook-form";
+import { Label } from "./Label";
+import { Error } from "./Error";
 
-interface TextAreaProps {
-  placeholder?: string;
-  name?: string;
-  value?: string;
-  onChange?: React.ChangeEventHandler<HTMLTextAreaElement>;
+interface TextAreaProps
+  extends React.TextareaHTMLAttributes<HTMLTextAreaElement> {
+  label?: string;
   error?: string;
-  disabled?: boolean;
-  showLabel?: boolean;
   Rows?: number;
-  defaultValue?: string;
+  register?: UseFormRegisterReturn;
 }
 
-const TextArea = React.forwardRef<HTMLTextAreaElement, TextAreaProps>(
-  (
-    {
-      placeholder,
-      name,
-      value,
-      onChange,
-      error,
-      disabled,
-      showLabel = true,
-      Rows = 4,
-      defaultValue,
-    },
-    ref: ForwardedRef<HTMLTextAreaElement>,
-  ) => {
-    return (
-      <div className="w-full">
-        {showLabel && (
-          <label
-            htmlFor={placeholder}
-            className="block p-[3px] text-sm text-main-color dark:text-light-color"
-          >
-            {placeholder}
-          </label>
-        )}
+export default function TextArea({
+  name,
+  label,
+  error,
+  Rows = 4,
+  register,
+  ...rest
+}: TextAreaProps) {
+  return (
+    <div className="w-full">
+      <Label htmlFor={name} text={label} />
 
-        <textarea
-          defaultValue={defaultValue}
-          ref={ref}
-          id={placeholder}
-          rows={Rows}
-          className={`input resize-none rounded-md border-[1px] border-orange-color-light bg-light-color/60 transition-all dark:border-orange-color dark:bg-main-color/55`}
-          placeholder={placeholder}
-          disabled={disabled}
-          name={name}
-          value={value}
-          onChange={onChange}
-        />
+      <textarea
+        id={name}
+        rows={Rows}
+        className={`input resize-none rounded-md bg-light-color/60 transition-all  dark:bg-main-color/55 ${
+          error
+            ? "border-[3px] border-red-600"
+            : "border-[1px] border-orange-color-light dark:border-orange-color"
+        }`}
+        {...(register ? register : {})}
+        {...rest}
+      />
 
-        {error && (
-          <div className="pl-[5px] text-sm text-red-900 dark:text-red-300">
-            {error}
-          </div>
-        )}
-      </div>
-    );
-  },
-);
-
-export default TextArea;
+      <Error message={error} />
+    </div>
+  );
+}

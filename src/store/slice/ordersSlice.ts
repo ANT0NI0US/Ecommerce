@@ -6,7 +6,7 @@ const initialState: orderServiceState = {
   isLoading: false,
   isCertainOrderLoading: false,
   allOrders: [],
-  order: {},
+  order: null,
   errors: null,
 };
 

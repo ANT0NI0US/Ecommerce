@@ -56,6 +56,7 @@ export default function NavbarActions() {
           </div>
         ))}
       </div>
+
       <ProfilePhoto />
     </div>
   );

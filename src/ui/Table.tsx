@@ -37,7 +37,7 @@ const Table: React.FC<TableProps> & {
 
 const Header: React.FC<HeaderProps> = ({ children }) => {
   return (
-    <thead className="bg-secondary-color-light uppercase text-primary-color-light dark:bg-secondary-color dark:text-primary-color">
+    <thead className="bg-secondary-color-light uppercase tracking-widest text-primary-color-light dark:bg-secondary-color dark:text-primary-color">
       <tr>{children}</tr>
     </thead>
   );
@@ -58,8 +58,12 @@ const Row: React.FC<RowProps> = ({ children }) => {
 const Cell: React.FC<CellProps> = ({ children, isHeader = false }) => {
   const Tag = isHeader ? "th" : "td";
   return (
-    <Tag scope={isHeader ? "col" : "row"} className="px-6 py-4">
-      {children}
+    <Tag scope={isHeader ? "col" : "row"}>
+      <div
+        className={`flexCenter ${isHeader ? "min-h-[70px] p-4" : "min-h-[80px] p-2"} flex-col  text-center`}
+      >
+        {children}
+      </div>
     </Tag>
   );
 };

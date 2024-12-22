@@ -10,26 +10,15 @@ export const userLinks: Array<arrLinks> = [
     text: "Shop",
   },
   {
-    path: "cart",
-    text: "Cart",
-  },
-];
-
-export const adminLinks: Array<arrLinks> = [
-  {
-    path: "dashboard",
-    text: "Dashboard",
-  },
-  {
-    path: "products",
-    text: "All Products",
-  },
-  {
-    path: "users",
-    text: "Users",
-  },
-  {
     path: "orders",
     text: "Orders",
+  },
+  {
+    path: "about",
+    text: "About",
+  },
+  {
+    path: "contact",
+    text: "Contact",
   },
 ];

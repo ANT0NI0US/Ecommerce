@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getUserByToken, signInFireBase } from "../service/loginService";
+import {
+  getUserByToken,
+  signInFireBase,
+  signUpFirebase,
+} from "../service/loginService";
 import { loginServiceState } from "@/utils/types";
 
 const storedToken = localStorage.getItem("token");
@@ -50,6 +54,18 @@ const loginSlice = createSlice({
       .addCase(signInFireBase.rejected, (state, action) => {
         state.isLoading = false;
         state.isAuthenticated = false;
+        state.errors = action.payload as string;
+      })
+      .addCase(signUpFirebase.pending, (state) => {
+        state.isLoading = true;
+        state.errors = null;
+      })
+      .addCase(signUpFirebase.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = action.payload || {};
+      })
+      .addCase(signUpFirebase.rejected, (state, action) => {
+        state.isLoading = false;
         state.errors = action.payload as string;
       })
       .addCase(getUserByToken.pending, (state) => {
