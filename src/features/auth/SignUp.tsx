@@ -84,7 +84,7 @@ export default function SignUp() {
     return true;
   };
 
-  function handleChangePassword(e) {
+  function handleChangePassword(e: React.ChangeEvent<HTMLInputElement>) {
     setValue("password", e.target.value);
     trigger("password");
     if (touchedFields.confirmPassword) {

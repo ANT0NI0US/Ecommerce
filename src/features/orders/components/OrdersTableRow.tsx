@@ -1,9 +1,8 @@
 import { parse, isBefore } from "date-fns";
+import { FaCheck, FaXmark } from "react-icons/fa6";
+import ShowOrder from "./ShowOrder";
 import Table from "@/ui/Table";
 import { ordersFireBase } from "@/utils/types";
-import ShowOrder from "./ShowOrder";
-import { FaCheck } from "react-icons/fa6";
-import { FaXmark } from "react-icons/fa6";
 
 type orderProps = {
   order: ordersFireBase;
