@@ -2,10 +2,8 @@ import { motion } from "framer-motion";
 
 export default function OurStory() {
   return (
-    <section className="flexCenter w-full bg-light-color py-[40px] pb-0 text-primary-color-light dark:bg-main-color dark:text-primary-color md:py-[80px]">
-      <div
-        className={`flexBetween mx-auto w-full flex-col  overflow-hidden md:flex-row`}
-      >
+    <section className="flexCenter py-[40px] pb-0 md:py-[80px]">
+      <div className="flexBetween mx-auto w-full flex-col overflow-hidden md:flex-row">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -20,15 +18,15 @@ export default function OurStory() {
             Our Story
           </h2>
           <p className="leading-[28px]">
-            Launced in 2015, Exclusive is South Asia’s premier online shopping
-            makterplace with an active presense in Bangladesh. Supported by wide
+            Launched in 2015, Exclusive is South Asia’s premier online shopping
+            marketplace with an active presence in Bangladesh. Supported by wide
             range of tailored marketing, data and service solutions, Exclusive
-            has 10,500 sallers and 300 brands and serves 3 millioons customers
+            has 10,500 sellers and 300 brands and serves 3 millions customers
             across the region.
           </p>
           <p className="leading-[28px]">
             Exclusive has more than 1 Million products to offer, growing at a
-            very fast. Exclusive offers a diverse assotment in categories
+            very fast. Exclusive offers a diverse assortment in categories
             ranging from consumer.
           </p>
         </motion.div>
@@ -37,7 +35,7 @@ export default function OurStory() {
             loading="lazy"
             className={`max-h-full w-full object-cover object-center`}
             src="https://firebasestorage.googleapis.com/v0/b/furniture-ecommerce-841f4.appspot.com/o/siteImages%2FourStory.webp?alt=media&token=a35e7dc3-9ac4-454a-affc-2d5e6ad02c8c"
-            alt="experience-image"
+            alt="our-story"
           />
         </div>
       </div>

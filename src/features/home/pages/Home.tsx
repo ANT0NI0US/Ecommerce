@@ -14,8 +14,8 @@ export default function Home() {
       <NewArrivals />
       <Experiences />
       <Offers />
-      <OurHappyCustomers />
       <Materials />
+      <OurHappyCustomers />
     </>
   );
 }

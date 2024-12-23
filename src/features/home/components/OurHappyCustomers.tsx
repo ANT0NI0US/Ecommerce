@@ -1,33 +1,13 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import Carousel from "react-multi-carousel";
-import { MdArrowBackIosNew, MdArrowForwardIos } from "react-icons/md";
 import HeadText from "@/ui/HeadText";
 import StarRatings from "@/ui/StarRatings";
 import Spinner from "@/ui/spinner/Spinner";
 import Container from "@/ui/Container";
+import Slider from "@/ui/Slider";
 import { productState, Review } from "@/utils/types";
 import { AppDispatch } from "@/store";
 import { getProducts } from "@/store/service/productService";
-
-const responsive = {
-  superLargeDesktop: {
-    breakpoint: { max: 4000, min: 3000 },
-    items: 5,
-  },
-  desktop: {
-    breakpoint: { max: 3000, min: 1060 },
-    items: 3,
-  },
-  tablet: {
-    breakpoint: { max: 1060, min: 768 },
-    items: 2,
-  },
-  mobile: {
-    breakpoint: { max: 768, min: 0 },
-    items: 1,
-  },
-};
 
 export default function OurHappyCustomers() {
   const dispatch = useDispatch<AppDispatch>();
@@ -67,42 +47,14 @@ export default function OurHappyCustomers() {
   if (isLoading) return <Spinner height="h-[300px]" />;
 
   return (
-    <section className="w-full bg-secondary-color-light py-[80px] text-primary-color-light dark:bg-secondary-color dark:text-primary-color">
-      <Container Styles="bg-secondary-color-light dark:bg-secondary-color">
+    <section className="pb-[40px] md:py-[80px]">
+      <Container>
         <HeadText text="Our Happy Customers" />
-        <Carousel
-          additionalTransfrom={0}
-          arrows
-          autoPlay
-          autoPlaySpeed={3000}
-          customLeftArrow={
-            <MdArrowBackIosNew
-              size={40}
-              className="absolute left-4 top-1/2 -translate-y-[50%] cursor-pointer rounded-full bg-transparent p-2 text-main-color/50 transition-all hover:bg-light-color dark:text-light-color dark:hover:bg-main-color/50"
-            />
-          }
-          customRightArrow={
-            <MdArrowForwardIos
-              size={40}
-              className="absolute right-4 top-1/2 -translate-y-[50%] cursor-pointer rounded-full bg-transparent p-2 text-main-color/50 transition-all hover:bg-light-color dark:text-light-color dark:hover:bg-main-color/50"
-            />
-          }
-          containerClass="container-with-dots"
-          draggable
-          infinite
-          keyBoardControl
-          minimumTouchDrag={80}
-          pauseOnHover
-          shouldResetAutoplay
-          slidesToSlide={1}
-          swipeable
-          responsive={responsive}
-          className="py-3"
-        >
+        <Slider>
           {randomReviews?.map((review: Review, index: number) => (
             <div
               key={index}
-              className="mx-2 h-[200px] max-h-full overflow-y-auto rounded-md border-[.5px] border-orange-color-light dark:border-main-color"
+              className="mx-2 h-[200px] max-h-full overflow-y-auto rounded-md border-[.5px] border-orange-color-light dark:border-secondary-color"
             >
               <div className="space-y-2 p-6">
                 <StarRatings readOnly={true} defaultRating={5} size={25} />
@@ -113,7 +65,7 @@ export default function OurHappyCustomers() {
               </div>
             </div>
           ))}
-        </Carousel>
+        </Slider>
       </Container>
     </section>
   );

@@ -1,8 +1,8 @@
-import Container from "@/ui/Container";
 import SiteDescription from "./SiteDescription";
 import TopCategories from "./TopCategories";
 import UsefulLinks from "./UsefulLinks";
 import CopyRight from "./CopyRight";
+import Container from "@/ui/Container";
 
 export default function Footer() {
   return (

@@ -15,6 +15,18 @@ import { signUpFirebase } from "@/store/service/loginService.ts";
 import { AppDispatch } from "@/store";
 import useHelmet from "@/hooks/useHelmet";
 
+const allowedTypes = [
+  "image/jpeg",
+  "image/png",
+  "image/gif",
+  "image/bmp",
+  "image/tiff",
+  "image/ico",
+  "image/avif",
+  "image/apng",
+  "image/svg",
+];
+
 interface signUpFormProps {
   name: string;
   email: string;
@@ -67,17 +79,7 @@ export default function SignUp() {
     if (!value) {
       return "This Field is required";
     }
-    const allowedTypes = [
-      "image/jpeg",
-      "image/png",
-      "image/gif",
-      "image/bmp",
-      "image/tiff",
-      "image/ico",
-      "image/avif",
-      "image/apng",
-      "image/svg",
-    ];
+
     if (!allowedTypes.includes(value.type)) {
       return "Only image extensions are allowed to be uploaded.";
     }
@@ -116,7 +118,7 @@ export default function SignUp() {
       onSubmit={handleSubmit(signUp)}
       className="relative w-full space-y-8 text-main-color dark:text-light-color"
     >
-      <h3 className="text-center text-lg font-bold uppercase">Sign Up</h3>
+      <h1 className="text-center text-lg font-bold uppercase">Sign Up</h1>
       <Input
         label="User Name"
         placeholder="User Name"
@@ -216,7 +218,12 @@ export default function SignUp() {
         error={errors?.confirmPassword?.message}
       />
 
-      <Button loading={isLoading} ArialLabel="New Account" type="submit">
+      <Button
+        loading={isLoading}
+        ArialLabel="New Account"
+        type="submit"
+        variation="secondary"
+      >
         Create An Account
       </Button>
       <p className="mx-auto text-center text-sm sm:text-base">

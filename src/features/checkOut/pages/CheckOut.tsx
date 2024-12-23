@@ -1,7 +1,7 @@
-import CommonSection from "@/ui/CommonSection";
-import useHelmet from "@/hooks/useHelmet";
-import Container from "@/ui/Container";
 import BillsDetails from "../components/BillsDetails";
+import CommonSection from "@/ui/CommonSection";
+import Container from "@/ui/Container";
+import useHelmet from "@/hooks/useHelmet";
 
 export default function CheckOut() {
   useHelmet("Checkout");
@@ -9,7 +9,7 @@ export default function CheckOut() {
   return (
     <>
       <CommonSection title="Checkout" />
-      <section className=" py-[40px] md:py-[80px]">
+      <section className="py-[40px] md:py-[80px]">
         <Container>
           <BillsDetails />
         </Container>

@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
-import { WidgetsProps } from "@/utils/types";
 import GridContainer from "@/ui/GridContainer";
+import { WidgetsProps } from "@/utils/types";
 
 export default function Widgets({ widgetsData, type = "color" }: WidgetsProps) {
   return (
@@ -19,13 +19,13 @@ export default function Widgets({ widgetsData, type = "color" }: WidgetsProps) {
           className={`flex ${type === "color" ? "odd:bg-card-bg-01-light even:bg-card-bg-02-light odd:dark:bg-card-bg-02 even:dark:bg-card-bg-01 md:flex-row md:items-start md:text-left" : "border"} min-h-[125px] w-full flex-col items-center gap-[15px] rounded-md p-5 text-center`}
         >
           <div
-            className={`${type === "color" ? "md:text-3xl" : "md:text-5xl"} flexCenter rounded-full bg-primary-color-light p-3 text-4xl text-light-color dark:bg-main-color dark:text-light-color md:p-[10px]`}
+            className={`${type === "color" ? "bg-primary-color-light text-light-color dark:bg-main-color dark:text-light-color md:text-3xl" : "border md:text-5xl"} flexCenter rounded-full p-3 text-4xl md:p-[10px]`}
           >
             {widget.icon}
           </div>
           <div className="flex-1">
             <h3
-              className={`${type === "color" ? "text-lg font-bold md:text-[0.9rem]" : "text-3xl font-extrabold md:text-4xl"} text-primary-color-light dark:text-main-color`}
+              className={`${type === "color" ? "text-lg font-bold text-primary-color-light dark:text-main-color md:text-[0.9rem]" : "text-3xl font-extrabold text-main-color dark:text-light-color md:text-4xl"}`}
             >
               {widget.title}
             </h3>

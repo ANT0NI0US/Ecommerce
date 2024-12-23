@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 
 export default function Materials() {
   return (
-    <section className="flexCenter w-full bg-light-color pb-0 pt-[80px] text-primary-color-light dark:bg-main-color dark:text-primary-color md:h-[calc(100vh-80px)] md:pb-[80px]">
+    <section className="flexCenter w-full bg-light-color py-[80px] text-primary-color-light dark:bg-main-color dark:text-primary-color md:h-[calc(100vh-80px)] md:py-[80px]">
       <div className="flexBetween mx-auto w-full flex-col overflow-hidden md:flex-row">
         <motion.div
           initial="hidden"

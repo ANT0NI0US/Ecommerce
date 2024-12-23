@@ -6,7 +6,7 @@ const Year = new Date().getFullYear();
 
 export default function Banner() {
   return (
-    <section className="flexCenter min-h-screen w-full bg-light-color pb-[10px] pt-[100px] text-primary-color-light dark:bg-main-color dark:text-primary-color md:h-screen md:pb-0">
+    <section className="flexCenter min-h-screen w-full pb-[10px] pt-[100px] md:h-screen md:pb-0">
       <Container Styles="flexBetween flex-col gap-2 md:flex-row md:gap-12">
         <>
           {/* BANNER TEXT */}
