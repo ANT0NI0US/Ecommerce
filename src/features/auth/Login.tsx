@@ -60,11 +60,10 @@ export default function Login() {
         <h1 className="text-center text-lg font-extrabold xs:text-xl sm:text-2xl md:text-3xl lg:text-4xl">
           Welcome To
           <span className="font-black text-primary-color-light dark:text-primary-color">
-            {" "}
             STOREIFY
           </span>
         </h1>
-        <h3 className="mt-3 text-center text-lg font-bold uppercase">Login</h3>
+        <h2 className="mt-3 text-center text-lg font-bold uppercase">Login</h2>
       </div>
 
       <Input
@@ -100,7 +99,12 @@ export default function Login() {
         error={errors?.password?.message}
       />
 
-      <Button loading={isLoading} ArialLabel="Login" type="submit">
+      <Button
+        loading={isLoading}
+        ArialLabel="Login"
+        type="submit"
+        variation="secondary"
+      >
         Login
       </Button>
 

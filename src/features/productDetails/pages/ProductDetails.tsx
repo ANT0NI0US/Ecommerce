@@ -51,6 +51,8 @@ export default function ProductDetails() {
       product.category === category && product.id !== id,
   );
 
+  if (isLoading) return <Spinner />;
+
   if (!product) {
     return (
       <div className="flexCenter mt-[80px] py-[80px] text-center text-3xl text-primary-color">
@@ -58,8 +60,6 @@ export default function ProductDetails() {
       </div>
     );
   }
-
-  if (isLoading) return <Spinner />;
 
   return (
     <>

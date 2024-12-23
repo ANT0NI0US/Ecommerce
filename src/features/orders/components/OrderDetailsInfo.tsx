@@ -1,7 +1,7 @@
-import { ordersFireBase } from "@/utils/types";
 import Information from "./Information";
 import InformationTitle from "./InformationTitle";
 import ModalFormGrid from "@/ui/ModalFormGrid";
+import { ordersFireBase } from "@/utils/types";
 
 interface Props {
   order: ordersFireBase;

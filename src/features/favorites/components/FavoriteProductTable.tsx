@@ -3,7 +3,7 @@ import Empty from "@/ui/Empty";
 import Table from "@/ui/Table";
 import { Item } from "@/utils/types";
 
-const tableHeadCells = ["Image", "Title", "Price", ""];
+const tableHeadCells = ["Image", "Product Name", "Price", ""];
 
 interface favoriteTableProps {
   perfectItems: Item[];
@@ -27,8 +27,8 @@ export default function FavoriteProductTable({
         data={perfectItems}
         render={(perfectItem) => (
           <FavoriteProductTableRow
-            perfectItem={perfectItem}
             key={perfectItem?.id}
+            perfectItem={perfectItem}
           />
         )}
       />
