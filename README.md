@@ -7,8 +7,8 @@ E-commerce platform that delivers an engaging and seamless shopping experience w
 1- Clone the Repository:
 
 ```bash
-git clone https://github.com/your-repo/ANT0NI0US-Ecommerce.git
-cd ANT0NI0US-Ecommerce
+git clone https://github.com/ANT0NI0US/.git 
+cd ANT0NI0US-STOREIFY
 ```
 2- Install Dependencies:
 
